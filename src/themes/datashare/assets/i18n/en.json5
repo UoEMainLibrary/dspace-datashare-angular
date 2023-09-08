@@ -1,7 +1,13 @@
 {
   // DSpace default: "All of DSpace"
-  "menu.section.browse_global": "Browse DSpace",
+  "menu.section.browse_global": "Browse Edinburgh Datashare",
+  "home.top-level-communities.head": "Communities in Edinburgh Datashare",
 
   // DSpace default: "DSpace Angular :: "
-  "repository.title.prefix": "DSpace :: ",
+  "repository.title.prefix": "Edinburgh Datashare :: ",
+
+  // Custom components
+  "info.accessibility.title": "Accessibility",
+  "info.accessibility.breadcrumbs": "Accessibility",
 }
+
