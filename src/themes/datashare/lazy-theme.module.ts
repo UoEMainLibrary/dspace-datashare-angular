@@ -157,7 +157,11 @@ import { EditBitstreamPageComponent } from './app/bitstream-page/edit-bitstream-
 import { FormModule } from '../../app/shared/form/form.module';
 import { RequestCopyModule } from 'src/app/request-copy/request-copy.module';
 
+// CUSTOMISED
+import { AccessibilityComponent} from './app/info/accessibility/accessibility.component';
+
 const DECLARATIONS = [
+  AccessibilityComponent,
   FileSectionComponent,
   HomePageComponent,
   RootComponent,
