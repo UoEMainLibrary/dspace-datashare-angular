@@ -7,11 +7,23 @@
     border-top: var(--ds-footer-border);
     padding: var(--ds-footer-padding);
 
+    .uoe-banner {
+      padding-top: 0.5rem;
+      background-color: #000;
+      color: white;
+      height: 3rem;
+    }
+
+    .uoe-banner-link {
+      color: #607890;
+      font-size: 1.2rem;
+    }
+
     p {
       margin: 0;
     }
 
-    div > img {
+    div>img {
       height: var(--ds-footer-logo-height);
     }
 
@@ -43,10 +55,10 @@
         }
       }
     }
-  }
-  .core-trust-seal-logo {
-    height: 6rem;
+
+    .core-trust-seal-logo {
+      height: 6rem;
+    }
+
   }
 }
-
-
