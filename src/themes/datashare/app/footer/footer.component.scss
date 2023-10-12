@@ -1,6 +1,7 @@
 :host {
   footer {
-    background-color: var(--ds-footer-bg);
+    // background-color: var(--ds-footer-bg);
+    background-color: #4a4a4a;
     text-align: center;
     z-index: var(--ds-footer-z-index);
     border-top: var(--ds-footer-border);
@@ -16,7 +17,8 @@
 
 
     .top-footer {
-      background-color: var(--ds-top-footer-bg);
+      // background-color: var(--ds-top-footer-bg);
+      background-color: #000;
       padding: var(--ds-footer-padding);
       margin: calc(var(--ds-footer-padding) * -1);
     }
@@ -41,6 +43,9 @@
         }
       }
     }
+  }
+  .core-trust-seal-logo {
+    height: 6rem;
   }
 }
 
