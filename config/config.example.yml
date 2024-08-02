@@ -28,9 +28,9 @@ universal:
 # NOTE: these settings define which (publicly available) REST API to use. They are usually
 # 'synced' with the 'dspace.server.url' setting in your backend's local.cfg.
 rest:
-  ssl: true
-  host: sandbox.dspace.org
-  port: 443
+  ssl: false
+  host: localhost
+  port: 8080
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
   nameSpace: /server
 
@@ -376,26 +376,33 @@ themes:
   # # This theme will use the default bootstrap styling for DSpace components
   # - name: BASE_THEME_NAME
   #
-  - name: dspace
-    headTags:
-    - tagName: link
-      attributes:
-        rel: icon
-        href: assets/dspace/images/favicons/favicon.ico
-        sizes: any
-    - tagName: link
-      attributes:
-        rel: icon
-        href: assets/dspace/images/favicons/favicon.svg
-        type: image/svg+xml
-    - tagName: link
-      attributes:
-        rel: apple-touch-icon
-        href: assets/dspace/images/favicons/apple-touch-icon.png
-    - tagName: link
-      attributes:
-        rel: manifest
-        href: assets/dspace/images/favicons/manifest.webmanifest
+  # - name: dspace
+  #   headTags:
+  #   - tagName: link
+  #     attributes:
+  #       rel: icon
+  #       href: assets/dspace/images/favicons/favicon.ico
+  #       sizes: any
+  #   - tagName: link
+  #     attributes:
+  #       rel: icon
+  #       href: assets/dspace/images/favicons/favicon.svg
+  #       type: image/svg+xml
+  #   - tagName: link
+  #     attributes:
+  #       rel: apple-touch-icon
+  #       href: assets/dspace/images/favicons/apple-touch-icon.png
+  #   - tagName: link
+  #     attributes:
+  #       rel: manifest
+  #       href: assets/dspace/images/favicons/manifest.webmanifest
+ - name: 'datashare'
+   headTags:
+   - tagName: link
+     attributes:
+       rel: icon
+       href: assets/datashare/images/favicons/datashare-favicon.ico
+       sizes: any
 
 # The default bundles that should always be displayed as suggestions when you upload a new bundle
 bundle:
@@ -415,6 +422,7 @@ info:
   enableEndUserAgreement: true
   enablePrivacyStatement: true
   enableCOARNotifySupport: true
+  enableAccessibiltyStatement: true
 
 # Whether to enable Markdown (https://commonmark.org/) and MathJax (https://www.mathjax.org/)
 # display in supported metadata fields. By default, only dc.description.abstract is supported.
