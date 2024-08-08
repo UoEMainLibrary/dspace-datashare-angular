@@ -3,20 +3,20 @@
 // imports the base global style
 @import '../../../styles/_global-styles.scss';
 
-:root {
-  --ds-navbar-link-color: #003C71;
-  --ds-navbar-link-color-hover: #003C71;
-  --ds-header-icon-color: #ffffff;
-  --ds-header-icon-color-hover: #ffffff;
-  --ds-home-news-link-color: #003C71;
-  --ds-home-news-link-hover-color: #003C71;
-  --ds-home-news-background-color: #003C71;
-  --ds-breadcrumb-link-color: #003C71;
-  --ds-breadcrumb-link-active-color: black;
-  --ds-footer-bg: #003C71;
-  --ds-top-footer-bg: #003C71;
-  --ds-footer-border: 0 solid var(--ds-footer-bg);
-}
+// :root {
+//   --ds-navbar-link-color: #003C71;
+//   --ds-navbar-link-color-hover: #003C71;
+//   --ds-header-icon-color: #ffffff;
+//   --ds-header-icon-color-hover: #ffffff;
+//   --ds-home-news-link-color: #003C71;
+//   --ds-home-news-link-hover-color: #003C71;
+//   --ds-home-news-background-color: #003C71;
+//   --ds-breadcrumb-link-color: #003C71;
+//   --ds-breadcrumb-link-active-color: black;
+//   --ds-footer-bg: #003C71;
+//   --ds-top-footer-bg: #003C71;
+//   --ds-footer-border: 0 solid var(--ds-footer-bg);
+// }
 
 @media (min-width: 576px) {
   .container-sm, .container {
