@@ -6,6 +6,10 @@
   // DSpace default: "DSpace Angular :: "
   "repository.title.prefix": "Edinburgh Datashare :: ",
 
+  // Dspace customised backend
+  "submission.sections.submit.progressbar.datashare.license": "Choose Datashare Licence",
+  "item.page.filesection.cclicense.bundle": "CC-License bundle",
+
   // Custom components
   "info.about.title": "About",
   "info.about.breadcrumbs": "About",
