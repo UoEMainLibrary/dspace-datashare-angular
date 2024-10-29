@@ -45,9 +45,15 @@ import { hasValue } from '../../../../../../../app/shared/empty.util';
 export class FullFileSectionComponent extends BaseComponent {
   cclicenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
 
+  cclicenseOptions = Object.assign(new PaginationComponentOptions(), {
+    id: 'cclbo',
+    currentPage: 1,
+    pageSize: this.appConfig.item.bitstream.pageSize,
+  });
+
   initialize(): void {
     super.initialize();
-    this.cclicenses$ = this.paginationService.getCurrentPagination(this.licenseOptions.id, this.licenseOptions).pipe(
+    this.cclicenses$ = this.paginationService.getCurrentPagination(this.cclicenseOptions.id, this.cclicenseOptions).pipe(
       switchMap((options: PaginationComponentOptions) => this.bitstreamDataService.findAllByItemAndBundleName(
         this.item,
         'CC-LICENSE',
