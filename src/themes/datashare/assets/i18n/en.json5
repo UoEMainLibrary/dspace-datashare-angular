@@ -7,8 +7,9 @@
   "repository.title.prefix": "Edinburgh Datashare :: ",
 
   // Dspace customised backend
-  "submission.sections.submit.progressbar.datashare.license": "Choose Datashare Licence",
+  "submission.sections.submit.progressbar.datashare.license": "Choose End-user Licence",
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
+  "submit.progressbar.license": "End-user Agreement",
 
   // Custom components
   "info.about.title": "About",

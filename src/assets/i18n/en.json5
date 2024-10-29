@@ -6866,7 +6866,9 @@
 
   "submission.sections.datashare.license": "Choose Licence",
 
-  "submission.sections.submit.progressbar.datashare.license": "Choose Datashare Licence",
+  "submission.sections.submit.progressbar.datashare.license": "Choose End-user Licence",
 
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
+
+  "submit.progressbar.license": "End-user Agreement",
 }
