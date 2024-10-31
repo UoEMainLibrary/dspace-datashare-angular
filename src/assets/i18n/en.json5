@@ -5228,7 +5228,7 @@
 
   "submission.sections.submit.progressbar.identifiers": "Identifiers",
 
-  "submission.sections.submit.progressbar.license": "Deposit license",
+  "submission.sections.submit.progressbar.license": "Depositor Agreement",
 
   "submission.sections.submit.progressbar.sherpapolicy": "Sherpa policies",
 
@@ -6866,7 +6866,7 @@
 
   "submission.sections.datashare.license": "Choose Licence",
 
-  "submission.sections.submit.progressbar.datashare.license": "Choose End-user Licence",
+  "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
 
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
 
