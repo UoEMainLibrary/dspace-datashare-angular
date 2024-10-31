@@ -14,14 +14,15 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 import { RemoteData } from '../../../../../../../app/core/data/remote-data';
 import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
 import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
-import { hasValue } from '../../../../../../../app/shared/empty.util';
+import { hasValue, isEmpty } from '../../../../../../../app/shared/empty.util';
 import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
 import { followLink } from '../../../../../../../app/shared/utils/follow-link-config.model';
 import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
 import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
 import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-name.service';
-import { APP_CONFIG, AppConfig } from 'src/config/app-config.interface';
+import { APP_CONFIG, AppConfig } from '../../../../../../../config/app-config.interface';
 import { PaginationService } from '../../../../../../../app/core/pagination/pagination.service';
+import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
 
 @Component({
   selector: 'ds-themed-item-page-file-section',
@@ -33,6 +34,7 @@ import { PaginationService } from '../../../../../../../app/core/pagination/pagi
     CommonModule,
     ThemedFileDownloadLinkComponent,
     MetadataFieldWrapperComponent,
+    PaginationComponent,
     ThemedLoadingComponent,
     TranslateModule,
     FileSizePipe,
@@ -79,11 +81,9 @@ export class FileSectionComponent extends BaseComponent {
       switchMap((options: PaginationComponentOptions) => this.bitstreamDataService.findAllByItemAndBundleName(
         this.item,
         'CC-LICENSE',
-        { elementsPerPage: options.pageSize, currentPage: options.currentPage },
+        { elementsPerPage: 1, currentPage: 1 },
         true,
         true,
-        followLink('format'),
-        followLink('thumbnail'),
       )),
       tap((rd: RemoteData<PaginatedList<Bitstream>>) => {
         if (hasValue(rd.errorMessage)) {
@@ -97,11 +97,9 @@ export class FileSectionComponent extends BaseComponent {
       switchMap((options: PaginationComponentOptions) => this.bitstreamDataService.findAllByItemAndBundleName(
         this.item,
         'LICENSE',
-        { elementsPerPage: options.pageSize, currentPage: options.currentPage },
+        { elementsPerPage: 1, currentPage: 1 },
         true,
         true,
-        followLink('format'),
-        followLink('thumbnail'),
       )),
       tap((rd: RemoteData<PaginatedList<Bitstream>>) => {
         if (hasValue(rd.errorMessage)) {
@@ -111,6 +109,10 @@ export class FileSectionComponent extends BaseComponent {
       ),
     );
 
+  }
+
+  hasValuesInBundle(bundle: PaginatedList<Bitstream>) {
+    return hasValue(bundle) && !isEmpty(bundle.page);
   }
 
 }

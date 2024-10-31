@@ -6871,4 +6871,10 @@
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
 
   "submit.progressbar.license": "End-user Agreement",
+
+  "item.page.filesection.end_user_licence": "End-user Licence",
+
+  "item.page.filesection.depositor_agreement": "Depositor Agreement",
+
+  "item.page.filesection.licences": "Licences",
 }
