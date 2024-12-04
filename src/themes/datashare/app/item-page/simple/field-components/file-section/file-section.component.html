@@ -1,9 +1,10 @@
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <br>
-  <a class="col" href="https://www.coretrustseal.org/maps/fullscreen/10/?marker=366">
-    <img class="img" style="width:15rem;" src="/assets/datashare/images/download-all.jpeg" title="tbd"/>
+  <div class="download-all-container" *ngIf="(downloadLink$ | async) as downloadLink">
+  <a class="download-zip" href="${downloadLink}" target="_blank">
+    <img class="img" class="download-all" src="/assets/datashare/images/download-all.jpeg" title="Download All" />
   </a>
-  <br/>
+</div>
   <br/>
   <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
     <div class="file-section">

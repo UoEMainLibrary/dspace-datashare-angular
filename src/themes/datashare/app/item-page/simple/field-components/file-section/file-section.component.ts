@@ -10,7 +10,7 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { FileSizePipe } from '../../../../../../../app/shared/utils/file-size-pipe';
 import { VarDirective } from '../../../../../../../app/shared/utils/var.directive';
 import { getFirstCompletedRemoteData } from '../../../../../../../app/core/shared/operators';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { filter, map, Observable, switchMap, tap } from 'rxjs';
 import { RemoteData } from '../../../../../../../app/core/data/remote-data';
 import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
 import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
@@ -23,11 +23,14 @@ import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-na
 import { APP_CONFIG, AppConfig } from '../../../../../../../config/app-config.interface';
 import { PaginationService } from '../../../../../../../app/core/pagination/pagination.service';
 import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
+import { DownloadLinkService } from '../../../../../../../app/datashare/download-link.service';
+import { response } from 'express';
 
 @Component({
   selector: 'ds-themed-item-page-file-section',
   templateUrl: './file-section.component.html',
   // templateUrl: '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component.html',
+  styleUrls: ['./file-section.component.scss'],
   animations: [slideSidebarPadding],
   standalone: true,
   imports: [
@@ -45,6 +48,8 @@ export class FileSectionComponent extends BaseComponent {
 
   cclicenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
   licenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
+  downloadLink$: Observable<string>;
+  downloadLinkAvailable$: Observable<boolean>;
 
   cclicenseOptions = Object.assign(new PaginationComponentOptions(), {
     id: 'cclbo',
@@ -66,6 +71,7 @@ export class FileSectionComponent extends BaseComponent {
     protected paginationService: PaginationService,
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
+    protected downloadLinkService: DownloadLinkService,
   ) {
     super(bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
 
@@ -108,6 +114,15 @@ export class FileSectionComponent extends BaseComponent {
       },
       ),
     );
+
+    this.downloadLink$ = this.downloadLinkService.getDownloadLink(this.item.id).pipe(
+      filter(response => !!response && response.length > 0),
+      map(response => response)
+    );
+    this.downloadLinkAvailable$ = this.downloadLinkService.isDownloadLinkAvailable(this.item.id).pipe(
+        filter((response: boolean) => !!response && response),
+      map(response => response)
+  );
 
   }
 
