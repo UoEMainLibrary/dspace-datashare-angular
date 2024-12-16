@@ -24,5 +24,13 @@
   "info.copyright.breadcrumbs": "Copyright",
   "info.organised.title": "Organised",
   "info.organised.breadcrumbs": "Organised",
+
+  // vocabulary
+  "browse.comcol.by.jacs": "By Subject Category",
+  "browse.metadata.jacs": "Subject Category",
+  "browse.metadata.jacs.breadcrumbs": "Browse by Subject Category",
+  "browse.metadata.jacs.tree.descrption": "Select a subject to add as search filter",
+  "menu.section.browse_global_by_jacs": "By Subject Category",
+  "vocabulary-treeview.tree.description.jacs": "Research Subject Categories",
 }
 
