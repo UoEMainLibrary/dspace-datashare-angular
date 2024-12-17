@@ -116,13 +116,9 @@ export class FileSectionComponent extends BaseComponent {
     );
 
     this.downloadLink$ = this.downloadLinkService.getDownloadLink(this.item.id).pipe(
-      filter(response => !!response && response.length > 0),
-      map(response => response)
+      filter(link => hasValue(link) && link.length > 0),
+      map(link => link)
     );
-    this.downloadLinkAvailable$ = this.downloadLinkService.isDownloadLinkAvailable(this.item.id).pipe(
-        filter((response: boolean) => !!response && response),
-      map(response => response)
-  );
 
   }
 

@@ -23,30 +23,17 @@ export class DownloadLinkService {
   }
 
   getDownloadLink(itemId: string): Observable<string> {
-    console.log("itemId:", itemId);
-    console.log(`${environment.rest.baseUrl}/api/datashare/items/${itemId}/zip-file-link`);
+    // console.log("itemId:", itemId);
+    // console.log(`${environment.rest.baseUrl}/api/datashare/items/${itemId}/zip-file-link`);
     const options = {
       responseType: 'text' as const,
     };
     return this.httpClient.get(`${environment.rest.baseUrl}/api/datashare/items/${itemId}/zip-file-link`, options).pipe(
       map((response: string) => {
-        console.log('response:', response);
+        // console.log('response:', response);
         return response;
       })
     );
 
-  }
-  isDownloadLinkAvailable(itemId: string): Observable<boolean> {
-    console.log("itemId:", itemId);
-    console.log(`${environment.rest.baseUrl}/api/datashare/items/${itemId}/zip-file-link`);
-    const options = {
-      responseType: 'text' as const,
-    };
-    return this.httpClient.get(`${environment.rest.baseUrl}/api/datashare/items/${itemId}/zip-file-downloadable`, options).pipe(
-      map((response: string) => {
-        console.log('response:', response);
-        return Boolean(response);
-      })
-    );
   }
 }
