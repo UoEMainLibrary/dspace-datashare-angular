@@ -106,12 +106,14 @@ import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-pag
 import { AboutComponent} from './app/info/about/about.component';
 import { AccessibilityComponent} from './app/info/accessibility/accessibility.component';
 import { CopyrightComponent } from './app/info/copyright/copyright.component';
+import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
 import { OrganisedComponent } from './app/info/organised/organised.component';
 
 const DECLARATIONS = [
   AboutComponent,
   AccessibilityComponent,
   CopyrightComponent,
+  DepositButtonComponent,
   OrganisedComponent,
   FileSectionComponent,
   HomePageComponent,
