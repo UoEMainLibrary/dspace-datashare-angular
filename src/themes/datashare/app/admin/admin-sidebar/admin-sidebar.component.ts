@@ -16,10 +16,10 @@ import { AdminSidebarComponent as BaseComponent } from '../../../../../app/admin
  */
 @Component({
   selector: 'ds-themed-admin-sidebar',
-  // templateUrl: './admin-sidebar.component.html',
-  templateUrl: '../../../../../app/admin/admin-sidebar/admin-sidebar.component.html',
+  templateUrl: './admin-sidebar.component.html',
+  // templateUrl: '../../../../../app/admin/admin-sidebar/admin-sidebar.component.html',
   // styleUrls: ['./admin-sidebar.component.scss']
-  styleUrls: ['../../../../../app/admin/admin-sidebar/admin-sidebar.component.scss'],
+  styleUrls: ['./admin-sidebar.component.scss', '../../../../../app/admin/admin-sidebar/admin-sidebar.component.scss'],
   standalone: true,
   imports: [NgIf, NgbDropdownModule, NgClass, NgFor, NgComponentOutlet, AsyncPipe, TranslateModule],
 })
