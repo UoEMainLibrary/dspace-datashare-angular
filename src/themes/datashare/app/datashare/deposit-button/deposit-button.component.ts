@@ -7,9 +7,13 @@ import { Component } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import {  DepositButtonComponent as BaseComponent } from '../../../../../app/datashare/deposit-button/deposit-button.component';
-
+import { AuthorizationDataService } from '../../../../../app/core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../../../../app/core/data/feature-authorization/feature-id';
+import { Observable } from 'rxjs/internal/Observable';
+import { ThemedCreateItemParentSelectorComponent } from '../../../../../app/shared/dso-selector/modal-wrappers/create-item-parent-selector/themed-create-item-parent-selector.component';
 @Component({
   selector: 'ds-themed-deposit-button',
   styleUrls: ['./deposit-button.component.scss'],
@@ -20,4 +24,15 @@ import {  DepositButtonComponent as BaseComponent } from '../../../../../app/dat
   imports: [NgIf, RouterLink, AsyncPipe, DatePipe, TranslateModule],
 })
 export class  DepositButtonComponent extends BaseComponent {
+
+  isAuthorized$: Observable<boolean>;
+  constructor( protected authorizationService: AuthorizationDataService,
+               protected modalService: NgbModal) {
+    super();
+    this.isAuthorized$ = this.authorizationService.isAuthorized(FeatureID.CanSubmit);
+  }
+  onDepositClick() {
+    this.modalService.open(ThemedCreateItemParentSelectorComponent);
+  }
+
 }
