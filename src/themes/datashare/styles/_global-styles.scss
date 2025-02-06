@@ -193,3 +193,14 @@ li[ds-navbar-section] {
   font-weight: bold;
 }
 
+// Overwritting scss in src/styles/_truncatable-part.component.scss
+@for $i from 1 through 15 { 
+  .clamp-default-#{$i} .content,
+  :focus .clamp-default-#{$i} .content,
+  .ds-hover .clamp-default-#{$i} .content{
+max-height: #{$i * 20}rem;
+  }
+}
+
+
+
