@@ -6891,4 +6891,8 @@
   "vocabulary-treeview.tree.description.jacs": "Research Subject Categories",
 
   "deposit-button.title": "Deposit data",
+
+  "submission.sections.submit.progressbar.describe.timeperiod": "Time Period",
+
+  "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
 }

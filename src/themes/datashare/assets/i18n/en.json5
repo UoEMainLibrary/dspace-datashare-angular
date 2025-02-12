@@ -14,6 +14,7 @@
   "submit.progressbar.license": "End-user Agreement",
   "item.page.filesection.end_user_licence": "End-user Licence",
   "item.page.filesection.depositor_agreement": "Depositor Agreement",
+  "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
 
   // Custom components
   "info.about.title": "About",
