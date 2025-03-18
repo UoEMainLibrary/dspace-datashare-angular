@@ -21,10 +21,10 @@
   "item.page.filesection.end_user_licence": "End-user Licence",
   "item.page.filesection.depositor_agreement": "Depositor Agreement",
   "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
-  "search.filters.filter.subject.label": "Search subject keywords",
-  "browse.metadata.subject": "Subject keywords",
-  "browse.metadata.subject.breadcrumbs": "Browse by Subject keywords",
-  "menu.section.browse_global_by_subject": "By Subject keywords",
+  "search.filters.filter.subject.label": "Search Subject Keywords",
+  "browse.metadata.subject": "Subject Keywords",
+  "browse.metadata.subject.breadcrumbs": "Browse by Subject Keywords",
+  "menu.section.browse_global_by_subject": "By Subject Keywords",
 
   // Custom components
   "info.about.title": "About",
@@ -38,13 +38,13 @@
   "deposit-button.title": "Deposit data",
 
   // vocabulary
-  "search.filters.filter.jacs.head": "subject classifications",
+  "search.filters.filter.jacs.head": "Subject Classifications",
   // "search.filters.filter.show-tree": "Browse {{ name }} tree", 
-  "search.filters.filter.show-tree": "Browse subject classifications tree", 
+  "search.filters.filter.show-tree": "Browse Subject Classifications tree", 
   "browse.comcol.by.jacs": "By Subject Classifications",
   "browse.metadata.jacs": "Subject Classifications",
   "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
-  "browse.metadata.jacs.tree.descrption": "Select a subject classification to add as search filter",
+  "browse.metadata.jacs.tree.descrption": "Select a Subject Classification to add as search filter",
   "menu.section.browse_global_by_jacs": "By Subject Classification",
   "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
 }
