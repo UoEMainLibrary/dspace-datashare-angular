@@ -1018,7 +1018,7 @@
 
   "browse.metadata.dateissued": "Issue Date",
 
-  "browse.metadata.subject": "Subject",
+  "browse.metadata.subject": "Subject keywords",
 
   "browse.metadata.title": "Title",
 
@@ -1028,7 +1028,7 @@
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
 
-  "browse.metadata.subject.breadcrumbs": "Browse by Subject",
+  "browse.metadata.subject.breadcrumbs": "Browse by Subject keywords",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
 
@@ -3236,7 +3236,7 @@
 
   "menu.section.browse_global_by_dateissued": "By Issue Date",
 
-  "menu.section.browse_global_by_subject": "By Subject",
+  "menu.section.browse_global_by_subject": "By Subject keywords",
 
   "menu.section.browse_global_by_srsc": "By Subject Category",
 
@@ -4516,7 +4516,7 @@
 
   "search.filters.filter.subject.placeholder": "Subject",
 
-  "search.filters.filter.subject.label": "Search subject",
+  "search.filters.filter.subject.label": "Search subject keywords",
 
   "search.filters.filter.submitter.head": "Submitter",
 
@@ -4524,7 +4524,7 @@
 
   "search.filters.filter.submitter.label": "Search submitter",
 
-  "search.filters.filter.show-tree": "Browse {{ name }} tree",
+  "search.filters.filter.show-tree": "Browse subject classifications tree",
 
   "search.filters.filter.funding.head": "Funding",
 
@@ -4758,7 +4758,7 @@
 
   "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.back-to-my-dspace": "Back toMyDatashare",
+  "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
 
   "submission.import-external.search.placeholder": "Search the external source",
 
@@ -6878,21 +6878,23 @@
 
   "item.page.filesection.licences": "Licences",
 
-  "browse.comcol.by.jacs": "By Subject Category",
+  "browse.comcol.by.jacs": "By Subject Classifications",
 
-  "browse.metadata.jacs": "Subject Category",
+  "browse.metadata.jacs": "Subject Classifications",
 
-  "browse.metadata.jacs.breadcrumbs": "Browse by Subject Category",
+  "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
 
-  "browse.metadata.jacs.tree.descrption": "Select a subject to add as search filter",
+  "browse.metadata.jacs.tree.descrption": "Select a subject classification to add as search filter",
 
-  "menu.section.browse_global_by_jacs": "By Subject Category",
+  "menu.section.browse_global_by_jacs": "By Subject Classification",
 
-  "vocabulary-treeview.tree.description.jacs": "Research Subject Categories",
+  "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
 
   "deposit-button.title": "Deposit data",
 
   "submission.sections.submit.progressbar.describe.timeperiod": "Time Period",
 
   "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
+
+  "search.filters.filter.jacs.head": "subject classifications",
 }

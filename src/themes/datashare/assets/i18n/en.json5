@@ -9,7 +9,7 @@
   "mydspace.search-form.placeholder": "Search in MyDatashare...",
   "mydspace.title": "MyDatashare",
   "nav.mydspace": "MyDatashare",
-  "submission.import-external.back-to-my-dspace": "Back toMyDatashare",
+  "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
 
 
   // Dspace customised backend
@@ -21,6 +21,10 @@
   "item.page.filesection.end_user_licence": "End-user Licence",
   "item.page.filesection.depositor_agreement": "Depositor Agreement",
   "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
+  "search.filters.filter.subject.label": "Search subject keywords",
+  "browse.metadata.subject": "Subject keywords",
+  "browse.metadata.subject.breadcrumbs": "Browse by Subject keywords",
+  "menu.section.browse_global_by_subject": "By Subject keywords",
 
   // Custom components
   "info.about.title": "About",
@@ -34,11 +38,14 @@
   "deposit-button.title": "Deposit data",
 
   // vocabulary
-  "browse.comcol.by.jacs": "By Subject Category",
-  "browse.metadata.jacs": "Subject Category",
-  "browse.metadata.jacs.breadcrumbs": "Browse by Subject Category",
-  "browse.metadata.jacs.tree.descrption": "Select a subject to add as search filter",
-  "menu.section.browse_global_by_jacs": "By Subject Category",
-  "vocabulary-treeview.tree.description.jacs": "Research Subject Categories",
+  "search.filters.filter.jacs.head": "subject classifications",
+  // "search.filters.filter.show-tree": "Browse {{ name }} tree", 
+  "search.filters.filter.show-tree": "Browse subject classifications tree", 
+  "browse.comcol.by.jacs": "By Subject Classifications",
+  "browse.metadata.jacs": "Subject Classifications",
+  "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
+  "browse.metadata.jacs.tree.descrption": "Select a subject classification to add as search filter",
+  "menu.section.browse_global_by_jacs": "By Subject Classification",
+  "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
 }
 
