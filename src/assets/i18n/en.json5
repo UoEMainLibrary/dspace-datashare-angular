@@ -1018,7 +1018,7 @@
 
   "browse.metadata.dateissued": "Issue Date",
 
-  "browse.metadata.subject": "Subject keywords",
+  "browse.metadata.subject": "Subject Keywords",
 
   "browse.metadata.title": "Title",
 
@@ -1028,7 +1028,7 @@
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
 
-  "browse.metadata.subject.breadcrumbs": "Browse by Subject keywords",
+  "browse.metadata.subject.breadcrumbs": "Browse by Subject Keywords",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
 
@@ -3236,7 +3236,7 @@
 
   "menu.section.browse_global_by_dateissued": "By Issue Date",
 
-  "menu.section.browse_global_by_subject": "By Subject keywords",
+  "menu.section.browse_global_by_subject": "By Subject Keywords",
 
   "menu.section.browse_global_by_srsc": "By Subject Category",
 
@@ -4516,7 +4516,7 @@
 
   "search.filters.filter.subject.placeholder": "Subject",
 
-  "search.filters.filter.subject.label": "Search subject keywords",
+  "search.filters.filter.subject.label": "Search Subject Keywords",
 
   "search.filters.filter.submitter.head": "Submitter",
 
@@ -4524,7 +4524,7 @@
 
   "search.filters.filter.submitter.label": "Search submitter",
 
-  "search.filters.filter.show-tree": "Browse subject classifications tree",
+  "search.filters.filter.show-tree": "Browse Subject Classifications tree",
 
   "search.filters.filter.funding.head": "Funding",
 
@@ -6884,7 +6884,7 @@
 
   "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
 
-  "browse.metadata.jacs.tree.descrption": "Select a subject classification to add as search filter",
+  "browse.metadata.jacs.tree.descrption": "Select a Subject Classification to add as search filter",
 
   "menu.section.browse_global_by_jacs": "By Subject Classification",
 
@@ -6896,5 +6896,5 @@
 
   "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
 
-  "search.filters.filter.jacs.head": "subject classifications",
+  "search.filters.filter.jacs.head": "Subject Classifications",
 }
