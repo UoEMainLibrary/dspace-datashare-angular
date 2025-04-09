@@ -161,6 +161,10 @@ export class MetadataFieldSelectorComponent implements OnInit, OnDestroy, AfterV
           return this.registryService.queryMetadataFields(query, { elementsPerPage: 10, sort: new SortOptions('fieldName', SortDirection.ASC) }, true, false, followLink('schema')).pipe(
             getAllSucceededRemoteData(),
             metadataFieldsToString(),
+            // DATASHARE - Start
+            // Filter metadata items that start with 'dc.'
+            map((fields: string[]) => fields.filter(field => field.startsWith('dc.'))),
+            // DATASHARE - End
           );
         } else {
           return [[]];
