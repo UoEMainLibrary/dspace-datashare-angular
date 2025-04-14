@@ -21,6 +21,7 @@
   "item.page.filesection.end_user_licence": "End-user Licence",
   "item.page.filesection.depositor_agreement": "Depositor Agreement",
   "submission.sections.submit.progressbar.datashare.timeperiod": "Time Period",
+  "submission.sections.submit.progressbar.datashare.funder": "Funders",
   "search.filters.filter.subject.label": "Search Subject Keywords",
   "browse.metadata.subject": "Subject Keywords",
   "browse.metadata.subject.breadcrumbs": "Browse by Subject Keywords",
