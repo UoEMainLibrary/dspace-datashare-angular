@@ -75,6 +75,10 @@
   "browse.comcol.by.dateavailable": "By Available Date",
   "browse.comcol.by.dateembargo": "By Embargo Date",
 
+  "browse.metadata.dateaccessioned": "Published date:",
+  "browse.metadata.dateavailable": "Available date:",
+  "browse.metadata.datembargo": "Embargo date:",
+
   "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Published Date",
   "browse.metadata.dateavailable.breadcrumbs": "Browse by Available Date",
   "browse.metadata.dateembargo.breadcrumbs": "Browse by Embargo Date",

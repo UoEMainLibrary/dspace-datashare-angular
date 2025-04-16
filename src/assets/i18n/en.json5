@@ -6973,4 +6973,10 @@
   "menu.section.browse_global_by_dateavailable": "By Available Date",
 
   "menu.section.browse_global_by_dateembargo": "By Embargo Date",
+
+  "browse.metadata.dateaccessioned": "Published date:",
+
+  "browse.metadata.dateavailable": "Available date:",
+
+  "browse.metadata.datembargo": "Embargo date:",
 }
