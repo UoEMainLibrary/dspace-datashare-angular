@@ -6899,4 +6899,12 @@
   "search.filters.filter.jacs.head": "Subject Classifications",
 
   "submission.sections.submit.progressbar.datashare.funder": "Funders",
+
+  "sorting.dc.date.available.ASC": "Available Date Ascending",
+
+  "sorting.dc.date.available.DESC": "Available Date Descending",
+
+  "sorting.dc.date.embargo.ASC": "Embargo Date Ascending",
+
+  "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
 }

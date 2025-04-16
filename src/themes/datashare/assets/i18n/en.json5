@@ -12,7 +12,7 @@
   "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
 
 
-  // Dspace customised backend
+  // Datashare customised backend
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
   "submission.sections.submit.progressbar.license": "Depositor Agreement",
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
@@ -26,6 +26,11 @@
   "browse.metadata.subject": "Subject Keywords",
   "browse.metadata.subject.breadcrumbs": "Browse by Subject Keywords",
   "menu.section.browse_global_by_subject": "By Subject Keywords",
+  "sorting.dc.date.available.ASC": "Available Date Ascending",
+  "sorting.dc.date.available.DESC": "Available Date Descending",
+  "sorting.dc.date.embargo.ASC": "Embargo Date Ascending",
+  "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
+
 
   // Custom components
   "info.about.title": "About",
