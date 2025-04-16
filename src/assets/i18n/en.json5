@@ -4662,9 +4662,9 @@
 
   "sorting.dc.date.issued.DESC": "Date Issued Descending",
 
-  "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
+  "sorting.dc.date.accessioned.ASC": "Published Date Ascending",
 
-  "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
+  "sorting.dc.date.accessioned.DESC": "Published Date Descending",
 
   "sorting.lastModified.ASC": "Last modified Ascending",
 
@@ -6907,4 +6907,70 @@
   "sorting.dc.date.embargo.ASC": "Embargo Date Ascending",
 
   "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
+
+  "search.filters.filter.dateAccessioned.head": "Published Date",
+
+  "search.filters.filter.dateAccessioned.max.placeholder": "Maximum Date",
+
+  "search.filters.filter.dateAccessioned.max.label": "End",
+
+  "search.filters.filter.dateAccessioned.min.placeholder": "Minimum Date",
+
+  "search.filters.filter.dateAccessioned.min.label": "Start",
+
+  "search.filters.applied.f.dateAccessioned.max": "End date",
+
+  "search.filters.applied.f.dateAccessioned.min": "Start date",
+
+  "search.filters.filter.dateAvailable.head": "Available Date",
+
+  "search.filters.filter.dateAvailable.max.placeholder": "Maximum Date",
+
+  "search.filters.filter.dateAvailable.max.label": "End",
+
+  "search.filters.filter.dateAvailable.min.placeholder": "Minimum Date",
+
+  "search.filters.filter.dateAvailable.min.label": "Start",
+
+  "search.filters.applied.f.dateAvailable.max": "End date",
+
+  "search.filters.applied.f.dateAvailable.min": "Start date",
+
+  "search.filters.filter.dateEmbargo.head": "Embargo Date",
+
+  "search.filters.filter.dateEmbargo.max.placeholder": "Maximum Date",
+
+  "search.filters.filter.dateEmbargo.max.label": "End",
+
+  "search.filters.filter.dateEmbargo.min.placeholder": "Minimum Date",
+
+  "search.filters.filter.dateEmbargo.min.label": "Start",
+
+  "search.filters.applied.f.dateEmbargo.max": "End date",
+
+  "search.filters.applied.f.dateEmbargo.min": "Start date",
+
+  "browse.comcol.by.dateaccessioned": "By Published Date",
+
+  "browse.comcol.by.dateavailable": "By Available Date",
+
+  "browse.comcol.by.dateembargo": "By Embargo Date",
+
+  "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Published Date",
+
+  "browse.metadata.dateavailable.breadcrumbs": "Browse by Available Date",
+
+  "browse.metadata.dateembargo.breadcrumbs": "Browse by Embargo Date",
+
+  "item.preview.dc.date.accessioned": "Published date:",
+
+  "item.preview.dc.date.available": "Available date:",
+
+  "item.preview.dc.date.embargo": "Embargo date:",
+
+  "menu.section.browse_global_by_dateaccessioned": "By Published Date",
+
+  "menu.section.browse_global_by_dateavailable": "By Available Date",
+
+  "menu.section.browse_global_by_dateembargo": "By Embargo Date",
 }
