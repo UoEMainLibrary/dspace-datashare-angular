@@ -4662,9 +4662,9 @@
 
   "sorting.dc.date.issued.DESC": "Date Issued Descending",
 
-  "sorting.dc.date.accessioned.ASC": "Published Date Ascending",
+  "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
 
-  "sorting.dc.date.accessioned.DESC": "Published Date Descending",
+  "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
 
   "sorting.lastModified.ASC": "Last modified Ascending",
 
@@ -6908,7 +6908,7 @@
 
   "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
 
-  "search.filters.filter.dateAccessioned.head": "Published Date",
+  "search.filters.filter.dateAccessioned.head": "Accessioned Date",
 
   "search.filters.filter.dateAccessioned.max.placeholder": "Maximum Date",
 
@@ -6950,13 +6950,13 @@
 
   "search.filters.applied.f.dateEmbargo.min": "Start date",
 
-  "browse.comcol.by.dateaccessioned": "By Published Date",
+  "browse.comcol.by.dateaccessioned": "By Accessioned Date",
 
   "browse.comcol.by.dateavailable": "By Available Date",
 
   "browse.comcol.by.dateembargo": "By Embargo Date",
 
-  "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Published Date",
+  "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Accessioned Date",
 
   "browse.metadata.dateavailable.breadcrumbs": "Browse by Available Date",
 
@@ -6968,7 +6968,7 @@
 
   "item.preview.dc.date.embargo": "Embargo date:",
 
-  "menu.section.browse_global_by_dateaccessioned": "By Published Date",
+  "menu.section.browse_global_by_dateaccessioned": "By Accessioned Date",
 
   "menu.section.browse_global_by_dateavailable": "By Available Date",
 

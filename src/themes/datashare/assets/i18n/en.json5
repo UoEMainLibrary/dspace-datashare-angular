@@ -40,14 +40,14 @@
   "browse.comcol.by.jacs": "By Subject Classifications",
   
 
-  "sorting.dc.date.accessioned.ASC": "Published Date Ascending",
-  "sorting.dc.date.accessioned.DESC": "Published Date Descending",
+  "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
+  "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
   "sorting.dc.date.available.ASC": "Available Date Ascending",
   "sorting.dc.date.available.DESC": "Available Date Descending",
   "sorting.dc.date.embargo.ASC": "Embargo Date Ascending",
   "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
 
-  "search.filters.filter.dateAccessioned.head": "Published Date",
+  "search.filters.filter.dateAccessioned.head": "Accessioned Date",
   "search.filters.filter.dateAccessioned.max.placeholder": "Maximum Date",
   "search.filters.filter.dateAccessioned.max.label": "End",
   "search.filters.filter.dateAccessioned.min.placeholder": "Minimum Date",
@@ -71,7 +71,7 @@
   "search.filters.applied.f.dateEmbargo.max": "End date",
   "search.filters.applied.f.dateEmbargo.min": "Start date",
 
-  "browse.comcol.by.dateaccessioned": "By Published Date",
+  "browse.comcol.by.dateaccessioned": "By Accessioned Date",
   "browse.comcol.by.dateavailable": "By Available Date",
   "browse.comcol.by.dateembargo": "By Embargo Date",
 
@@ -79,7 +79,7 @@
   "browse.metadata.dateavailable": "Available date:",
   "browse.metadata.datembargo": "Embargo date:",
 
-  "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Published Date",
+  "browse.metadata.dateaccessioned.breadcrumbs": "Browse by Accessioned Date",
   "browse.metadata.dateavailable.breadcrumbs": "Browse by Available Date",
   "browse.metadata.dateembargo.breadcrumbs": "Browse by Embargo Date",
 
@@ -87,7 +87,7 @@
   "item.preview.dc.date.available": "Available date:",
   "item.preview.dc.date.embargo": "Embargo date:",
 
-  "menu.section.browse_global_by_dateaccessioned": "By Published Date",
+  "menu.section.browse_global_by_dateaccessioned": "By Accessioned Date",
   "menu.section.browse_global_by_dateavailable": "By Available Date",
   "menu.section.browse_global_by_dateembargo": "By Embargo Date",
 
