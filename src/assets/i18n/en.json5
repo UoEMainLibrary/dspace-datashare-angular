@@ -6979,4 +6979,14 @@
   "browse.metadata.dateavailable": "Available date:",
 
   "browse.metadata.datembargo": "Embargo date:",
+
+  "form.other-information.parent": "Parent",
+
+  "form.other-information.first-note": "Note",
+
+  "form.other-information.hasChildren": "Has Children",
+
+  "form.other-information.id": "ID",
+
+  "form.other-information.note": "Note",
 }

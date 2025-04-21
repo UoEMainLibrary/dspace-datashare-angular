@@ -11,7 +11,6 @@
   "nav.mydspace": "MyDatashare",
   "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
 
-
   // Datashare customised backend
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
   "submission.sections.submit.progressbar.license": "Depositor Agreement",
@@ -38,7 +37,6 @@
   "menu.section.browse_global_by_jacs": "By Subject Classifications",
   "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
   "browse.comcol.by.jacs": "By Subject Classifications",
-  
 
   "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
   "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
@@ -91,8 +89,6 @@
   "menu.section.browse_global_by_dateavailable": "By Available Date",
   "menu.section.browse_global_by_dateembargo": "By Embargo Date",
 
-
-
   // Custom components
   "info.about.title": "About",
   "info.about.breadcrumbs": "About",
@@ -106,13 +102,16 @@
 
   // vocabulary
   "search.filters.filter.jacs.head": "Subject Classifications",
-  // "search.filters.filter.show-tree": "Browse {{ name }} tree", 
-  "search.filters.filter.show-tree": "Browse Subject Classifications tree", 
+  // "search.filters.filter.show-tree": "Browse {{ name }} tree",
+  "search.filters.filter.show-tree": "Browse Subject Classifications tree",
   "browse.comcol.by.jacs": "By Subject Classifications",
   "browse.metadata.jacs": "Subject Classifications",
   "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
   "browse.metadata.jacs.tree.descrption": "Select a Subject Classification to add as search filter",
   "menu.section.browse_global_by_jacs": "By Subject Classification",
   "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
+  "form.other-information.parent": "Parent",
+  "form.other-information.note": "Note",
+  "form.other-information.hasChildren": "Has Children",
+  "form.other-information.id": "ID",
 }
-
