@@ -1,9 +1,8 @@
-<div>
-    <a class="col-md-5 my-2" *ngIf="isAuthorized$ | async; else elseBlock" (click)="onDepositClick()">
-        <img class="img-fluid" src="/assets/datashare/images/deposit-data.jpg"
-            [attr.alt]="'deposit-button.title' | translate" />
-    </a>
+<div class="deposit-button">
+    <button class="btn btn-primary" *ngIf="isAuthorized$ | async; else elseBlock" (click)="onDepositClick()">Deposit
+        Data</button>
+
     <ng-template #elseBlock>
-        <a class="h1 text-danger bold" routerLink="/login">Please login to deposit data, by clicking this link</a>
+        <button class="btn btn-primary" (click)="onLogInToDepositClick()">Login to Deposit Data</button>
     </ng-template>
 </div>

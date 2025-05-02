@@ -5,7 +5,7 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,12 +27,18 @@ export class  DepositButtonComponent extends BaseComponent {
 
   isAuthorized$: Observable<boolean>;
   constructor( protected authorizationService: AuthorizationDataService,
-               protected modalService: NgbModal) {
+               protected modalService: NgbModal,
+               protected router: Router) {
     super();
     this.isAuthorized$ = this.authorizationService.isAuthorized(FeatureID.CanSubmit);
   }
   onDepositClick() {
     this.modalService.open(ThemedCreateItemParentSelectorComponent);
+  }
+
+  onLogInToDepositClick() {
+    // Go to Login page onLogInToDepositClick "/login"
+    this.router.navigate(['/login']);
   }
 
 }

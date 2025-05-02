@@ -1,0 +1,8 @@
+
+/* Override auth-nav-menu colors */
+a.dropdown-toggle.dropdownLogin,
+a.dropdown-toggle.logoutLink,
+a.dropdown-toggle.dropdownLogout {
+  color: #fff !important; 
+  margin: 0.5rem
+}

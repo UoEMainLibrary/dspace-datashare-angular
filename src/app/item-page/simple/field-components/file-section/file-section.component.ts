@@ -116,6 +116,10 @@ export class FileSectionComponent implements OnInit {
         this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
       } else if (hasValue(bitstreamsRD.payload)) {
         const current: Bitstream[] = this.bitstreams$.getValue();
+        // Log each bitstream
+        bitstreamsRD.payload.page.forEach(bitstream => {
+          console.log('Bitstream:', bitstream);
+        });
         this.bitstreams$.next([...current, ...bitstreamsRD.payload.page]);
         this.isLoading = false;
         this.isLastPage = this.currentPage === bitstreamsRD.payload.totalPages;

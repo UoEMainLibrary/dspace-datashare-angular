@@ -1,56 +1,85 @@
-// .datashare-header {
-//   background-color: #b8cc00;
-// }
-.container-fluid {
-  padding: 0;
+
+/* deafuat header css */
+.navbar-brand img {
+    max-height: var(--ds-header-logo-height);
+    max-width: 100%;
+    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+        max-height: var(--ds-header-logo-height-xs);
+    }
+    }
+
+    .navbar-toggler .navbar-toggler-icon {
+    background-image: none !important;
+    line-height: 1.5;
+    }
+
+    .navbar-toggler {
+    border: none;
+    color: var(--bs-blue);
+
+    &:hover, &:focus {
+        color: var(--ds-header-icon-color-hover);
+    }
 }
 
- .datashare-header h1 {
-  // color: #444;
-  font-family: "Oswald",sans-serif;
-  font-size: 2.3rem;
-  margin: 1rem;
+/* custom header css */
+header {
+    background-color: var(--bs-blue);
 }
- .datashare-header h1 a {
-  // color: #524c44;
-  text-decoration: none;
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 3rem 3rem 2rem 0rem;
+    margin: 0px;
+    width: 100%;
 }
- .datashare-header h1 a:hover {
-  text-decoration: none;
-  border-bottom: 1px dotted #ffffff;
-  color: #ffffff;
+a {
+    color: #fff;
 }
-
+a:hover {
+    text-decoration: none;
+}
+.navbar-brand img {
+    max-height: 6rem;
+    max-width: 6rem;
+}
 .datashare-logo {
-  height: 10rem;
+    max-width: 12rem!important;
+}
+a.navbar-brand.my-2 {
+    margin: 0;
 }
 
-.edinburgh-uni-logo {
-  height: 4rem;
+.container-masthead {
+    background-color: #fff;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
 }
 
-.is-banner {
-  padding-top: 0.5rem;
-  background-color: var(--bs-red);
-  color: white;
-  height: 3rem;
-  font-family: "Crimson Text",serif;
-  font-size: 18px;
+.uoe-logo img {
+    width: 100%;
+    max-width: 20.75rem;
+    height: auto;
+    max-height: 4.9375rem;
 }
 
-.is-banner a {
-  color: white;
+.contact-us-btn {
+    background-color: var(--bs-blue);
+    border-color: #fff;
+    color: #fff;
+    width: 10rem;
+    height: 2rem;
+    margin: 1rem;
 }
 
-.contact-us {
-  height: 2rem
+.contact-us-btn:hover{
+    background-color: var(--bs-blue);
+    border-color: #fff;
+    text-decoration: underline;
 }
 
-//  #sidebar a:link,
-// #sidebar a:visited,
-// #sidebar a {
-//   // color: #524c44;
-// }
-//  .datashare-header-content {
-//   // background-color: #9cb920;
-// }
+  
