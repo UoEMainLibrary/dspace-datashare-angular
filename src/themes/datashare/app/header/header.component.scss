@@ -1,5 +1,5 @@
-
-/* deafuat header css */
+:host {
+/* default header css */
 .navbar-brand img {
     max-height: var(--ds-header-logo-height);
     max-width: 100%;
@@ -68,18 +68,8 @@ a.navbar-brand.my-2 {
 }
 
 .contact-us-btn {
-    background-color: var(--bs-blue);
-    border-color: #fff;
-    color: #fff;
-    width: 10rem;
-    height: 2rem;
-    margin: 1rem;
+    float: right
+
 }
 
-.contact-us-btn:hover{
-    background-color: var(--bs-blue);
-    border-color: #fff;
-    text-decoration: underline;
 }
-
-  
