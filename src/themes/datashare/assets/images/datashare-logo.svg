@@ -20,7 +20,7 @@
       }
 
       .st4 {
-        fill: #5f5f5f;
+        fill: #ffffff;
       }
 
       .st5 {
@@ -28,7 +28,7 @@
       }
 
       .st6 {
-        fill: #5b5b5b;
+        fill: #ffffff;
       }
 
       .st7 {
@@ -57,11 +57,11 @@
       }
 
       .st13 {
-        fill: #656565;
+        fill: #ffffff;
       }
 
       .st14 {
-        fill: #636363;
+        fill: #ffffff;
       }
 
       .st15 {
