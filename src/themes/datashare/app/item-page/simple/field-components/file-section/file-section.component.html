@@ -1,7 +1,7 @@
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <br>
   <div class="download-all-container" *ngIf="(downloadLink$ | async) as downloadLink">
-    <a class="btn btn-primary" href="{{downloadLink}}" target="_blank">Download all <i class="fa-solid fa-download"></i></a>
+    <a class="btn btn-primary" href="{{downloadLink}}" target="_blank">Download all files <i class="fa-solid fa-download"></i></a>
   </div>
   <br/>
   <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
