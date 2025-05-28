@@ -13,4 +13,5 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [RouterLink, TranslateModule],
 })
 export class FooterComponent extends BaseComponent {
+    currentYear: number = new Date().getFullYear();
 }
