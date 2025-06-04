@@ -1,0 +1,11 @@
+.disabled-field {
+  background-color: #f5f5f5 !important;
+  color: #6c757d !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
+
+textarea:disabled {
+  background-color: #e9ecef !important;
+  opacity: 1;
+}
