@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
   Input,
   OnChanges,
   SimpleChanges,
@@ -18,6 +19,8 @@ import { SubmissionScopeType } from '../../../core/submission/submission-scope-t
 import { isNotEmpty } from '../../../shared/empty.util';
 import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
 import { SubmissionService } from '../../submission.service';
+import { DatashareCustomisedSubmissionService } from '../../../datashare/datashare-customised-submission.service';
+import { ItemPageFieldComponent } from "../../../item-page/simple/field-components/specific-field/item-page-field.component";
 
 /**
  * This component represents submission form footer bar.
@@ -27,7 +30,7 @@ import { SubmissionService } from '../../submission.service';
   styleUrls: ['./submission-form-footer.component.scss'],
   templateUrl: './submission-form-footer.component.html',
   standalone: true,
-  imports: [CommonModule, BrowserOnlyPipe, TranslateModule],
+  imports: [CommonModule, BrowserOnlyPipe, TranslateModule, ItemPageFieldComponent],
 })
 export class SubmissionFormFooterComponent implements OnChanges {
 
@@ -66,17 +69,33 @@ export class SubmissionFormFooterComponent implements OnChanges {
    */
   public hasUnsavedModification: Observable<boolean>;
 
+  // Datashare - Start
+  // Signal access
+  public showDepositButtonSignal = this.datashareCustomisedSubmissionService.showDepositButtonSignal;
+
+   // Optional: Create a computed signal for more complex logic
+  public shouldShowDepositButton = computed(() => {
+    // Combine the signal with other conditions if needed
+    return this.showDepositButtonSignal() /* && other conditions */;
+  });
+
+   
   /**
    * Initialize instance variables
    *
    * @param {NgbModal} modalService
    * @param {SubmissionRestService} restService
    * @param {SubmissionService} submissionService
+   * @param {DatashareCustomisedSubmissionService} datashareCustomisedSubmissionService
    */
   constructor(private modalService: NgbModal,
               private restService: SubmissionRestService,
-              private submissionService: SubmissionService) {
+              private submissionService: SubmissionService,
+              private datashareCustomisedSubmissionService: DatashareCustomisedSubmissionService) {
+    // Debug: Log the signal value changes
+    console.log('Footer component created, initial signal value:', this.showDepositButtonSignal());
   }
+  // Datashare - End
 
   /**
    * Initialize all instance variables
@@ -91,6 +110,10 @@ export class SubmissionFormFooterComponent implements OnChanges {
       this.processingDepositStatus = this.submissionService.getSubmissionDepositProcessingStatus(this.submissionId);
       this.showDepositAndDiscard = observableOf(this.submissionService.getSubmissionScope() === SubmissionScopeType.WorkspaceItem);
       this.hasUnsavedModification = this.submissionService.hasUnsavedModification();
+      // Datashare - Start
+      // Debug: Log signal value on changes
+    console.log('Footer ngOnChanges, signal value:', this.showDepositButtonSignal());
+    // Datashare - End
     }
   }
 

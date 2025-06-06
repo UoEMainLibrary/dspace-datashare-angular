@@ -1,3 +1,9 @@
+<!-- Debug section - remove after fixing -->
+<!-- div style="background: yellow; padding: 10px; margin: 10px;">
+  <strong>DEBUG:</strong><br>
+  Signal value: {{ showDepositButtonSignal() }}<br>
+  Signal function: {{ (showDepositAndDiscard | async) && showDepositButtonSignal()  }}
+</div -->
 <div class="row" *ngIf="!!submissionId">
   <div class="col">
     <button *ngIf="(showDepositAndDiscard | async)"
@@ -42,12 +48,12 @@
               (click)="saveLater($event)">
         <span><i class="fas fa-save"></i> {{'submission.general.save-later' | translate}}</span>
       </button>
-      <button *ngIf="(showDepositAndDiscard | async)"
+      <button *ngIf="(showDepositAndDiscard | async) && showDepositButtonSignal()"
               type="button"
               id="deposit"
               [attr.data-test]="'deposit' | dsBrowserOnly"
               class="btn btn-success"
-              [disabled]="(processingSaveStatus | async) || (processingDepositStatus | async)"
+              [disabled]="((processingSaveStatus | async) || (processingDepositStatus | async))"
               (click)="deposit($event)">
         <span><i class="fas fa-plus"></i> {{'submission.general.deposit' | translate}}</span>
       </button>
