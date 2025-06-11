@@ -1,26 +1,27 @@
-<ds-alert [content]="'submission.sections.upload.info'"
-          [dismissible]="true"
-          [type]="AlertTypeEnum.Info"></ds-alert>
+<ds-alert [content]="'submission.sections.upload.info'" [dismissible]="true" [type]="AlertTypeEnum.Info"></ds-alert>
 
 
 <ng-container *ngIf="fileList.length > 0; else noFileUploaded">
 
   <div *ngIf="collectionDefaultAccessConditions.length > 0" class="row">
-    <div class="col-sm-12" >
+    <div class="col-sm-12">
       <ds-alert [type]="AlertTypeEnum.Warning">
         <ng-container *ngIf="collectionPolicyType === 1">
-          {{ 'submission.sections.upload.header.policy.default.nolist' | translate:{ "collectionName": collectionName } }}
+          {{ 'submission.sections.upload.header.policy.default.nolist' | translate:{ "collectionName": collectionName }
+          }}
         </ng-container>
         <ng-container *ngIf="collectionPolicyType === 2">
-          {{ 'submission.sections.upload.header.policy.default.withlist' | translate:{ "collectionName": collectionName } }}
+          {{ 'submission.sections.upload.header.policy.default.withlist' | translate:{ "collectionName": collectionName
+          } }}
         </ng-container>
         <span class="clearfix"></span>
-        <ds-submission-section-upload-access-conditions [accessConditions]="collectionDefaultAccessConditions"></ds-submission-section-upload-access-conditions>
+        <ds-submission-section-upload-access-conditions
+          [accessConditions]="collectionDefaultAccessConditions"></ds-submission-section-upload-access-conditions>
       </ds-alert>
     </div>
   </div>
   <!-- // Datashare - start-->
-   <div class="row">
+  <div class="row">
     <div class="col-md-12">
       <p class="text-left" [innerHTML]="'datashare.submission.sections.upload.info' | translate"></p>
     </div>
@@ -28,15 +29,20 @@
 
   <div class="row">
     <div class="col-md-12">
-      <p class="text-left font-weight-bold">Total Size of Uploaded Files: {{ formatBytes(totalUploadedFilesSize) }}</p>
-      <p class="text-left text-danger font-weight-bold" [innerHTML]="'datashare.submission.sections.upload.exceeded_size_limit' | translate"></p>
+      <p class="text-left font-weight-bold">
+        <span [innerHTML]="'datashare.submission.sections.upload.total_size' | translate"></span>
+        {{ formatBytes(totalUploadedFilesSize) }}
+      </p>
+      <p class="text-left text-danger font-weight-bold" *ngIf="isTotalUploadedFilesSizeExceeded"
+        [innerHTML]="'datashare.submission.sections.upload.exceeded_size_limit' | translate"></p>
     </div>
   </div>
 
   <div class="row" *ngIf="getDuplicateFileNames().length > 0">
     <div class="col-md-12">
-      <p class="text-left text-danger font-weight-bolder">
-        You have files with same name. Please rename or delete: {{ getDuplicateFileNames().join(', ') }}
+      <p class="text-left">
+        <span class="text-danger font-weight-bold" [innerHTML]="'datashare.submission.sections.upload.duplicates' | translate"></span>
+        {{ getDuplicateFileNames().join(', ') }}
       </p>
     </div>
   </div>
@@ -48,24 +54,19 @@
   </div> -->
   <div class="row">
     <div class="col-md-12">
-      <hr/>
+      <hr />
     </div>
   </div>
   <ng-container *ngFor="let fileEntry of fileList; let i = index;">
     <ds-submission-upload-section-file
-                                       [isPrimary]="primaryBitstreamUUID ? primaryBitstreamUUID === fileEntry.uuid : null"
-                                       [availableAccessConditionOptions]="availableAccessConditionOptions"
-                                       [collectionId]="collectionId"
-                                       [collectionPolicyType]="collectionPolicyType"
-                                       [configMetadataForm]="(configMetadataForm$ | async)"
-                                       [fileId]="fileEntry.uuid"
-                                       [fileIndex]="i"
-                                       [fileName]="fileNames[i]"
-                                       [sectionId]="sectionData.id"
-                                       [submissionId]="submissionId"></ds-submission-upload-section-file>
+      [isPrimary]="primaryBitstreamUUID ? primaryBitstreamUUID === fileEntry.uuid : null"
+      [availableAccessConditionOptions]="availableAccessConditionOptions" [collectionId]="collectionId"
+      [collectionPolicyType]="collectionPolicyType" [configMetadataForm]="(configMetadataForm$ | async)"
+      [fileId]="fileEntry.uuid" [fileIndex]="i" [fileName]="fileNames[i]" [sectionId]="sectionData.id"
+      [submissionId]="submissionId"></ds-submission-upload-section-file>
     <div class="row">
       <div class="col-md-12">
-        <hr/>
+        <hr />
       </div>
     </div>
   </ng-container>
@@ -74,7 +75,8 @@
 <ng-template #noFileUploaded>
   <div class="row">
     <div class="col-md-12">
-      <h3 class="text-center"><span class="text-muted">{{'submission.sections.upload.no-file-uploaded' | translate}}</span></h3>
+      <h3 class="text-center"><span class="text-muted">{{'submission.sections.upload.no-file-uploaded' |
+          translate}}</span></h3>
     </div>
   </div>
 </ng-template>
