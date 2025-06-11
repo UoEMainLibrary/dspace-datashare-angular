@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DatashareCustomisedSubmissionService } from './datashare-customised-submission.service';
+import { DatashareCustomisedSubmissionService } from './datashare-submission.service';
 
 describe('DatashareCustomisedSubmissionService', () => {
   let service: DatashareCustomisedSubmissionService;

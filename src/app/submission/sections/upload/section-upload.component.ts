@@ -57,7 +57,7 @@ import { SectionsService } from '../sections.service';
 import { SubmissionSectionUploadAccessConditionsComponent } from './accessConditions/submission-section-upload-access-conditions.component';
 import { ThemedSubmissionSectionUploadFileComponent } from './file/themed-section-upload-file.component';
 import { SectionUploadService } from './section-upload.service';
-import { DatashareCustomisedSubmissionService } from '../../../datashare/datashare-customised-submission.service';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
@@ -157,10 +157,10 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   public totalUploadedFilesSize: number = 0;
 
   // Duplicate file name detector from service
-  private duplicateDetector = this.datashareCustomisedSubmissionService.createDuplicateFileNameDetector();
+  private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();
   public fileNamesSignal = this.duplicateDetector.fileNamesSignal;
   // Use the service signal instead
-  public showDepositButtonSignal = this.datashareCustomisedSubmissionService.showDepositButtonSignal;
+  public showDepositButtonSignal = this.datashareSubmissionService.showDepositButtonSignal;
   // Datashare - End
 
 
@@ -189,7 +189,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
     private submissionService: SubmissionService,
     private uploadsConfigService: SubmissionUploadsConfigDataService,
     public dsoNameService: DSONameService,
-    private datashareCustomisedSubmissionService: DatashareCustomisedSubmissionService,
+    private datashareSubmissionService: DatashareSubmissionService,
     @Inject('sectionDataProvider') public injectedSectionData: SectionDataObject,
     @Inject('submissionIdProvider') public injectedSubmissionId: string) {
     super(undefined, injectedSectionData, injectedSubmissionId);
@@ -259,19 +259,19 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         this.fileNames = Array.from(files, file => this.getFileName(configMetadataForm, file));
         // Datashare - start
         // Calculate total uploaded files size
-        this.totalUploadedFilesSize = this.datashareCustomisedSubmissionService.calculateTotalUploadedFilesSize(files);
+        this.totalUploadedFilesSize = this.datashareSubmissionService.calculateTotalUploadedFilesSize(files);
 
         // Update the duplicate detector
         this.duplicateDetector.updateFileNames(this.fileNames);
 
         // IMPORTANT: Update the shared service signal
-        const hasDuplicates = this.datashareCustomisedSubmissionService.getDuplicateFileNames(this.fileNames).length > 0;
+        const hasDuplicates = this.datashareSubmissionService.getDuplicateFileNames(this.fileNames).length > 0;
         console.log('File names:', this.fileNames);
         console.log('Has duplicates:', hasDuplicates);
         console.log('Should show deposit button:', !hasDuplicates);
 
         // Update the service signal
-        this.datashareCustomisedSubmissionService.updateShowDepositButton(!hasDuplicates);
+        this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates);
         // Datashare - end
         this.changeDetectorRef.detectChanges();
       }),
@@ -328,7 +328,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    * Format bytes to human readable format
    */
   formatBytes(bytes: number): string {
-    return this.datashareCustomisedSubmissionService.formatBytes(bytes);
+    return this.datashareSubmissionService.formatBytes(bytes);
   }
 
   /**
@@ -336,14 +336,14 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    * @returns {string[]} Array of duplicate file names
    */
   getDuplicateFileNames(): string[] {
-    return this.datashareCustomisedSubmissionService.getDuplicateFileNames(this.fileNames);
+    return this.datashareSubmissionService.getDuplicateFileNames(this.fileNames);
   }
 
   /**
    * Get duplicate file names as a formatted string
    */
   get duplicateFileNamesDisplay(): string {
-    return this.datashareCustomisedSubmissionService.getDuplicateFileNamesDisplay(this.fileNames);
+    return this.datashareSubmissionService.getDuplicateFileNamesDisplay(this.fileNames);
   }
 
   /**
@@ -356,7 +356,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   // Update wherever you currently update the duplicate detector
   private updateDepositButtonState(): void {
     const hasDuplicates = this.getDuplicateFileNames().length > 0;
-    this.datashareCustomisedSubmissionService.updateShowDepositButton(!hasDuplicates);
+    this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates);
   }
   // Datashare - end
 

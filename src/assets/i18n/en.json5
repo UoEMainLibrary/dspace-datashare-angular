@@ -6989,4 +6989,6 @@
   "form.other-information.id": "ID",
 
   "form.other-information.note": "Note",
+
+  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit over 20 GB, then please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>",
 }

@@ -4,14 +4,17 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DatashareCustomisedSubmissionService {
+export class DatashareSubmissionService {
+
+  MAX_FILE_SIZE_GB = 20;
+  MAX_FILE_SIZE_BYTES = this.MAX_FILE_SIZE_GB * 1024 * 1024 * 1024;
 
   // Single shared signal for deposit button state
   private _showDepositButtonSignal = signal<boolean>(true);
   public readonly showDepositButtonSignal = this._showDepositButtonSignal.asReadonly();
 
   constructor() { 
-    console.log('DatashareCustomisedSubmissionService created');
+    console.log('DatashareSubmissionService created');
   }
 
   /**

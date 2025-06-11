@@ -11,9 +11,11 @@
   "nav.mydspace": "MyDatashare",
   "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
 
-  // Datashare customised backend
+  // Datashare customised
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
   "submission.sections.submit.progressbar.license": "Depositor Agreement",
+
+  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit over 20 GB, then please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>",
 
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
   "item.page.filesection.licences": "Licences",

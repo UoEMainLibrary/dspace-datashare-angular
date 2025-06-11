@@ -19,7 +19,7 @@ import { SubmissionScopeType } from '../../../core/submission/submission-scope-t
 import { isNotEmpty } from '../../../shared/empty.util';
 import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
 import { SubmissionService } from '../../submission.service';
-import { DatashareCustomisedSubmissionService } from '../../../datashare/datashare-customised-submission.service';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 import { ItemPageFieldComponent } from "../../../item-page/simple/field-components/specific-field/item-page-field.component";
 
 /**
@@ -71,7 +71,7 @@ export class SubmissionFormFooterComponent implements OnChanges {
 
   // Datashare - Start
   // Signal access
-  public showDepositButtonSignal = this.datashareCustomisedSubmissionService.showDepositButtonSignal;
+  public showDepositButtonSignal = this.datashareSubmissionService.showDepositButtonSignal;
 
    // Optional: Create a computed signal for more complex logic
   public shouldShowDepositButton = computed(() => {
@@ -86,12 +86,12 @@ export class SubmissionFormFooterComponent implements OnChanges {
    * @param {NgbModal} modalService
    * @param {SubmissionRestService} restService
    * @param {SubmissionService} submissionService
-   * @param {DatashareCustomisedSubmissionService} datashareCustomisedSubmissionService
+   * @param {DatashareSubmissionService} datashareSubmissionService
    */
   constructor(private modalService: NgbModal,
               private restService: SubmissionRestService,
               private submissionService: SubmissionService,
-              private datashareCustomisedSubmissionService: DatashareCustomisedSubmissionService) {
+              private datashareSubmissionService: DatashareSubmissionService) {
     // Debug: Log the signal value changes
     console.log('Footer component created, initial signal value:', this.showDepositButtonSignal());
   }
