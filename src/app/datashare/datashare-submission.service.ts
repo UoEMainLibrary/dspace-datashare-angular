@@ -37,6 +37,15 @@ export class DatashareSubmissionService {
   }
 
   /**
+   * Check if total uploaded files size exceeds the maximum allowed size.
+   * @param totalUploadedFilesSize Number of bytes
+   * @returns True if total size exceeds the maximum allowed size, false otherwise
+   */
+   isTotalUploadedFilesSizeExceeded(totalUploadedFilesSize: number): boolean {
+    return totalUploadedFilesSize > this.MAX_FILE_SIZE_BYTES;
+  }
+
+  /**
    * Format bytes to human readable format
    * @param bytes Number of bytes
    * @returns Formatted string (e.g., "1.5 MB")

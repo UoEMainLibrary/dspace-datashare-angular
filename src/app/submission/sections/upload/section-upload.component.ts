@@ -155,6 +155,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
 
   // Datashare - Start
   public totalUploadedFilesSize: number = 0;
+  public isTotalUploadedFilesSizeExceeded: boolean = false;
 
   // Duplicate file name detector from service
   private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();
@@ -260,6 +261,8 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         // Datashare - start
         // Calculate total uploaded files size
         this.totalUploadedFilesSize = this.datashareSubmissionService.calculateTotalUploadedFilesSize(files);
+        // Has the total uploaded files size exceeded the limit?
+        this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
 
         // Update the duplicate detector
         this.duplicateDetector.updateFileNames(this.fileNames);
@@ -269,9 +272,10 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         console.log('File names:', this.fileNames);
         console.log('Has duplicates:', hasDuplicates);
         console.log('Should show deposit button:', !hasDuplicates);
+        console.log('this.isTotalUploadedFilesSizeExceeded: ', this.isTotalUploadedFilesSizeExceeded);
 
         // Update the service signal
-        this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates);
+        this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
         // Datashare - end
         this.changeDetectorRef.detectChanges();
       }),
@@ -356,7 +360,8 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   // Update wherever you currently update the duplicate detector
   private updateDepositButtonState(): void {
     const hasDuplicates = this.getDuplicateFileNames().length > 0;
-    this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates);
+    this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
+    this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
   }
   // Datashare - end
 
