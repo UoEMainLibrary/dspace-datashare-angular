@@ -1,5 +1,7 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { NotificationsService } from '../shared/notifications/notifications.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,10 @@ export class DatashareSubmissionService {
   private _showDepositButtonSignal = signal<boolean>(true);
   public readonly showDepositButtonSignal = this._showDepositButtonSignal.asReadonly();
 
-  constructor() { 
+
+  constructor(private notificationsService: NotificationsService,
+    private translate: TranslateService
+  ) { 
     console.log('DatashareSubmissionService created');
   }
 
@@ -117,5 +122,12 @@ export class DatashareSubmissionService {
         subscriber.next(duplicates.length === 0);
       });
     });
+  }
+
+  /**
+   * Send a notification that the submission cannot be submitted.
+   */
+  sendCannotSubmitNotification(): void {
+    this.notificationsService.info(null, this.translate.get('submission.general.cannot_submit'));
   }
 }
