@@ -12,8 +12,8 @@ export class DatashareSubmissionService {
   MAX_FILE_SIZE_BYTES = this.MAX_FILE_SIZE_GB * 1024 * 1024 * 1024;
 
   // Single shared signal for deposit button state
-  private _showDepositButtonSignal = signal<boolean>(true);
-  public readonly showDepositButtonSignal = this._showDepositButtonSignal.asReadonly();
+  private _hasUploadFilesErrorsSignal = signal<boolean>(true);
+  public readonly hasUploadFilesErrorsSignal = this._hasUploadFilesErrorsSignal.asReadonly();
 
 
   constructor(private notificationsService: NotificationsService,
@@ -25,9 +25,9 @@ export class DatashareSubmissionService {
   /**
    * Update the deposit button visibility state
    */
-  updateShowDepositButton(show: boolean): void {
-    console.log('Updating showDepositButton to:', show);
-    this._showDepositButtonSignal.set(show);
+  updatehasUploadFilesErrors(show: boolean): void {
+    console.log('Updating hasUploadFilesErrors to:', show);
+    this._hasUploadFilesErrorsSignal.set(show);
   }
 
   /**
@@ -92,19 +92,19 @@ export class DatashareSubmissionService {
   /**
    * Create a signal-based duplicate file name detector
    * @param initialFileNames Initial array of file names
-   * @returns Object with fileNamesSignal and showDepositButtonSignal
+   * @returns Object with fileNamesSignal and hasUploadFilesErrorsSignal
    */
   createDuplicateFileNameDetector(initialFileNames: string[] = []) {
     const fileNamesSignal = signal<string[]>(initialFileNames);
 
-    const showDepositButtonSignal = computed(() => {
+    const hasUploadFilesErrorsSignal = computed(() => {
       const duplicates = this.getDuplicateFileNames(fileNamesSignal());
       return duplicates.length === 0;
     });
 
     return {
       fileNamesSignal,
-      showDepositButtonSignal,
+      hasUploadFilesErrorsSignal,
       updateFileNames: (newFileNames: string[]) => fileNamesSignal.set(newFileNames),
       getDuplicates: () => this.getDuplicateFileNames(fileNamesSignal())
     };
@@ -128,6 +128,6 @@ export class DatashareSubmissionService {
    * Send a notification that the submission cannot be submitted.
    */
   sendCannotSubmitNotification(): void {
-    this.notificationsService.info(null, this.translate.get('submission.general.cannot_submit'));
+    this.notificationsService.error(null, this.translate.get('datashare.submission.sections.upload.submit.errors'));
   }
 }

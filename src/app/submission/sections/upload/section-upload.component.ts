@@ -161,7 +161,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();
   public fileNamesSignal = this.duplicateDetector.fileNamesSignal;
   // Use the service signal instead
-  public showDepositButtonSignal = this.datashareSubmissionService.showDepositButtonSignal;
+  public hasUploadFilesErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
   // Datashare - End
 
 
@@ -275,7 +275,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         console.log('this.isTotalUploadedFilesSizeExceeded: ', this.isTotalUploadedFilesSizeExceeded);
 
         // Update the service signal
-        this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
+        this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
         // Datashare - end
         this.changeDetectorRef.detectChanges();
       }),
@@ -361,7 +361,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   private updateDepositButtonState(): void {
     const hasDuplicates = this.getDuplicateFileNames().length > 0;
     this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
-    this.datashareSubmissionService.updateShowDepositButton(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
+    this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
   }
   // Datashare - end
 

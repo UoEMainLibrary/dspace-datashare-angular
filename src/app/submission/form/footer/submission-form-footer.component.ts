@@ -71,12 +71,12 @@ export class SubmissionFormFooterComponent implements OnChanges {
 
   // Datashare - Start
   // Signal access
-  public showDepositButtonSignal = this.datashareSubmissionService.showDepositButtonSignal;
+  public  hasUploadFileErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
 
    // Optional: Create a computed signal for more complex logic
-  public shouldShowDepositButton = computed(() => {
+  public hasUploadFileErrors = computed(() => {
     // Combine the signal with other conditions if needed
-    return this.showDepositButtonSignal() /* && other conditions */;
+    return this.hasUploadFileErrorsSignal();
   });
 
    
@@ -93,7 +93,7 @@ export class SubmissionFormFooterComponent implements OnChanges {
               private submissionService: SubmissionService,
               private datashareSubmissionService: DatashareSubmissionService) {
     // Debug: Log the signal value changes
-    console.log('Footer component created, initial signal value:', this.showDepositButtonSignal());
+    console.log('Footer component created, initial signal value:', this.hasUploadFileErrorsSignal());
   }
   // Datashare - End
 
@@ -112,7 +112,7 @@ export class SubmissionFormFooterComponent implements OnChanges {
       this.hasUnsavedModification = this.submissionService.hasUnsavedModification();
       // Datashare - Start
       // Debug: Log signal value on changes
-    console.log('Footer ngOnChanges, signal value:', this.showDepositButtonSignal());
+    console.log('Footer ngOnChanges, signal value:', this.hasUploadFileErrorsSignal());
     // Datashare - End
     }
   }
@@ -135,6 +135,12 @@ export class SubmissionFormFooterComponent implements OnChanges {
    * Dispatch a submission deposit action
    */
   public deposit(event) {
+    // Datashare - start
+    if (!this.hasUploadFileErrors()) {
+      this.datashareSubmissionService.sendCannotSubmitNotification();
+      return;
+    }
+    // Datashare - end
     this.submissionService.dispatchDeposit(this.submissionId);
   }
 
