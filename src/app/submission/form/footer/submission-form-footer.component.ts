@@ -69,7 +69,7 @@ export class SubmissionFormFooterComponent implements OnChanges {
    */
   public hasUnsavedModification: Observable<boolean>;
 
-  // Datashare - Start
+  // DATASHARE - Start
   // Signal access
   public  hasUploadFileErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
 
@@ -95,7 +95,7 @@ export class SubmissionFormFooterComponent implements OnChanges {
     // Debug: Log the signal value changes
     console.log('Footer component created, initial signal value:', this.hasUploadFileErrorsSignal());
   }
-  // Datashare - End
+  // DATASHARE - End
 
   /**
    * Initialize all instance variables
@@ -110,10 +110,10 @@ export class SubmissionFormFooterComponent implements OnChanges {
       this.processingDepositStatus = this.submissionService.getSubmissionDepositProcessingStatus(this.submissionId);
       this.showDepositAndDiscard = observableOf(this.submissionService.getSubmissionScope() === SubmissionScopeType.WorkspaceItem);
       this.hasUnsavedModification = this.submissionService.hasUnsavedModification();
-      // Datashare - Start
+      // DATASHARE - Start
       // Debug: Log signal value on changes
     console.log('Footer ngOnChanges, signal value:', this.hasUploadFileErrorsSignal());
-    // Datashare - End
+    // DATASHARE - End
     }
   }
 
@@ -135,12 +135,12 @@ export class SubmissionFormFooterComponent implements OnChanges {
    * Dispatch a submission deposit action
    */
   public deposit(event) {
-    // Datashare - start
+    // DATASHARE - start
     if (!this.hasUploadFileErrors()) {
       this.datashareSubmissionService.sendCannotSubmitNotification();
       return;
     }
-    // Datashare - end
+    // DATASHARE - end
     this.submissionService.dispatchDeposit(this.submissionId);
   }
 

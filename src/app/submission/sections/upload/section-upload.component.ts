@@ -153,7 +153,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    */
   protected subs: Subscription[] = [];
 
-  // Datashare - Start
+  // DATASHARE - Start
   public totalUploadedFilesSize: number = 0;
   public isTotalUploadedFilesSizeExceeded: boolean = false;
 
@@ -162,7 +162,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   public fileNamesSignal = this.duplicateDetector.fileNamesSignal;
   // Use the service signal instead
   public hasUploadFilesErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
-  // Datashare - End
+  // DATASHARE - End
 
 
 
@@ -258,7 +258,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         this.primaryBitstreamUUID = primary;
         this.fileList = files;
         this.fileNames = Array.from(files, file => this.getFileName(configMetadataForm, file));
-        // Datashare - start
+        // DATASHARE - start
         // Calculate total uploaded files size
         this.totalUploadedFilesSize = this.datashareSubmissionService.calculateTotalUploadedFilesSize(files);
         // Has the total uploaded files size exceeded the limit?
@@ -276,7 +276,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
 
         // Update the service signal
         this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
-        // Datashare - end
+        // DATASHARE - end
         this.changeDetectorRef.detectChanges();
       }),
     );
@@ -327,7 +327,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
       .forEach((subscription) => subscription.unsubscribe());
   }
 
-  // Datashare - start
+  // DATASHARE - start
   /**
    * Format bytes to human readable format
    */
@@ -363,6 +363,6 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
     this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
     this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
   }
-  // Datashare - end
+  // DATASHARE - end
 
 }
