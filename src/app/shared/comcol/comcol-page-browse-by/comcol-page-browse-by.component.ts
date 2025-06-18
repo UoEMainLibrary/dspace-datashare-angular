@@ -94,32 +94,51 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
         const allOptions: ComColPageNavOption[] = [];
         if (browseDefListRD.hasSucceeded) {
           let comColRoute: string;
+           // DATASHARE - start
+           // Commented out bits and changed
           if (this.contentType === 'collection') {
             comColRoute = getCollectionPageRoute(this.id);
             allOptions.push({
               id: 'search',
               label: 'collection.page.browse.search.head',
-              routerLink: comColRoute,
+               routerLink: `${comColRoute}`
             });
           } else if (this.contentType === 'community') {
             comColRoute = getCommunityPageRoute(this.id);
-            allOptions.push({
-              id: 'search',
-              label: 'collection.page.browse.search.head',
-              routerLink: comColRoute,
-            });
+            // allOptions.push({
+            //   id: 'search',
+            //   label: 'collection.page.browse.search.head',
+            //   routerLink: comColRoute,
+            // });
             allOptions.push({
               id: 'comcols',
               label: 'community.all-lists.head',
-              routerLink: `${comColRoute}/subcoms-cols`,
+              routerLink: `${comColRoute}`,
             });
           }
+           // DATASHARE - end
 
           allOptions.push(...browseDefListRD.payload.page.map((config: BrowseDefinition) => ({
             id: `browse_${config.id}`,
             label: `browse.comcol.by.${config.id}`,
             routerLink: `${comColRoute}/browse/${config.id}`,
           })));
+
+          // DATASHARE - start
+          if (this.contentType === 'collection') {
+            // allOptions.push({
+            //   id: 'search',
+            //   label: 'collection.page.browse.search.head',
+            //   routerLink: `${comColRoute}/search`
+            // });
+          } else if (this.contentType === 'community') {
+            // allOptions.push({
+            //   id: 'search',
+            //   label: 'collection.page.browse.search.head',
+            //   routerLink: comColRoute,
+            // });
+          }
+          // DATASHARE - end
         }
         return allOptions;
       }),

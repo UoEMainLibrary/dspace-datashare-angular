@@ -71,11 +71,28 @@ export const ROUTES: Route[] = [
         path: '',
         component: ThemedCommunityPageComponent,
         children: [
+          // DATASHARE - start
+          // Remove the following line to enable the search section
+          {
+            path: 'search',
+            pathMatch: 'full',
+            component: ComcolSearchSectionComponent,
+            resolve: {
+              breadcrumb: i18nBreadcrumbResolver,
+            },
+            // data: { breadcrumbKey: 'community.subcoms-cols' },
+          },
           {
             path: '',
             pathMatch: 'full',
-            component: ComcolSearchSectionComponent,
+            // component: ComcolSearchSectionComponent,
+            component: SubComColSectionComponent,
+            resolve: {
+              breadcrumb: i18nBreadcrumbResolver,
+            },
+            data: { breadcrumbKey: 'community.subcoms-cols' },
           },
+          // DATASHARE - end
           {
             path: 'subcoms-cols',
             pathMatch: 'full',
