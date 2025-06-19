@@ -72,7 +72,8 @@ export const ROUTES: Route[] = [
         component: ThemedCommunityPageComponent,
         children: [
           // DATASHARE - start
-          // Remove the following line to enable the search section
+          // Search section path no longer ddefault.
+          // The default path '' is Community & Collection Component/tab.
           {
             path: 'search',
             pathMatch: 'full',
