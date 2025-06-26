@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DatashareCustomisedSubmissionService } from './datashare-submission.service';
+import { DatashareSubmissionService } from './datashare-submission.service';
 
 describe('DatashareCustomisedSubmissionService', () => {
-  let service: DatashareCustomisedSubmissionService;
+  let service: DatashareSubmissionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DatashareCustomisedSubmissionService);
+    service = TestBed.inject(DatashareSubmissionService);
   });
 
   it('should be created', () => {
