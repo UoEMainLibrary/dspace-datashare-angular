@@ -102,19 +102,24 @@ import { ThumbnailComponent } from './app/thumbnail/thumbnail.component';
 import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workflow-item-delete/workflow-item-delete.component';
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
-// CUSTOMISED
+
+// DATASHARE - start
+// Custom Components specifically created for Datashare
 import { AboutComponent} from './app/info/about/about.component';
 import { AccessibilityComponent} from './app/info/accessibility/accessibility.component';
 import { CopyrightComponent } from './app/info/copyright/copyright.component';
 import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
 import { OrganisedComponent } from './app/info/organised/organised.component';
+// DATASHARE - end
 
 const DECLARATIONS = [
+  // DATASHARE - start
   AboutComponent,
   AccessibilityComponent,
   CopyrightComponent,
   DepositButtonComponent,
   OrganisedComponent,
+  // DATASHARE - end
   FileSectionComponent,
   HomePageComponent,
   RootComponent,
