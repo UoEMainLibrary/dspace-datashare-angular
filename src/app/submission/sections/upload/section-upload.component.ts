@@ -161,7 +161,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();
   public fileNamesSignal = this.duplicateDetector.fileNamesSignal;
   // Use the service signal instead
-  public hasUploadFilesErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
+  public hasUploadFilesErrorsSignal = this.duplicateDetector.hasUploadFilesErrorsSignal;
   // DATASHARE - End
 
 
@@ -340,14 +340,14 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    * @returns {string[]} Array of duplicate file names
    */
   getDuplicateFileNames(): string[] {
-    return this.datashareSubmissionService.getDuplicateFileNames(this.fileNames);
+    return this.duplicateDetector.getDuplicates();
   }
 
   /**
    * Get duplicate file names as a formatted string
    */
   get duplicateFileNamesDisplay(): string {
-    return this.datashareSubmissionService.getDuplicateFileNamesDisplay(this.fileNames);
+    return this.duplicateDetector.getDuplicateFileNamesDisplay();
   }
 
   /**

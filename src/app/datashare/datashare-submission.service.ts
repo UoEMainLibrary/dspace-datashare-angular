@@ -97,7 +97,7 @@ export class DatashareSubmissionService {
    */
   getDuplicateFileNamesDisplay(fileNames: string[]): string {
     const duplicates = this.getDuplicateFileNames(fileNames);
-    return duplicates.length > 0 ? duplicates.join(', ') : 'None';
+    return duplicates.length > 0 ? duplicates.join(', ') : '';
   }
 
   /**
@@ -110,14 +110,15 @@ export class DatashareSubmissionService {
 
     const hasUploadFilesErrorsSignal = computed(() => {
       const duplicates = this.getDuplicateFileNames(fileNamesSignal());
-      return duplicates.length === 0;
+      return duplicates.length !== 0;
     });
 
     return {
       fileNamesSignal,
       hasUploadFilesErrorsSignal,
       updateFileNames: (newFileNames: string[]) => fileNamesSignal.set(newFileNames),
-      getDuplicates: () => this.getDuplicateFileNames(fileNamesSignal())
+      getDuplicates: () => this.getDuplicateFileNames(fileNamesSignal()),
+      getDuplicateFileNamesDisplay: () => this.getDuplicateFileNamesDisplay(fileNamesSignal()),
     };
   }
 

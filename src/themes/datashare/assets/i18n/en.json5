@@ -15,6 +15,8 @@
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
   "submission.sections.submit.progressbar.license": "Depositor Agreement",
 
+  "submission.sections.submit.datashare.dropzone": "For large sized files, please drop one file at a time in the dropzone below. We suggest this to avoid getting errors.",
+
   "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit over 20 GB, then please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>",
   "datashare.submission.sections.upload.exceeded_size_limit": "You have exceeded the maximum upload size of 20 GB. Please delete some files to proceed to the next step.",
   "datashare.submission.sections.upload.total_size": "Total Size of Uploaded Files:",
