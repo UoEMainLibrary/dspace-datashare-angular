@@ -123,20 +123,6 @@ export class DatashareSubmissionService {
   }
 
   /**
-   * Create an observable-based duplicate file name detector
-   * @param fileNames$ Observable of file names array
-   * @returns Observable that emits true when no duplicates exist
-   */
-  createObservableDuplicateDetector$(fileNames$: Observable<string[]>): Observable<boolean> {
-    return new Observable<boolean>(subscriber => {
-      fileNames$.subscribe(fileNames => {
-        const duplicates = this.getDuplicateFileNames(fileNames);
-        subscriber.next(duplicates.length === 0);
-      });
-    });
-  }
-
-  /**
    * Send a notification that the submission cannot be submitted.
     */
   sendCannotSubmitNotification(): void {
