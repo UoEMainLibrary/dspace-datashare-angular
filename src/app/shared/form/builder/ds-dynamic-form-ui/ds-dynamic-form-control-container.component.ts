@@ -487,21 +487,21 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
 
       const datashareDepositorUsername = this.datashareSubmissionService.datashareDepositorUsernameSignal();
       // console.log('datashareDepositorUsername:', datashareDepositorUsername);
-      if (datashareDepositorUsername) {
-        // Set the value of the first input field
-        const firstInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_FIRST_INPUT');
-        if (firstInputControl && (!firstInputControl.value || firstInputControl.value === '')) {
-          // console.log('Setting value for first input control: ' + datashareDepositorUsername.lastName);
-          firstInputControl.setValue(datashareDepositorUsername.lastName);
-          firstInputControl.markAsTouched();
-        }
-        const secondInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_SECOND_INPUT');
-        if (secondInputControl && (!secondInputControl.value || secondInputControl.value === '')) {
-          // console.log('Setting value for second input control: ' + datashareDepositorUsername.firstName);
-          secondInputControl.setValue(datashareDepositorUsername.firstName);
-          secondInputControl.markAsTouched();
-        }
-      }
+      // if (datashareDepositorUsername) {
+      //   // Set the value of the first input field
+      //   const firstInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_FIRST_INPUT');
+      //   if (firstInputControl && (!firstInputControl.value || firstInputControl.value === '')) {
+      //     // console.log('Setting value for first input control: ' + datashareDepositorUsername.lastName);
+      //     firstInputControl.setValue(datashareDepositorUsername.lastName);
+      //     firstInputControl.markAsTouched();
+      //   }
+      //   const secondInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_SECOND_INPUT');
+      //   if (secondInputControl && (!secondInputControl.value || secondInputControl.value === '')) {
+      //     // console.log('Setting value for second input control: ' + datashareDepositorUsername.firstName);
+      //     secondInputControl.setValue(datashareDepositorUsername.firstName);
+      //     secondInputControl.markAsTouched();
+      //   }
+      // }
     }
   }
   // DATASHARE - end
