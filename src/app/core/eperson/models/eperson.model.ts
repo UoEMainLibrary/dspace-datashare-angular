@@ -94,19 +94,4 @@ export class EPerson extends DSpaceObject {
     return ['EPerson', this.constructor.name, ...super.getRenderTypes()];
   }
 
-  // DATASHARE - start
-  /**
-   * Returns the EPerson's firstname.
-   */
-  get firstName(): string {
-    return this.firstMetadataValue('eperson.firstname');
-  }
-
-  /**
-   * Returns the EPerson's firstname.
-   */
-  get lastName(): string {
-    return this.firstMetadataValue('eperson.lastname');
-  }
-  // DATASHARE - end
 }

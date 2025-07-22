@@ -69,7 +69,6 @@ import {
   startWith,
   switchMap,
   take,
-  tap,
 } from 'rxjs/operators';
 
 import {
@@ -123,9 +122,7 @@ import {
 import { ExistingRelationListElementComponent } from './existing-relation-list-element/existing-relation-list-element.component';
 import { DYNAMIC_FORM_CONTROL_TYPE_CUSTOM_SWITCH } from './models/custom-switch/custom-switch.model';
 import { DsDynamicLookupRelationModalComponent } from './relation-lookup-modal/dynamic-lookup-relation-modal.component';
-// DATASHARE - start
-import { DatashareSubmissionService } from './../../../../datashare/datashare-submission.service';
-// DATASHARE - end
+
 @Component({
   selector: 'ds-dynamic-form-control-container',
   styleUrls: ['./ds-dynamic-form-control-container.component.scss'],
@@ -212,7 +209,6 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
     protected formBuilderService: FormBuilderService,
     protected submissionService: SubmissionService,
     protected metadataService: MetadataService,
-    protected datashareSubmissionService: DatashareSubmissionService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     @Inject(DYNAMIC_FORM_CONTROL_MAP_FN) protected dynamicFormControlFn: DynamicFormControlMapFn,
   ) {
@@ -281,9 +277,9 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
         const relationship$ = this.relationshipService.findById(this.metadataService.virtualValue(this.value),
           true,
           true,
-          ...itemLinksToFollow(this.fetchThumbnail)).pipe(
-            getAllSucceededRemoteData(),
-            getRemoteDataPayload());
+          ... itemLinksToFollow(this.fetchThumbnail)).pipe(
+          getAllSucceededRemoteData(),
+          getRemoteDataPayload());
         this.relationshipValue$ = observableCombineLatest([this.item$.pipe(take(1)), relationship$]).pipe(
           switchMap(([item, relationship]: [Item, Relationship]) =>
             relationship.leftItem.pipe(
@@ -325,10 +321,6 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
 
   ngAfterViewInit() {
     this.showErrorMessagesPreviousStage = this.showErrorMessages;
-    // DATASHARE - start
-    this.datashareSubmissionService.createDepositorUserNameSignal();
-    this.prePopulateDepositor();
-    // / DATASHARE - end
   }
 
   protected createFormControlComponent(): void {
@@ -469,40 +461,4 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
     this.subs.push(collection$.subscribe((collection) => this.collection = collection));
 
   }
-
-  // DATASHARE -start
-  /**
-   * Pre-populate specific fields if they are not already set
-   */
-  private prePopulateDepositor(): void {
-    if (this.model?.id === 'dc_contributor_CONCAT_SECOND_INPUT' || this.model?.id === 'dc_contributor_CONCAT_SECOND_INPUT') {
-      console.log('prePopulateDepositor called');
-      // console.log('Model ID:', this.model?.id);
-      // console.log('Model Name:', this.model?.name);
-      // console.log('Inside if condition - Model ID matches');
-      // console.log('Form Group:', this.formGroup);
-      // console.log('Form group controls:', this.formGroup ? Object.keys(this.formGroup.controls) : 'No controls');
-      // console.log('Form group controls:', this.formGroup.controls['dc_contributor_CONCAT_GROUP']);
-      // console.log('Form group controls First:', this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_FIRST_INPUT'));
-
-      const datashareDepositorUsername = this.datashareSubmissionService.datashareDepositorUsernameSignal();
-      // console.log('datashareDepositorUsername:', datashareDepositorUsername);
-      if (datashareDepositorUsername) {
-        // Set the value of the first input field
-        const firstInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_FIRST_INPUT');
-        if (firstInputControl && (!firstInputControl.value || firstInputControl.value === '')) {
-          // console.log('Setting value for first input control: ' + datashareDepositorUsername.lastName);
-          firstInputControl.setValue(datashareDepositorUsername.lastName);
-          firstInputControl.markAsTouched();
-        }
-        const secondInputControl = this.formGroup.controls['dc_contributor_CONCAT_GROUP'].get('dc_contributor_CONCAT_SECOND_INPUT');
-        if (secondInputControl && (!secondInputControl.value || secondInputControl.value === '')) {
-          // console.log('Setting value for second input control: ' + datashareDepositorUsername.firstName);
-          secondInputControl.setValue(datashareDepositorUsername.firstName);
-          secondInputControl.markAsTouched();
-        }
-      }
-    }
-  }
-  // DATASHARE - end
 }
