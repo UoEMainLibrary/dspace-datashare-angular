@@ -7003,4 +7003,6 @@
   "datashare.submission.sections.upload.submit.errors": "You have errors. Please fix them before submitting.",
 
   "submission.sections.submit.datashare.dropzone": "TBD: INSTRUCTIONS FOR DROPZONE.",
+
+  "submission.sections.submit.progressbar.metadatapageone": "Metadata",
 }
