@@ -20,6 +20,7 @@ import { AlertType } from '../../../shared/alert/alert-type';
 import { SectionDataObject } from '../models/section-data.model';
 import { SectionsDirective } from '../sections.directive';
 import { rendersSectionType } from '../sections-decorator';
+import { DatashareSubmissionFormSectionContainerService } from './../../../datashare/datashare-submission-form-section-container.service';
 
 /**
  * This component represents a section that contains the submission license form.
@@ -78,13 +79,20 @@ export class SubmissionSectionContainerComponent implements OnInit {
    */
   @ViewChild('sectionRef') sectionRef: SectionsDirective;
 
+  public activePanelId: string = '';
+
   /**
    * Initialize instance variables
    *
    * @param {Injector} injector
    */
-  constructor(private injector: Injector) {
-  }
+  constructor(
+    private injector: Injector,
+    // DATASHARE - start
+    public datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService
+    // DATASHARE - end
+  ) { }
+
 
   /**
    * Initialize all instance variables
@@ -118,4 +126,37 @@ export class SubmissionSectionContainerComponent implements OnInit {
   getSectionContent() {
     return rendersSectionType(this.sectionData.sectionType);
   }
+
+  // DATASHARE - start
+  /**
+   * Get the currently open panel ID signal from the service DatashareSubmissionFormSectionContainerService.
+   * @returns {string | null} The ID of the currently open panel, or null if no panel is open
+   */
+  get openPanelId() {
+    console.log('Open panel ID:', this.datashareSubmissionFormSectionContainerService.openPanelId());
+    return this.datashareSubmissionFormSectionContainerService.openPanelId();
+  }
+
+  /**
+   * Handle the panel change event by setting the open panel ID to the signal 
+   * @param event The event emitted by the accordion when a panel is opened or closed
+   */
+  onPanelChange(event: any) {
+    // Only set the open panel ID if the panel is being opened
+    if (event.nextState) {
+      this.datashareSubmissionFormSectionContainerService.setOpenPanelId(event.panelId);
+    } else {
+      this.datashareSubmissionFormSectionContainerService.setOpenPanelId('');
+    }
+  }
+  /**
+   * Check if the section is open
+   * @returns {boolean} true if the section is open, false otherwise
+   */
+  isSectionOpen(): boolean {
+    const openPanelId = this.datashareSubmissionFormSectionContainerService.openPanelId();
+    console.log('Checking if section is open:', this.sectionData.id === openPanelId);
+    return this.sectionData.id === openPanelId;
+  }
+  // DATASHARE - end
 }

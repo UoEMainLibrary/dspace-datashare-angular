@@ -1,8 +1,12 @@
 <div dsSection #sectionRef="sectionRef" [attr.id]="'section_' + sectionData.id"
   [ngClass]="{ 'section-focus' : sectionRef.isSectionActive() }" [mandatory]="sectionData.mandatory"
   [submissionId]="submissionId" [sectionType]="sectionData.sectionType" [sectionId]="sectionData.id">
+  <!-- DATASHARE - start  -->
+  <!-- Use the signal-based method to determine if the section is open  and recording panel changes-->
   <ngb-accordion #acc="ngbAccordion" *ngIf="(sectionRef.isEnabled() | async)"
-    (panelChange)="sectionRef.sectionChange($event)" activeIds="{{ sectionData.id }}" [destroyOnHide]="false">
+    (panelChange)="onPanelChange($event)" [activeIds]="datashareSubmissionFormSectionContainerService.openPanelId() === sectionData.id ? sectionData.id : ''" [destroyOnHide]="false"
+    [class]="isSectionOpen() ? 'ds-open' : 'ds-closed'">
+  <!-- DATASHARE - end -->
     <ngb-panel id="{{ sectionData.id }}" [type]="sectionRef.isInfo() ? 'info' : ''">
       <ng-template ngbPanelTitle>
         <span [ngClass]="{ 'text-white' : sectionRef.isInfo()}" class="float-left section-title" tabindex="0">{{
@@ -24,20 +28,24 @@
           <i *ngIf="sectionRef.isInfo()" class="fas fa-info-circle mr-3 text-white"
             title="{{'submission.sections.status.info.title' | translate}}" role="img"
             [attr.aria-label]="'submission.sections.status.info.aria' | translate"></i>
+          <!-- DATASHARE - start  -->
+          <!-- Replaced sectionRef.isOpen() with isSectionOpen() to use the new signal-based method -->
           <a class="close" tabindex="0" role="button"
-            [attr.aria-label]="(sectionRef.isOpen() ? 'submission.sections.toggle.aria.close' : 'submission.sections.toggle.aria.open') | translate: {sectionHeader: ('submission.sections.'+sectionData.header | translate)}"
-            [title]="(sectionRef.isOpen() ? 'submission.sections.toggle.close' : 'submission.sections.toggle.open') | translate">
-            <span *ngIf="sectionRef.isOpen()" [ngClass]="{ 'text-white' : sectionRef.isInfo()}"
+            [attr.aria-label]="(isSectionOpen() ? 'submission.sections.toggle.aria.close' : 'submission.sections.toggle.aria.open') | translate: {sectionHeader: ('submission.sections.'+sectionData.header | translate)}"
+            [title]="(isSectionOpen() ? 'submission.sections.toggle.close' : 'submission.sections.toggle.open') | translate">
+            <span *ngIf="isSectionOpen()" [ngClass]="{ 'text-white' : sectionRef.isInfo()}"
               class="fas fa-chevron-up fa-fw"></span>
-            <span *ngIf="!sectionRef.isOpen()" class="fas fa-chevron-down fa-fw"></span>
+            <span *ngIf="!isSectionOpen()" class="fas fa-chevron-down fa-fw"></span>
           </a>
+          <!-- DATASHARE - end  -->
           <a href="javascript:void(0);" class="close mr-3" *ngIf="!sectionRef.isMandatory()"
             (click)="removeSection($event)">
             <i class="fas fa-trash-o" aria-hidden="true" tabindex="0"></i>
           </a>
         </div>
       </ng-template>
-      <ng-template ngbPanelContent>
+      <ng-template ngbPanelContent  *ngIf="datashareSubmissionFormSectionContainerService.openPanelId() === sectionData.id || ''">
+
         <div id="sectionGenericError_{{sectionData.id}}" *ngIf="sectionRef.hasGenericErrors()">
           <ds-alert *ngFor="let error of sectionRef.getErrors(); let i = index" [content]="error" [dismissible]="true"
             [type]="AlertTypeEnum.Error" (close)="sectionRef.removeError(i)"></ds-alert>

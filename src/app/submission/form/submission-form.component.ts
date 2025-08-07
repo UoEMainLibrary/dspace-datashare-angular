@@ -50,6 +50,7 @@ import { SubmissionFormCollectionComponent } from './collection/submission-form-
 import { SubmissionFormFooterComponent } from './footer/submission-form-footer.component';
 import { SubmissionFormSectionAddComponent } from './section-add/submission-form-section-add.component';
 import { ThemedSubmissionUploadFilesComponent } from './submission-upload-files/themed-submission-upload-files.component';
+import { DatashareSubmissionFormSectionContainerService } from './../../datashare/datashare-submission-form-section-container.service';
 
 /**
  * This component represents the submission form.
@@ -145,6 +146,11 @@ export class SubmissionFormComponent implements OnChanges, OnDestroy {
    */
   public uploadFilesOptions: UploaderOptions = new UploaderOptions();
 
+  // DATASHARE - start
+  // Use the signal from the service to control open panels
+  @Input() openPanelId = this.datashareSubmissionFormSectionContainerService.openPanelId();
+  // DATASHARE - end
+
   /**
    * A boolean representing if component is active
    * @type {boolean}
@@ -171,7 +177,11 @@ export class SubmissionFormComponent implements OnChanges, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private halService: HALEndpointService,
     private submissionService: SubmissionService,
-    private sectionsService: SectionsService) {
+    private sectionsService: SectionsService,
+    // DATASHARE - start
+    private datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService
+    // DATASHARE - end
+  ) {
     this.isActive = true;
   }
 
