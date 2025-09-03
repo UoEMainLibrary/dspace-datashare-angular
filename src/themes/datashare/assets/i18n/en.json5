@@ -18,7 +18,10 @@
   "submission.sections.submit.datashare.dropzone": "TBD: INSTRUCTIONS FOR DROPZONE.",
   "submission.sections.submit.progressbar.metadatapageone": "Metadata",
 
-  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit over 20 GB, then please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>",
+  "submission.sections.submit.progressbar.upload": "Uploaded files",
+  "submission.sections.upload.info": "Please upload a README.txt file. All DataShare items must have a README file with sufficient documentation. <TBD:README guidance link>",
+
+  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit of between 20 GB and 100 GB please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>.",
   "datashare.submission.sections.upload.exceeded_size_limit": "You have exceeded the maximum upload size of 20 GB. Please delete some files to proceed to the next step.",
   "datashare.submission.sections.upload.total_size": "Total Size of Uploaded Files:",
   "datashare.submission.sections.upload.duplicates": "You have files with same name. Please rename or delete:",

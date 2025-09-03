@@ -5232,7 +5232,7 @@
 
   "submission.sections.submit.progressbar.sherpapolicy": "Sherpa policies",
 
-  "submission.sections.submit.progressbar.upload": "Upload files",
+  "submission.sections.submit.progressbar.upload": "Uploaded files",
 
   "submission.sections.submit.progressbar.sherpaPolicies": "Publisher open access policy information",
 
@@ -5312,7 +5312,7 @@
 
   "submission.sections.upload.header.policy.default.withlist": "Please note that uploaded files in the {{collectionName}} collection will be accessible, in addition to what is explicitly decided for the single file, with the following group(s):",
 
-  "submission.sections.upload.info": "Here you will find all the files currently in the item. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
+  "submission.sections.upload.info": "Please upload a README.txt file. All DataShare items must have a README file with sufficient documentation. <TBD:README guidance link>",
 
   "submission.sections.upload.no-entry": "No",
 
@@ -6988,7 +6988,7 @@
 
   "form.other-information.note": "Note",
 
-  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit over 20 GB, then please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>",
+  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit of between 20 GB and 100 GB please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>.",
 
   "datashare.submission.sections.upload.exceeded_size_limit": "You have exceeded the maximum upload size of 20 GB. Please delete some files to proceed to the next step.",
 
