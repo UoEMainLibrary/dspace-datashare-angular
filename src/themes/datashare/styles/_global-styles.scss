@@ -371,6 +371,7 @@ ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
   overflow-wrap: normal !important;
 }
 
+/* Adds border to tag input (by dfault borderless). */
 .tag-input {
     border: 1px solid #ced4da !important;
     border-radius: 0.25rem !important;
