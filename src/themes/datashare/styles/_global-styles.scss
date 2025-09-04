@@ -376,4 +376,11 @@ ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
     border: 1px solid #ced4da !important;
     border-radius: 0.25rem !important;
 }
+
+/* Hides the contributor CONCAT_GROUP field in submission form */
+#dc_contributor_CONCAT_GROUP,
+#label_dc_contributor_CONCAT_GROUP{
+    opacity: 0;
+}
+
 // DATASHARE - end
