@@ -27,3 +27,17 @@
 // ) !default;
 //
 // $link-color: map-get($theme-colors, info) !default;
+
+
+$blue-university:#004f71 !default;
+
+$theme-colors: (
+  primary: #337ab7,
+  // secondary: #f9f9f9,
+  success: #5cb85c,
+  info: #5bc0de,
+  warning: #f0ad4e,
+  danger: #d9534f,
+  light: #f9f9f9,
+  dark: #3a3a3a
+) !default;

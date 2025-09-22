@@ -1,4 +1,386 @@
-// Add any global css for the theme here
-
-// imports the base global style
 @import '../../../styles/_global-styles.scss';
+
+// Add any global css for the theme here
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    line-height: 1.428571429;
+    color: #333;
+}
+
+.main-content {
+    background: url('../assets/images/datashare-logo.svg') right top no-repeat;
+    background-size: 35%;
+    margin-top: 0px !important;
+    margin-bottom: -5px !important;
+    padding-top: var(--ds-content-spacing);
+}
+
+.main-content-lower {
+    background: url('../assets/images/datashare-logo.svg') left bottom no-repeat;
+    background-size: 45%;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 5.8rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 span {
+    color: var(--datashare-blue-university);
+    border-bottom: none !important;
+}
+
+h2.no-bottom-border {
+    border-bottom: none !important;
+}
+
+a {
+    color: #346dbf;
+}
+
+a:hover {
+    color: #346dbf;
+}
+
+i.fas.fa-globe-asia.fa-lg.fa-fw {
+    color: #fff;
+}
+
+.admin-menu-header h4 {
+    color: #fff;
+    border-bottom: none !important;
+}
+
+.pin-sidebar {
+    color: #ffffff80;
+}
+
+.lead {
+    font-size: 1.5rem;
+}
+
+.nav-breadcrumb,
+.breadcrumb {
+    background-color: #fff !important;
+}
+
+.breadcrumb {
+    padding: 0px;
+    list-style: none !important;
+}
+
+li.breadcrumb-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 4px solid #fff;
+}
+
+li.breadcrumb-item.active {
+    border-bottom: 4px solid var(--bs-blue) !important;
+    background-color: #f9f9f9 !important;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "" !important;
+}
+
+.text-truncate {
+    color: #3a3a3a !important;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+li.breadcrumb-item:hover {
+    border-bottom: 4px solid var(--bs-blue);
+    background-color: #f9f9f9;
+}
+
+li.breadcrumb-item:hover a.text-truncate {
+    text-decoration: none;
+    color: var(--bs-blue) !important;
+}
+
+li[ds-navbar-section] {
+    ds-link-menu-item {
+        --ds-navbar-link-color: white;
+        --ds-navbar-link-color-hover: white;
+    }
+}
+
+.btn-primary,
+.btn-secondary,
+button.btn.btn-lg.btn-primary.btn-block {
+    // background-color: var(--bs-blue);
+    // border-color: var(--bs-blue);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+button.btn.btn-lg.btn-primary.btn-block:hover {
+    background-color: #346dbf;
+    border-color: #346dbf;
+    text-decoration: underline;
+}
+
+button#save span,
+button#saveForLater span,
+button#deposit span {
+    color: #fff;
+}
+
+button.btn.btn-secondary.active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show>.btn-secondary.dropdown-toggle {
+    background-color: #346dbf;
+}
+
+a.btn.btn-outline-primary {
+    background-color: #fff;
+    color: #3a3a3a !important;
+}
+
+i.fas.fa-info-circle {
+    color: #3a3a3a !important;
+}
+
+.btn-outline-secondary:hover,
+a.btn.btn-outline-primary:hover {
+    color: var(--bs-blue) !important;
+    background-color: #fff9fd;
+    text-decoration: underline !important;
+}
+
+a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
+    color: var(--bs-blue) !important;
+}
+
+.form-control {
+   color: #346dbf !important;
+}
+
+.facet-filter,
+.setting-option {
+    background-color: #fff !important;
+    border: 1px solid var(--bs-blue) !important;
+}
+
+.filters .toggle-more-filters a,
+.filter-value {
+    color: #346dbf !important;
+    text-decoration: none !important;
+}
+
+.filters .toggle-more-filters a:hover,
+.filter-value:hover {
+    color: var(--bs-blue) !important;
+    text-decoration: underline !important;
+}
+
+.dropdownLogin {
+    text-decoration: none !important;
+}
+
+.dropdown-item {
+    color: #346dbf;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    // color: var(--bs-blue);
+    text-decoration: underline;
+    background-color: #FFF;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #f9f9f9 !important;
+    // color: var(--bs-blue) !important;
+}
+
+.page-link {
+    color: #346dbf;
+}
+
+.page-item.active .page-link {
+    // background-color: var(--bs-blue) !important;
+    // border-color: var(--bs-blue) !important;
+   color: #346dbf !important;
+}
+
+// .badge-info,
+// .badge-secondary {
+//     background-color: var(--bs-blue);
+// }
+
+// .item-page-title-field span {
+//     // color: var(--bs-blue);
+// }
+
+.navbar-header {
+    border-bottom: 0px;
+}
+
+.nav-item .nav-link,
+.nav-item .nav-link span {
+    color: #346dbf;
+}
+
+.dropdown-toggle::after {
+    color: #346dbf !important;
+}
+
+
+
+.facet-filter-header {
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 10px 0px;
+    // color: var(--bs-blue);
+}
+
+.facet-filter .fas {
+    // color: var(--bs-blue);
+}
+
+i.fas.fa-lock {
+    // color: #346dbf;
+}
+
+.position-relative {
+    border-bottom: none;
+}
+
+.modal-body h5 {
+    border-bottom: none;
+}
+
+.text-secondary h3 {
+    border-bottom: none;
+}
+
+// fixing/replacing full item page table for divs
+.div-table-body {
+    vertical-align: middle;
+    border-color: inherit;
+    color: #343a40;
+}
+
+.div-table-body .div-table-row:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+.div-table-row {
+    width: 100%;
+    display: table;
+}
+
+.div-table-column {
+    display: table-cell;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    width: 33.3%;
+}
+
+.div-table-column.div-table-language {
+    text-align: right;
+    padding-right: 4rem;
+}
+
+// fixing statistics page heading levels
+.statistics-header {
+    font-size: 2rem;
+}
+
+.m-1 h2 {
+    font-size: 1.75rem;
+}
+
+.div-table-stats-column-1 {
+    display: table-cell;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    width: 75%;
+}
+
+.div-table-stats-clolumn-1-bold {
+    font-weight: bold;
+}
+
+.div-table-stats-column-2 {
+    display: table-cell;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    width: 25%;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #343a40;
+}
+
+.div-table-stats-clolumn-2-bold {
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1.5rem;
+}
+
+.facet-filter-header {
+    font-size: 1.1rem;
+    margin: auto !important;
+    display: inline-block !important;
+}
+
+.setting-option h3 {
+    font-size: 1.1rem !important;
+}
+
+// DATASHARE - start
+
+// The fa-circle class was appearing too big in the treeview. This is a fix for that.
+.dropdown .fa-2x,
+.dropup .fa-2x {
+    font-size: 1.5em !important;
+}
+
+// Overwritting scss in src/styles/_truncatable-part.component.scss
+@for $i from 1 through 15 {
+    .clamp-default-#{$i} .content,
+    :focus .clamp-default-#{$i} .content,
+    .ds-hover .clamp-default-#{$i} .content {
+        max-height: #{$i * 20}rem !important;
+    }
+}
+
+/* Fix abstract field line breaks */
+ds-item-page-abstract-field .simple-view-element-body .preserve-line-breaks {
+  white-space: normal !important;
+  word-wrap: break-word;
+  line-height: 1.6;
+}
+
+ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Adds border to tag input (by dfault borderless). */
+.tag-input {
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+
+/* Hides the contributor CONCAT_GROUP field in submission form */
+#dc_contributor_CONCAT_GROUP,
+#label_dc_contributor_CONCAT_GROUP{
+    opacity: 0;
+}
+
+// DATASHARE - end
