@@ -104,8 +104,8 @@
   // Custom components
   "info.about.title": "About",
   "info.about.breadcrumbs": "About",
-  "info.accessibility.title": "Accessibility",
-  "info.accessibility.breadcrumbs": "Accessibility",
+  "info.accessibility-statement.title": "Accessibility statement",
+  "info.accessibility-statement.breadcrumbs": "Accessibility statement",
   "info.copyright.title": "Copyright",
   "info.copyright.breadcrumbs": "Copyright",
   "info.organised.title": "Organised",
