@@ -111,7 +111,7 @@ import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-pag
 import { AboutComponent} from './app/info/about/about.component';
 import { AccessibilityStatementComponent} from './app/info/accessibility-statement/accessibility-statement.component';
 import { CopyrightComponent } from './app/info/copyright/copyright.component';
-// import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
+import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
 import { OrganisedComponent } from './app/info/organised/organised.component';
 // DATASHARE - end
 
@@ -120,7 +120,7 @@ const DECLARATIONS = [
   AboutComponent,
   AccessibilityStatementComponent,
   CopyrightComponent,
-  // DepositButtonComponent,
+  DepositButtonComponent,
   OrganisedComponent,
   // DATASHARE - end
   FileSectionComponent,

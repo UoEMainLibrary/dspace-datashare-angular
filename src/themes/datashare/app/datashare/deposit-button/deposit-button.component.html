@@ -1,0 +1,8 @@
+<div class="deposit-button">
+    <button class="btn btn-primary" *ngIf="isAuthorized$ | async; else elseBlock" (click)="onDepositClick()">Deposit
+        Data</button>
+
+    <ng-template #elseBlock>
+        <button class="btn btn-primary" (click)="onLogInToDepositClick()">Login to Deposit Data</button>
+    </ng-template>
+</div>
