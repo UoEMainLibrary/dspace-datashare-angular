@@ -18,11 +18,38 @@
       </ds-alert>
     </div>
   </div>
+  <!-- // DATASHARE - start-->
   <div class="row">
+    <div class="col-md-12">
+      <p class="text-left" [innerHTML]="'datashare.submission.sections.upload.info' | translate"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-left font-weight-bold">
+        <span [innerHTML]="'datashare.submission.sections.upload.total_size' | translate"></span>
+        {{ formatBytes(totalUploadedFilesSize) }}
+      </p>
+      <p class="text-left text-danger font-weight-bold" *ngIf="isTotalUploadedFilesSizeExceeded"
+        [innerHTML]="'datashare.submission.sections.upload.exceeded_size_limit' | translate"></p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="getDuplicateFileNames().length > 0">
+    <div class="col-md-12">
+      <p class="text-left">
+        <span class="text-danger font-weight-bold" [innerHTML]="'datashare.submission.sections.upload.duplicates' | translate"></span>
+        {{ getDuplicateFileNames().join(', ') }}
+      </p>
+    </div>
+  </div>
+  <!-- <div class="row">
     <div class="col-md-2">
       <span class="text-left font-weight-bold">{{ 'bitstream.edit.form.primaryBitstream.label' | translate }}</span>
     </div>
-  </div>
+  </div> -->
+  <!-- // DATASHARE - end-->
   <div class="row">
     <div class="col-md-12">
       <hr/>

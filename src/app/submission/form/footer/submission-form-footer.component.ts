@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
   Input,
   OnChanges,
   SimpleChanges,
@@ -19,6 +20,8 @@ import { BtnDisabledDirective } from '../../../shared/btn-disabled.directive';
 import { isNotEmpty } from '../../../shared/empty.util';
 import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
 import { SubmissionService } from '../../submission.service';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
+import { ItemPageFieldComponent } from "../../../item-page/simple/field-components/specific-field/item-page-field.component";
 
 /**
  * This component represents submission form footer bar.
@@ -67,17 +70,33 @@ export class SubmissionFormFooterComponent implements OnChanges {
    */
   public hasUnsavedModification: Observable<boolean>;
 
+  // DATASHARE - Start
+  // Signal access
+  public  hasUploadFileErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
+
+   // Optional: Create a computed signal for more complex logic
+  public hasUploadFileErrors = computed(() => {
+    // Combine the signal with other conditions if needed
+    return this.hasUploadFileErrorsSignal();
+  });
+
+   
   /**
    * Initialize instance variables
    *
    * @param {NgbModal} modalService
    * @param {SubmissionRestService} restService
    * @param {SubmissionService} submissionService
+   * @param {DatashareSubmissionService} datashareSubmissionService
    */
   constructor(private modalService: NgbModal,
               private restService: SubmissionRestService,
-              private submissionService: SubmissionService) {
+              private submissionService: SubmissionService,
+              private datashareSubmissionService: DatashareSubmissionService) {
+    // Debug: Log the signal value changes
+    console.log('Footer component created, initial signal value:', this.hasUploadFileErrorsSignal());
   }
+  // DATASHARE - End
 
   /**
    * Initialize all instance variables
@@ -92,6 +111,10 @@ export class SubmissionFormFooterComponent implements OnChanges {
       this.processingDepositStatus = this.submissionService.getSubmissionDepositProcessingStatus(this.submissionId);
       this.showDepositAndDiscard = observableOf(this.submissionService.getSubmissionScope() === SubmissionScopeType.WorkspaceItem);
       this.hasUnsavedModification = this.submissionService.hasUnsavedModification();
+      // DATASHARE - Start
+      // Debug: Log signal value on changes
+      console.log('Footer ngOnChanges, signal value:', this.hasUploadFileErrorsSignal());
+      // DATASHARE - End
     }
   }
 
@@ -113,6 +136,12 @@ export class SubmissionFormFooterComponent implements OnChanges {
    * Dispatch a submission deposit action
    */
   public deposit(event) {
+    // DATASHARE - start
+    if (!this.hasUploadFileErrors()) {
+      this.datashareSubmissionService.sendCannotSubmitNotification();
+      return;
+    }
+    // DATASHARE - end
     this.submissionService.dispatchDeposit(this.submissionId);
   }
 

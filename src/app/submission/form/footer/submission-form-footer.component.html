@@ -1,3 +1,12 @@
+<!-- DATASHARE - start -->
+<!-- Debug section - remove after fixing -->
+<!-- div style="background: yellow; padding: 10px; margin: 10px;">
+  <strong>DEBUG:</strong><br>
+  Signal value: {{ showDepositButtonSignal() }}<br>
+  Signal function: {{ (showDepositAndDiscard | async) && showDepositButtonSignal()  }}
+</div -->
+<!-- DATASHARE - end -->
+
 <div class="d-flex flex-row gap-1 justify-content-between" *ngIf="!!submissionId">
   <div class="flex-grow-0">
     <button *ngIf="(showDepositAndDiscard | async)"

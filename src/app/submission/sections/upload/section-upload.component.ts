@@ -6,7 +6,9 @@ import {
 import {
   ChangeDetectorRef,
   Component,
+  computed,
   Inject,
+  signal,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -55,6 +57,7 @@ import { SectionsService } from '../sections.service';
 import { SubmissionSectionUploadAccessConditionsComponent } from './accessConditions/submission-section-upload-access-conditions.component';
 import { ThemedSubmissionSectionUploadFileComponent } from './file/themed-section-upload-file.component';
 import { SectionUploadService } from './section-upload.service';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
@@ -150,6 +153,19 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    */
   protected subs: Subscription[] = [];
 
+  // DATASHARE - Start
+  public totalUploadedFilesSize: number = 0;
+  public isTotalUploadedFilesSizeExceeded: boolean = false;
+
+  // Duplicate file name detector from service
+  private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();
+  public fileNamesSignal = this.duplicateDetector.fileNamesSignal;
+  // Use the service signal instead
+  public hasUploadFilesErrorsSignal = this.duplicateDetector.hasUploadFilesErrorsSignal;
+  // DATASHARE - End
+
+
+  // DATASHARE - start
   /**
    * Initialize instance variables
    *
@@ -161,6 +177,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
    * @param {SectionsService} sectionService
    * @param {SubmissionService} submissionService
    * @param {SubmissionUploadsConfigDataService} uploadsConfigService
+   * @param {DatashareSubmissionService} SubmissionService
    * @param {SectionDataObject} injectedSectionData
    * @param {string} injectedSubmissionId
    */
@@ -173,10 +190,12 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
               private submissionService: SubmissionService,
               private uploadsConfigService: SubmissionUploadsConfigDataService,
               public dsoNameService: DSONameService,
+              private datashareSubmissionService: DatashareSubmissionService,
               @Inject('sectionDataProvider') public injectedSectionData: SectionDataObject,
               @Inject('submissionIdProvider') public injectedSubmissionId: string) {
     super(undefined, injectedSectionData, injectedSubmissionId);
   }
+  // DATASHARE - end
 
   /**
    * Initialize all instance variables and retrieve collection default access conditions
@@ -240,6 +259,25 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         this.primaryBitstreamUUID = primary;
         this.fileList = files;
         this.fileNames = Array.from(files, file => this.getFileName(configMetadataForm, file));
+        // DATASHARE - start
+        // Calculate total uploaded files size
+        this.totalUploadedFilesSize = this.datashareSubmissionService.calculateTotalUploadedFilesSize(files);
+        // Has the total uploaded files size exceeded the limit?
+        this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
+
+        // Update the duplicate detector
+        this.duplicateDetector.updateFileNames(this.fileNames);
+
+        // IMPORTANT: Update the shared service signal
+        const hasDuplicates = this.datashareSubmissionService.getDuplicateFileNames(this.fileNames).length > 0;
+        console.log('File names:', this.fileNames);
+        console.log('Has duplicates:', hasDuplicates);
+        console.log('Should show deposit button:', !hasDuplicates);
+        console.log('this.isTotalUploadedFilesSizeExceeded: ', this.isTotalUploadedFilesSizeExceeded);
+
+        // Update the service signal
+        this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
+        // DATASHARE - end
         this.changeDetectorRef.detectChanges();
       }),
     );
@@ -289,5 +327,43 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
       .filter((subscription) => hasValue(subscription))
       .forEach((subscription) => subscription.unsubscribe());
   }
+
+  // DATASHARE - start
+  /**
+   * Format bytes to human readable format
+   */
+  formatBytes(bytes: number): string {
+    return this.datashareSubmissionService.formatBytes(bytes);
+  }
+
+  /**
+   * Get duplicate file names from the fileNames array
+   * @returns {string[]} Array of duplicate file names
+   */
+  getDuplicateFileNames(): string[] {
+    return this.duplicateDetector.getDuplicates();
+  }
+
+  /**
+   * Get duplicate file names as a formatted string
+   */
+  get duplicateFileNamesDisplay(): string {
+    return this.duplicateDetector.getDuplicateFileNamesDisplay();
+  }
+
+  /**
+   * Get duplicate file names from signal (using service)
+   */
+  private getDuplicateFileNamesFromSignal(): string[] {
+    return this.duplicateDetector.getDuplicates();
+  }
+
+  // Update wherever you currently update the duplicate detector
+  private updateDepositButtonState(): void {
+    const hasDuplicates = this.getDuplicateFileNames().length > 0;
+    this.isTotalUploadedFilesSizeExceeded = this.datashareSubmissionService.isTotalUploadedFilesSizeExceeded(this.totalUploadedFilesSize);
+    this.datashareSubmissionService.updatehasUploadFilesErrors(!hasDuplicates || this.isTotalUploadedFilesSizeExceeded);
+  }
+  // DATASHARE - end
 
 }
