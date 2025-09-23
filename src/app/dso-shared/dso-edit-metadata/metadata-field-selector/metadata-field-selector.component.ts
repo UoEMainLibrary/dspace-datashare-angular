@@ -277,6 +277,11 @@ export class MetadataFieldSelectorComponent implements OnInit, OnDestroy, AfterV
       .pipe(
         getAllSucceededRemoteData(),
         metadataFieldsToString(),
+        // DATASHARE - Start
+        // Custom code added to only display Dublin Core metadata field in Metadata Selector.
+        // Filter metadata items that start with 'dc.'
+        map((fields: string[]) => fields.filter(field => field.startsWith('dc.'))),
+        // DATASHARE - End
       );
   }
   /**
