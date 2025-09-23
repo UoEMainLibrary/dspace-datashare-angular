@@ -75,11 +75,9 @@ export const ROUTES: Route[] = [
           tracking: viewTrackerResolver,
         },
         children: [
-          {
-            path: '',
-            pathMatch: 'full',
-            component: ComcolSearchSectionComponent,
-          },
+          // DATASHARE - start
+          // Search section path no longer ddefault.
+          // The default path '' is Community & Collection Component/tab.
           {
             path: 'search',
             pathMatch: 'full',
@@ -87,8 +85,19 @@ export const ROUTES: Route[] = [
             resolve: {
               breadcrumb: i18nBreadcrumbResolver,
             },
-            data: { breadcrumbKey: 'community.search' },
+            // data: { breadcrumbKey: 'community.subcoms-cols' },
           },
+          {
+            path: '',
+            pathMatch: 'full',
+            // component: ComcolSearchSectionComponent,
+            component: SubComColSectionComponent,
+            resolve: {
+              breadcrumb: i18nBreadcrumbResolver,
+            },
+            data: { breadcrumbKey: 'community.subcoms-cols' },
+          },
+          // DATASHARE - end
           {
             path: 'subcoms-cols',
             pathMatch: 'full',

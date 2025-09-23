@@ -100,6 +100,9 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
         const allOptions: ComColPageNavOption[] = [];
         if (browseDefListRD.hasSucceeded) {
           let comColRoute: string;
+           // DATASHARE - start
+           // Commented out bits and changed
+           // Search disabled at Community & Sub-Community level
           if (this.contentType === 'collection') {
             comColRoute = getCollectionPageRoute(this.id);
             allOptions.push({
@@ -109,17 +112,18 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
             });
           } else if (this.contentType === 'community') {
             comColRoute = getCommunityPageRoute(this.id);
-            allOptions.push({
-              id: 'search',
-              label: 'collection.page.browse.search.head',
-              routerLink: `${comColRoute}/search`,
-            });
+            // allOptions.push({
+            //   id: 'search',
+            //   label: 'collection.page.browse.search.head',
+            //   routerLink: comColRoute,
+            // });
             allOptions.push({
               id: 'comcols',
               label: 'community.all-lists.head',
               routerLink: `${comColRoute}/subcoms-cols`,
             });
           }
+           // DATASHARE - end
 
           allOptions.push(...browseDefListRD.payload.page.map((config: BrowseDefinition) => ({
             id: `browse_${config.id}`,
