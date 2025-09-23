@@ -166,10 +166,19 @@ export class ItemMoveComponent implements OnInit {
           followLink('owningCollection'),
         )),
       getFirstCompletedRemoteData(),
-    ).subscribe(() => {
+      // DATASHARE -start
+      //subscribe(() =>  {
+    ).subscribe((response: RemoteData<Item>) =>  {
       this.processing = false;
-      this.router.navigate([getItemEditRoute(this.item)]);
+      // this.router.navigate([getItemEditRoute(this.item)]);
+      if (response.hasSucceeded) {
+        const updatedItem = response.payload;
+        this.router.navigate([getItemEditRoute(updatedItem)]);
+      } else {
+        this.router.navigate([getItemEditRoute(this.item)]);
+      }
     });
+    // DATASHARE -end
   }
 
   discard(): void {
