@@ -19,3 +19,9 @@
   box-shadow: none !important;
   width: 100%;
 }
+
+// DATASHARE - start
+:host ::ng-deep .accordion.ds-closed .card-body {
+    padding: 0rem  !important;
+}
+// DATASHARE - end

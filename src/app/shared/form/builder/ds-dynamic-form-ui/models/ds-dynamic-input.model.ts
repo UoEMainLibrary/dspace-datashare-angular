@@ -64,6 +64,10 @@ export class DsDynamicInputModel extends DynamicInputModel {
     this.place = config.place;
     this.isModelOfInnerForm = (hasValue(config.isModelOfInnerForm) ? config.isModelOfInnerForm : false);
     this.hideErrorMessages = config.hideErrorMessages;
+    // DATASHARE start
+    // Disable placeholder for input fields
+    this.placeholder = '';
+    // DATASHARE end
 
     this.language = config.language;
     if (!this.language) {
