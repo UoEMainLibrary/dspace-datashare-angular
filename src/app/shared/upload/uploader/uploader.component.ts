@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpXsrfTokenExtractor } from '@angular/common/http';
+import { UploadxService, UploadxModule, UploadxOptions, UploadState } from 'ngx-uploadx';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -43,7 +44,7 @@ import { UploaderProperties } from './uploader-properties.model';
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.Emulated,
   standalone: true,
-  imports: [TranslateModule, FileUploadModule, CommonModule, BtnDisabledDirective],
+  imports: [TranslateModule, FileUploadModule, CommonModule, BtnDisabledDirective, UploadxModule],
 })
 export class UploaderComponent implements OnInit, AfterViewInit {
 
@@ -219,6 +220,18 @@ export class UploaderComponent implements OnInit, AfterViewInit {
    */
   public fileOverBase(isOver: boolean): void {
     this.isOverBaseDropZone = observableOf(isOver);
+  }
+
+  options: UploadxOptions = { endpoint: `[URL]` };
+  onUpload(state: UploadState) {
+     console.log('onUploadState: ', state);
+    //...
+  }
+  onState(state: UploadState): void {
+    console.log('onStateChanged: ', state);
+    // this.state = state;
+    // const target = this.uploads.find(item => item.uploadId === state.uploadId);
+    // target ? Object.assign(target, state) : this.uploads.push(state);
   }
 
   /**

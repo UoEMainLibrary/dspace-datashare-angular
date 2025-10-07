@@ -1,9 +1,14 @@
-<div ng2FileDrop
+<!-- <div ng2FileDrop
      *ngIf="(isOverDocumentDropZone | async)"
      class="ds-document-drop-zone position-fixed h-100 w-100"
      [class.ds-document-drop-zone-active]="(isOverDocumentDropZone | async)"
      [uploader]="uploader"
      (fileOver)="fileOverDocument($event)">
+</div> -->
+<div uploadxDrop>
+  <label class="file-drop">
+    <input type="file" [uploadx]="options" (state)="onState($event)" />
+  </label>
 </div>
 <div *ngIf="(isOverDocumentDropZone | async)"
      class="ds-document-drop-zone-inner position-fixed h-100 w-100 p-2">
@@ -13,11 +18,15 @@
 </div>
 <div [attr.id]="uploaderId" class="row">
   <div class="col-md-12">
-    <div ng2FileDrop
+    <!-- <div ng2FileDrop
          [ngClass]="{'ds-base-drop-zone-file-over': (isOverBaseDropZone | async)}"
          [uploader]="uploader"
          (fileOver)="fileOverBase($event)"
-         class="well ds-base-drop-zone mt-1 mb-3 text-muted">
+         class="well ds-base-drop-zone mt-1 mb-3 text-muted"> -->
+    <div uploadxDrop>
+      <label class="file-drop">
+    <input type="file" [uploadx]="options" (state)="onState($event)" />
+  </label>
       <div class="text-center m-0 p-2 d-flex justify-content-center align-items-center" *ngIf="uploader?.queue?.length === 0">
         <span class="d-flex align-items-center">
           <i class="fas fa-upload pr-1" aria-hidden="true"></i>
@@ -52,4 +61,4 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
