@@ -146,4 +146,19 @@ export class MetadataValuesComponent implements OnChanges {
       return { target: '_blank', rel: 'noopener noreferrer' };
     }
   }
+
+  // DATASHARE - start
+  /**
+   * Format the value if it is a date value to only show the date part (YYYY-MM-DD)
+   * @param value The metadata value to format
+   * @returns The formatted date value
+   */
+  formatDateValueIfDate(value: string): string {
+    // Match ISO date format with time and Z
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(value)) {
+      return value.substring(0, 10);
+    }
+    return value;
+  }
+  // DATASHARE end
 }
