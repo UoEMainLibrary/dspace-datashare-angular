@@ -33,12 +33,16 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
      */
     separator = ', ';
 
+    // DATASHARE - start
     /**
      * Fields (schema.element.qualifier) used to render their values.
      * In this component, we want to display values for metadata 'dc.date.issued'
      */
     fields: string[] = [
-      'dc.date.issued',
+      // DATASHARE - start
+      // 'dc.date.issued',
+      'dc.date.accessioned',
+      // DATASHARE - end
     ];
 
     /**
