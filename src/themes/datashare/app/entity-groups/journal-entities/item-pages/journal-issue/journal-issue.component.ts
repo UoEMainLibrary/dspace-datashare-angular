@@ -18,7 +18,10 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 
-@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'datashare')
+// DATASHARE - end
 @Component({
   selector: 'ds-journal-issue',
   // styleUrls: ['./journal-issue.component.scss'],

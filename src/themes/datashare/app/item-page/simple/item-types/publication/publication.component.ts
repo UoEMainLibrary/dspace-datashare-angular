@@ -32,14 +32,16 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 /**
  * Component that represents a publication Item page
  */
-
-@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'datashare')
+// DATASHARE - end
 @Component({
   selector: 'ds-publication',
   // styleUrls: ['./publication.component.scss'],
   styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
-  // templateUrl: './publication.component.html',
-  templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
+  templateUrl: './publication.component.html',
+  // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgIf, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],

@@ -17,8 +17,11 @@ import { TruncatableComponent } from '../../../../../../../../../app/shared/trun
 import { TruncatablePartComponent } from '../../../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
 import { ThemedThumbnailComponent } from '../../../../../../../../../app/thumbnail/themed-thumbnail.component';
 
-@listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.Any, 'custom')
-@listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.Any, 'datashare')
+@listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.Any, 'datashare')
+// DATASHARE - end
 @Component({
   selector: 'ds-item-search-result-list-element',
   // styleUrls: ['./item-search-result-list-element.component.scss'],

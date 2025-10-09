@@ -8,7 +8,10 @@ import { ViewMode } from '../../../../../../app/core/shared/view-mode.model';
 import { listableObjectComponent } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { CollectionListElementComponent as BaseComponent } from '../../../../../../app/shared/object-list/collection-list-element/collection-list-element.component';
 
-@listableObjectComponent(Collection, ViewMode.ListElement, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent(Collection, ViewMode.ListElement, Context.Any, 'datashare')
+// DATASHARE - end
 
 @Component({
   selector: 'ds-collection-list-element',

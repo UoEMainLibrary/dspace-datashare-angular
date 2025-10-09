@@ -18,8 +18,10 @@ import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import { PersonComponent as BaseComponent } from '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component';
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
-
-@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'datashare')
+// DATASHARE - end
 @Component({
   selector: 'ds-person',
   // styleUrls: ['./person.component.scss'],

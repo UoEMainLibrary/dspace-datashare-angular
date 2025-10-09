@@ -30,19 +30,23 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 
+
 /**
  * Component that represents an untyped Item page
  */
-@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'datashare')
+// DATASHARE - end
 @Component({
   selector: 'ds-untyped-item',
   // styleUrls: ['./untyped-item.component.scss'],
   styleUrls: [
     '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.scss',
   ],
-  // templateUrl: './untyped-item.component.html',
-  templateUrl:
-    '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.html',
+  templateUrl: './untyped-item.component.html',
+  // templateUrl:
+  //   '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
@@ -68,3 +72,4 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   ],
 })
 export class UntypedItemComponent extends BaseComponent {}
+

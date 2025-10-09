@@ -20,6 +20,9 @@ import { BrowseEntryListElementComponent as BaseComponent } from '../../../../..
   standalone: true,
   imports: [NgIf, RouterLink, AsyncPipe],
 })
-@listableObjectComponent(BrowseEntry, ViewMode.ListElement, Context.Any, 'custom')
+// DATASHARE - start
+// Replaced 'custom' with 'datashare'.
+@listableObjectComponent(BrowseEntry, ViewMode.ListElement, Context.Any, 'datashare')
+// DATASHARE - end
 export class BrowseEntryListElementComponent extends BaseComponent {
 }

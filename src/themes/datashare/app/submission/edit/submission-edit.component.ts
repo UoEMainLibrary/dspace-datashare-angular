@@ -265,7 +265,7 @@ export class SubmissionEditComponent extends BaseComponent implements AfterViewI
     this.dropdownElement.addEventListener('keydown', this.dropdownChangeHandler);
     this.dropdownElement.addEventListener('keyup', this.dropdownChangeHandler);
 
-    // Also listen for clicks on the dropdown options if it's a custom dropdown
+    // Also listen for clicks on the dropdown options if it's a datashare dropdown
     const dropdownOptions = this.dropdownElement.querySelectorAll('[role="option"], option, li, .option');
     // console.log(`Adding click listeners to ${dropdownOptions.length} dropdown options`);
 
