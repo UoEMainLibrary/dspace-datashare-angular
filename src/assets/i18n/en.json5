@@ -7139,4 +7139,6 @@
   "form.other-information.id": "ID",
 
   "item.page.type": "Type",
+
+  "item.page.doi": "Persistent Identifier",
 }

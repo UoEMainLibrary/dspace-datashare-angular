@@ -28,6 +28,7 @@
   "datashare.submission.sections.upload.submit.errors": "You have errors. Please fix them before submitting.",
    
    "item.page.type": "Type",
+   "item.page.doi": "Persistent Identifier",
 
   "item.page.filesection.cclicense.bundle": "CC-License bundle",
   "item.page.filesection.licences": "Licences",

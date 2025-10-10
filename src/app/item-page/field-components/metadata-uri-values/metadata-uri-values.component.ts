@@ -53,4 +53,10 @@ export class MetadataUriValuesComponent extends MetadataValuesComponent {
    * The label for this iteration of metadata values
    */
   @Input() label: string;
+
+  // DATASHARE - start
+  hasDoiLink(): boolean {
+    return this.mdValues?.some(v => typeof v.value === 'string' && v.value.startsWith('https://doi.org'));
+  }
+  // DATASHARE - end
 }
