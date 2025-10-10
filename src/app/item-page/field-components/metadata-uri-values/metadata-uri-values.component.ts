@@ -55,7 +55,8 @@ export class MetadataUriValuesComponent extends MetadataValuesComponent {
   @Input() label: string;
 
   // DATASHARE - start
-  hasDoiLink(): boolean {
+  // get makes it accessible from the template as a property.
+  get hasDoiLink(): boolean {
     return this.mdValues?.some(v => typeof v.value === 'string' && v.value.startsWith('https://doi.org'));
   }
   // DATASHARE - end
