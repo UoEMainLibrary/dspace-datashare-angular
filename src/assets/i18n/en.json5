@@ -7141,4 +7141,6 @@
   "item.page.type": "Type",
 
   "item.page.doi": "Persistent Identifier",
+
+  "item.page.date.available": "Date Available",
 }

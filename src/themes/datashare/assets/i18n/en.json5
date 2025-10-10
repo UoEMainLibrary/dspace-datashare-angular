@@ -27,6 +27,7 @@
   "datashare.submission.sections.upload.duplicates": "You have files with same name. Please rename or delete:",
   "datashare.submission.sections.upload.submit.errors": "You have errors. Please fix them before submitting.",
    
+   "item.page.date.available": "Date Available",
    "item.page.type": "Type",
    "item.page.doi": "Persistent Identifier",
 

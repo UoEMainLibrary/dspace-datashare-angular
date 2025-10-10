@@ -41,13 +41,13 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
     fields: string[] = [
       // DATASHARE - start
       // 'dc.date.issued',
-      'dc.date.accessioned',
+      'dc.date.available',
       // DATASHARE - end
     ];
 
     /**
      * Label i18n key for the rendered metadata
      */
-    label = 'item.page.date';
+    label = 'item.page.date.available';
 
 }
