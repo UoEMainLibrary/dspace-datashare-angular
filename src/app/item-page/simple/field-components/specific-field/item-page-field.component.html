@@ -1,6 +1,8 @@
 <div class="item-page-field">
+  <!-- DATASHARE - start -->
+   <!-- Replaced item?.allMetadata(fields) with filteredMdValues -->
   <ds-metadata-values
-    [mdValues]="item?.allMetadata(fields)"
+    [mdValues]="filteredMdValues"
     [separator]="separator"
     [label]="label"
     [enableMarkdown]="enableMarkdown"
@@ -8,4 +10,5 @@
     [browseDefinition]="browseDefinition|async"
     [img]="img"
   ></ds-metadata-values>
+  <!-- DATASHARE - end -->
 </div>

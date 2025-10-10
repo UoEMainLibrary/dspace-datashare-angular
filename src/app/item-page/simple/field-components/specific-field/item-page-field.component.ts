@@ -22,6 +22,9 @@ import {
 } from '../../../../core/shared/operators';
 import { MetadataValuesComponent } from '../../../field-components/metadata-values/metadata-values.component';
 import { ImageField } from './image-field';
+// DATASHARE - start
+import { MetadataValue } from '../../../../core/shared/metadata.models';
+// DATASHARE - end
 
 /**
  * This component can be used to represent metadata on a simple item page.
@@ -40,70 +43,87 @@ import { ImageField } from './image-field';
 export class ItemPageFieldComponent {
 
   constructor(protected browseDefinitionDataService: BrowseDefinitionDataService,
-              protected browseService: BrowseService) {
+    protected browseService: BrowseService) {
   }
 
-    /**
-     * The item to display metadata for
-     */
-    @Input() item: Item;
+  /**
+   * The item to display metadata for
+   */
+  @Input() item: Item;
 
-    /**
-     * Whether the {@link MarkdownDirective} should be used to render this metadata.
-     */
-    enableMarkdown = false;
+  /**
+   * Whether the {@link MarkdownDirective} should be used to render this metadata.
+   */
+  enableMarkdown = false;
 
-    /**
-     * Fields (schema.element.qualifier) used to render their values.
-     */
-    fields: string[];
+  /**
+   * Fields (schema.element.qualifier) used to render their values.
+   */
+  fields: string[];
 
-    /**
-     * Label i18n key for the rendered metadata
-     */
-    label: string;
+  /**
+   * Label i18n key for the rendered metadata
+   */
+  label: string;
 
-    /**
-     * Separator string between multiple values of the metadata fields defined
-     * @type {string}
-     */
-    separator = '<br/>';
+  /**
+   * Separator string between multiple values of the metadata fields defined
+   * @type {string}
+   */
+  separator = '<br/>';
 
-    /**
-     * Whether any valid HTTP(S) URL should be rendered as a link
-     */
-    urlRegex?: string;
+  /**
+   * Whether any valid HTTP(S) URL should be rendered as a link
+   */
+ urlRegex?: string;
 
-    /**
-     * Image Configuration
-     */
-    img: ImageField;
+  /**
+   * Image Configuration
+   */
+  img: ImageField;
 
-    /**
-     * Return browse definition that matches any field used in this component if it is configured as a browse
-     * link in dspace.cfg (webui.browse.link.<n>)
-     */
-    get browseDefinition(): Observable<BrowseDefinition> {
-      return this.browseService.getBrowseDefinitions().pipe(
-        getFirstCompletedRemoteData(),
-        getRemoteDataPayload(),
-        getPaginatedListPayload(),
-        mergeAll(),
-        filter((def: BrowseDefinition) =>
-          intersectionWith(def.metadataKeys, this.fields, ItemPageFieldComponent.fieldMatch).length > 0,
-        ),
-        take(1),
-      );
+  /**
+   * Return browse definition that matches any field used in this component if it is configured as a browse
+   * link in dspace.cfg (webui.browse.link.<n>)
+   */
+  get browseDefinition(): Observable<BrowseDefinition> {
+    return this.browseService.getBrowseDefinitions().pipe(
+      getFirstCompletedRemoteData(),
+      getRemoteDataPayload(),
+      getPaginatedListPayload(),
+      mergeAll(),
+      filter((def: BrowseDefinition) =>
+        intersectionWith(def.metadataKeys, this.fields, ItemPageFieldComponent.fieldMatch).length > 0,
+      ),
+      take(1),
+    );
+  }
+
+  // DATASHARE - start
+  // Returns filtered metadata values for specific fields when needed.
+  get filteredMdValues(): MetadataValue[] {
+    if (['item.page.referenced', 'item.page.replaced'].includes(this.label)) {
+      return (this.item?.allMetadata(this.fields) || []).filter(v => this.isUrl(v.value));
     }
+    return this.item?.allMetadata(this.fields) || [];
+  }
 
-    /**
-     * Returns true iff the spec and field match.
-     * @param spec  Specification of a metadata field name: either a metadata field, or a prefix ending in ".*".
-     * @param field A metadata field name.
-     * @private
-     */
-    private static fieldMatch(spec: string, field: string): boolean {
-      return field === spec
-        || (spec.endsWith('.*') && field.substring(0, spec.length - 1) === spec.substring(0, spec.length - 1));
-    }
+  // DATASHARE - end
+
+  /**
+   * Returns true iff the spec and field match.
+   * @param spec  Specification of a metadata field name: either a metadata field, or a prefix ending in ".*".
+   * @param field A metadata field name.
+   * @private
+   */
+  private static fieldMatch(spec: string, field: string): boolean {
+    return field === spec
+      || (spec.endsWith('.*') && field.substring(0, spec.length - 1) === spec.substring(0, spec.length - 1));
+  }
+
+  // DATASHARE - start
+  private isUrl(value: string): boolean {
+    return /^https?:\/\/\S+$/i.test(value);
+  }
+  // DATASHARE - end
 }

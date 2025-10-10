@@ -47,12 +47,13 @@
     </ds-generic-item-page-field>
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.relation.isreferencedby']"
-      [label]="'item.page.isreferencedby'"
-      [urlRegex]="true">
+      [label]="'item.page.referenced'"
+      [urlRegex]="'^https?:\\/\\/\\S+$'">
     </ds-generic-item-page-field>
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.relation.isreplacedby']"
-      [label]="'item.page.isreplacedby'">
+      [label]="'item.page.replaced'"
+      [urlRegex]="'^https?:\\/\\/\\S+$'">
     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
