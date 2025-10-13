@@ -1,1 +1,55 @@
+<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+  <br>
+  <div class="download-all-container" *ngIf="(downloadLink$ | async) as downloadLink">
+    <a class="btn btn-primary" href="{{downloadLink}}" target="_blank">Download all files <i class="fa-solid fa-download"></i></a>
+  </div>
+  <br/>
+  <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
+    <div class="file-section">
+      <ds-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item">
+        <span>
+          <span *ngIf="primaryBitsreamId === file.id" class="badge badge-primary">{{ 'item.page.bitstreams.primary' |
+            translate }}</span>
+          {{ dsoNameService.getName(file) }}
+        </span>
+        <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
+        <span *ngIf="!last" innerHTML="{{separator}}"></span>
+      </ds-file-download-link>
+      <ds-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-loading>
+      <div *ngIf="!isLastPage" class="mt-1" id="view-more">
+        <button class="bitstream-view-more btn btn-outline-secondary btn-sm"
+          (click)="getNextPage()">{{'item.page.bitstreams.view-more' | translate}}</button>
+      </div>
+      <div *ngIf="isLastPage && currentPage !== 1" class="mt-1" id="collapse">
+        <button class="bitstream-collapse btn btn-outline-secondary btn-sm"
+          (click)="currentPage = undefined; getNextPage();">{{'item.page.bitstreams.collapse' | translate}}</button>
+      </div>
+    </div>
+    <br />
+  </ds-metadata-field-wrapper>
+  <ds-metadata-field-wrapper label="{{'item.page.filesection.licences' | translate}}">
+    <div class="file-section">
+      <div *ngVar="(cclicenses$ | async)?.payload as cclicenses">
+        <div *ngIf="hasValuesInBundle(cclicenses)">
+          <div *ngFor="let file of cclicenses?.page;">
 
+            <ds-file-download-link [bitstream]="file" [item]="item">
+              {{"item.page.filesection.end_user_licence" | translate}}
+            </ds-file-download-link>
+          </div>
+        </div>
+      </div>
+      <div *ngVar="(licenses$ | async)?.payload as licenses">
+        <div *ngIf="hasValuesInBundle(licenses)">
+          <div *ngFor="let file of licenses?.page;">
+            <ds-file-download-link [bitstream]="file" [item]="item">
+              {{"item.page.filesection.depositor_agreement" | translate}}
+            </ds-file-download-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ds-metadata-field-wrapper>
+  <br />
+  
+</ng-container>
