@@ -1,3 +1,13 @@
+<!-- DATASHARE - start-->
+<ng-container *ngIf="showTombstone(); else showFiles">
+  <ds-metadata-field-wrapper [label]="label | translate">
+    <div class="file-section">
+      <p>{{ 'item.page.filesection.tombstone' | translate }}</p>
+    </div>
+  </ds-metadata-field-wrapper>
+</ng-container>
+
+<ng-template #showFiles>
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <br>
   <div class="download-all-container" *ngIf="(downloadLink$ | async) as downloadLink">
@@ -53,3 +63,5 @@
   <br />
   
 </ng-container>
+</ng-template>
+<!-- DATASHARE - start-->

@@ -7145,4 +7145,6 @@
   "item.page.date.available": "Date Available",
 
   "item.page.replaced": "Relation (Is Replaced By)",
+
+  "item.page.filesection.tombstone": "No download currently available for this item.",
 }

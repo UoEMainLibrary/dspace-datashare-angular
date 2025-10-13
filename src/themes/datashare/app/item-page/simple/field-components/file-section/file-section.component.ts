@@ -1,3 +1,4 @@
+// DATASHARE - start
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -25,6 +26,8 @@ import { PaginationService } from '../../../../../../../app/core/pagination/pagi
 import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
 import { DownloadLinkService } from '../../../../../../../app/datashare/download-link.service';
 import { response } from 'express';
+import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
+
 
 @Component({
   selector: 'ds-themed-item-page-file-section',
@@ -42,6 +45,7 @@ import { response } from 'express';
     TranslateModule,
     FileSizePipe,
     VarDirective,
+    GenericItemPageFieldComponent
   ],
 })
 export class FileSectionComponent extends BaseComponent {
@@ -126,4 +130,10 @@ export class FileSectionComponent extends BaseComponent {
     return hasValue(bundle) && !isEmpty(bundle.page);
   }
 
+  showTombstone(): boolean {
+    const value = this.item?.firstMetadataValue('ds.withdrawn.showtombstone');
+    return value === 'true';
+  }
+
 }
+// DATASHARE - end

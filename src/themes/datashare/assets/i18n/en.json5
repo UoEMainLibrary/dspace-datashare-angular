@@ -39,6 +39,7 @@
 
   "submit.progressbar.license": "End-user Agreement",
 
+  "item.page.filesection.tombstone": "No download currently available for this item.",
   "item.page.filesection.end_user_licence": "End-user Licence",
   "item.page.filesection.depositor_agreement": "Depositor Agreement",
 
