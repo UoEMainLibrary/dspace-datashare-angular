@@ -75,7 +75,10 @@ export class FileSectionComponent implements OnInit {
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    this.pageSize = this.appConfig.item.bitstream.pageSize;
+    // DATASHARE - start
+    // this.pageSize = this.appConfig.item.bitstream.pageSize;
+    this.pageSize = 25; // DATASHARE - override to 5 (default) as per config.prod.yml
+    // DATASHARE - end
   }
 
   ngOnInit(): void {
