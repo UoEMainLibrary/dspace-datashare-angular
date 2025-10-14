@@ -109,25 +109,77 @@ export class FileSectionComponent implements OnInit {
     } else {
       this.currentPage++;
     }
-    this.bitstreamDataService.findAllByItemAndBundleName(this.item, 'ORIGINAL', {
+
+    // DATASHARE -start
+    // Rewritten to make two separate calls to get both ORIGINAL and CC-LICENSE bitstreams
+    // and combine them into the same bitstreams$ observable
+    // Previous code:
+    //   this.bitstreamDataService.findAllByItemAndBundleName(this.item, 'ORIGINAL', {
+    //     currentPage: this.currentPage,
+    //     elementsPerPage: this.pageSize,
+    //   }).pipe(
+    //     getFirstCompletedRemoteData(),
+    //   ).subscribe((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
+    //     if (bitstreamsRD.errorMessage) {
+    //       this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
+    //     } else if (hasValue(bitstreamsRD.payload)) {
+    //       const current: Bitstream[] = this.bitstreams$.getValue();
+    //       // DATASHARE -start
+    //       // Console log bitstreams for easy debugging
+    //       bitstreamsRD.payload.page.forEach(bitstream => {
+    //         console.log('Bitstream:', bitstream);
+    //       });
+    //       // DATASHARE - end
+    //       this.bitstreams$.next([...current, ...bitstreamsRD.payload.page]);
+    //       this.isLoading = false;
+    //       this.isLastPage = this.currentPage === bitstreamsRD.payload.totalPages;
+    //     }
+    //   });
+    // }
+    // Replaced code:
+    const original$ = this.bitstreamDataService.findAllByItemAndBundleName(this.item, 'ORIGINAL', {
       currentPage: this.currentPage,
       elementsPerPage: this.pageSize,
-    }).pipe(
+    });
+
+    const license$ = this.bitstreamDataService.findAllByItemAndBundleName(this.item, 'CC-LICENSE', {
+      currentPage: this.currentPage,
+      elementsPerPage: this.pageSize,
+    });
+
+    original$.pipe(
       getFirstCompletedRemoteData(),
     ).subscribe((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
       if (bitstreamsRD.errorMessage) {
         this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
       } else if (hasValue(bitstreamsRD.payload)) {
         const current: Bitstream[] = this.bitstreams$.getValue();
-        // DATASHARE -start
-        // Console log bitstreams for easy debugging
-        bitstreamsRD.payload.page.forEach(bitstream => {
-          console.log('Bitstream:', bitstream);
-        });
-        // DATASHARE - end
+        // For debugging.
+        // bitstreamsRD.payload.page.forEach(bitstream => {
+        //   console.log('Bitstream:', bitstream);
+        // });
         this.bitstreams$.next([...current, ...bitstreamsRD.payload.page]);
         this.isLoading = false;
         this.isLastPage = this.currentPage === bitstreamsRD.payload.totalPages;
+        // Now subscribe to license$
+        license$.pipe(
+          getFirstCompletedRemoteData(),
+        ).subscribe((licenseRD: RemoteData<PaginatedList<Bitstream>>) => {
+          if (licenseRD.errorMessage) {
+            this.notificationsService.error(this.translateService.get('file-section.error.header'), `${licenseRD.statusCode} ${licenseRD.errorMessage}`);
+          } else if (hasValue(licenseRD.payload)) {
+            const updated: Bitstream[] = this.bitstreams$.getValue();
+            // For debugging.
+            // licenseRD.payload.page.forEach(bitstream => {
+            //   console.log('Bitstream:', bitstream);
+            // });
+            this.bitstreams$.next([...updated, ...licenseRD.payload.page]);
+          }
+          this.isLoading = false;
+        });
+
+      } else {
+        this.isLoading = false;
       }
     });
   }
