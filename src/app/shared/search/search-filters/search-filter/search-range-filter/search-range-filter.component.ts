@@ -63,8 +63,11 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   /**
    * Fallback minimum for the range
    */
-  min = 1950;
-
+  // DATASHARE - start
+  // Changed from 1950 to 2008 to better reflect the range of years in the Datashare repository.
+  // min = 1950;
+  min =  2008;
+  // DATASHARE - end
   /**
    * i18n Label to use for minimum field
    */
