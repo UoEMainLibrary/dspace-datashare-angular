@@ -14,6 +14,7 @@
       <ng-container *ngIf="filter.name === 'subject'">
         Subject Keywords
       </ng-container>
+
       <ng-container *ngIf="filter.name !== 'subject'">
         {{'search.filters.filter.' + filter.name + '.head'| translate}}
       </ng-container>

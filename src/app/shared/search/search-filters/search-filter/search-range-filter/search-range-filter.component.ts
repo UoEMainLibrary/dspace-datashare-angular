@@ -66,7 +66,7 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   // DATASHARE - start
   // Changed from 1950 to 2008 to better reflect the range of years in the Datashare repository.
   // min = 1950;
-  min =  2008;
+  min = 2008;
   // DATASHARE - end
   /**
    * i18n Label to use for minimum field
@@ -106,13 +106,13 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   keyboardControl: boolean;
 
   constructor(protected searchService: SearchService,
-              protected filterService: SearchFilterService,
-              protected router: Router,
-              protected route: RouteService,
-              protected rdbs: RemoteDataBuildService,
-              private translateService: TranslateService,
-              @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: SearchConfigurationService,
-              @Inject(PLATFORM_ID) private platformId: any,
+    protected filterService: SearchFilterService,
+    protected router: Router,
+    protected route: RouteService,
+    protected rdbs: RemoteDataBuildService,
+    private translateService: TranslateService,
+    @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: SearchConfigurationService,
+    @Inject(PLATFORM_ID) private platformId: any,
   ) {
     super(
       searchService,
@@ -129,8 +129,22 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
    */
   ngOnInit(): void {
     super.ngOnInit();
-    this.min = yearFromString(this.filterConfig.minValue) || this.min;
-    this.max = yearFromString(this.filterConfig.maxValue) || this.max;
+
+    // Datashare - start
+    // Adjust min and max years if filter name is 'dateEmbargo'
+    // this.min = yearFromString(this.filterConfig.minValue) || this.min;
+    // this.max = yearFromString(this.filterConfig.maxValue) || this.max;
+    // Special handling for dateEmbargo filter
+    if (this.filterConfig.name === 'dateEmbargo') {
+      this.min = new Date().getUTCFullYear() - 1;
+      this.max = new Date().getUTCFullYear() + 6;
+    } else {
+      // Default behavior for other filters
+      this.min = yearFromString(this.filterConfig.minValue) || this.min;
+      this.max = yearFromString(this.filterConfig.maxValue) || this.max;
+    }
+    // Datashare - end
+
     this.minLabel = this.translateService.instant('search.filters.filter.' + this.filterConfig.name + '.min.placeholder');
     this.maxLabel = this.translateService.instant('search.filters.filter.' + this.filterConfig.name + '.max.placeholder');
     const iniMin = this.route.getQueryParameterValue(this.filterConfig.paramName + RANGE_FILTER_MIN_SUFFIX).pipe(startWith(undefined));
@@ -174,10 +188,10 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
     const newMax = this.range[1] !== this.max ? [this.range[1]] : null;
     void this.router.navigate(this.getSearchLinkParts(), {
       queryParams:
-        {
-          [this.filterConfig.paramName + RANGE_FILTER_MIN_SUFFIX]: newMin,
-          [this.filterConfig.paramName + RANGE_FILTER_MAX_SUFFIX]: newMax,
-        },
+      {
+        [this.filterConfig.paramName + RANGE_FILTER_MIN_SUFFIX]: newMin,
+        [this.filterConfig.paramName + RANGE_FILTER_MAX_SUFFIX]: newMax,
+      },
       queryParamsHandling: 'merge',
     });
     this.filter = '';
