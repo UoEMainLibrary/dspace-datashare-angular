@@ -2134,7 +2134,7 @@
 
   "home.breadcrumbs": "Home",
 
-  "home.search-form.placeholder": "Search the repository ...",
+  "home.search-form.placeholder": "Search ...",
 
   "home.title": "Home",
 
@@ -4408,7 +4408,7 @@
 
   "search.breadcrumbs": "Search",
 
-  "search.search-form.placeholder": "Search the repository ...",
+  "search.search-form.placeholder": "Search ...",
 
   "search.filters.remove": "Remove filter of type {{ type }} with value {{ value }}",
 
@@ -6966,7 +6966,7 @@
 
   "item.page.cc.license.disclaimer": "Except where otherwised noted, this item's license is described as",
 
-  "browse.search-form.placeholder": "Search the repository",
+  "browse.search-form.placeholder": "Search ...",
 
   "file-download-link.download": "Download ",
 
@@ -7147,4 +7147,10 @@
   "item.page.replaced": "Relation (Is Replaced By)",
 
   "item.page.filesection.tombstone": "No download currently available for this item.",
+
+  "browse.metadata.subject_classification.breadcrumbs": "Browse by Subject Classification",
+
+  "menu.section.browse_global_by_subject_classification": "By Subject Classification",
+
+  "browse.metadata.subject_classification": "Subject Classification",
 }

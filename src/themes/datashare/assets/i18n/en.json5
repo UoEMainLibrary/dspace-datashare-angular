@@ -50,6 +50,10 @@
   "browse.metadata.subject": "Subject Keywords",
   "browse.metadata.subject.breadcrumbs": "Browse by Subject Keywords",
   "menu.section.browse_global_by_subject": "By Subject Keywords",
+  
+  "browse.metadata.subject_classification": "Subject Classification",
+  "browse.metadata.subject_classification.breadcrumbs": "Browse by Subject Classification",
+  "menu.section.browse_global_by_subject_classification": "By Subject Classification",
 
   "browse.metadata.jacs": "Subject Classifications",
   "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classifications",
@@ -64,6 +68,10 @@
   "sorting.dc.date.available.DESC": "Available Date Descending",
   "sorting.dc.date.embargo.ASC": "Embargo Date Ascending",
   "sorting.dc.date.embargo.DESC": "Embargo Date Descending",
+
+  "home.search-form.placeholder": "Search ...",
+  "search.search-form.placeholder": "Search ...",
+  "browse.search-form.placeholder": "Search ...",
 
   "search.filters.filter.dateAccessioned.head": "Accessioned Date",
   "search.filters.filter.dateAccessioned.max.placeholder": "Maximum Date",
