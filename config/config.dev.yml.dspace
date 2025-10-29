@@ -99,9 +99,9 @@ auth:
   # Authentication UI settings
   ui:
     # the amount of time before the idle warning is shown
-    timeUntilIdle: 900000 # 15 minutes
+    timeUntilIdle: 21600000 # 6 hours (6×60×60×1000)
     # the amount of time the user has to react after the idle warning is shown before they are logged out.
-    idleGracePeriod: 300000 # 5 minutes
+    idleGracePeriod: 600000 # 10 minutes (10×60×1000)
   # Authentication REST settings
   rest:
     # If the rest token expires in less than this amount of time, it will be refreshed automatically.
