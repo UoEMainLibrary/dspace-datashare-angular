@@ -12,12 +12,16 @@ import { ClickOutsideDirective } from '../../../../app/shared/utils/click-outsid
 @Component({
   selector: 'ds-themed-search-navbar',
   // styleUrls: ['./search-navbar.component.scss'],
-  styleUrls: ['../../../../app/search-navbar/search-navbar.component.scss'],
-  // templateUrl: './search-navbar.component.html'
-  templateUrl: '../../../../app/search-navbar/search-navbar.component.html',
+  styleUrls: ['. start./../../../app/search-navbar/search-navbar.component.scss'],
+  // DATASHARE - start
+  templateUrl: './search-navbar.component.html',
+  // templateUrl: '../../../../app/search-navbar/search-navbar.component.html',
+  // DATASHARE - end
   standalone: true,
   imports: [ClickOutsideDirective, FormsModule, ReactiveFormsModule, TranslateModule, BrowserOnlyPipe],
 })
 export class SearchNavbarComponent extends BaseComponent {
+  searchExpanded = true;
+  isExpanded = 'expanded';
 
 }

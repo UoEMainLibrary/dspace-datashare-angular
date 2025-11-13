@@ -3,9 +3,10 @@
 // Add any global css for the theme here
 body {
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 300;
-    line-height: 1.428571429;
-    color: #333;
+    font-weight: 400;
+    line-height: 120%;
+    color: #{$ds-body-color};
+    background-color:#{$ds-body-bg};
 }
 
 .main-content {
@@ -30,7 +31,7 @@ h3,
 h4,
 h5,
 h6 span {
-    color: var(--datashare-blue-university);
+   
     border-bottom: none !important;
 }
 
@@ -38,12 +39,31 @@ h2.no-bottom-border {
     border-bottom: none !important;
 }
 
+h1, .h1 {
+    font-size: $h1-font-size;
+}
+h2, .h2 {
+    font-size: $h2-font-size;
+}
+h3, .h3 {
+    font-size: $h3-font-size;
+}
+h4, .h4 {
+    font-size: $h4-font-size;
+}
+h5, .h5 {
+    font-size: $h5-font-size;
+}
+h6, .h6 {
+    font-size: $h6-font-size;
+}
+
 a {
-    color: #346dbf;
+    color: #{$link-color};
 }
 
 a:hover {
-    color: #346dbf;
+    color: #{$link-hover-color};
 }
 
 i.fas.fa-globe-asia.fa-lg.fa-fw {

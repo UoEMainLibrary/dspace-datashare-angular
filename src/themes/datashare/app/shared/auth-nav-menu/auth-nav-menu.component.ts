@@ -25,8 +25,10 @@ import { BrowserOnlyPipe } from '../../../../../app/shared/utils/browser-only.pi
  */
 @Component({
   selector: 'ds-themed-auth-nav-menu',
-  // templateUrl: './auth-nav-menu.component.html',
-  templateUrl: '../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.html',
+  // DATASHARE - start
+  templateUrl: './auth-nav-menu.component.html',
+  // templateUrl: '../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.html',
+  // DATASHARE - end
   // styleUrls: ['./auth-nav-menu.component.scss'],
   styleUrls: ['../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.scss'],
   animations: [fadeInOut, fadeOut],
