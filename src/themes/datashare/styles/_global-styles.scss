@@ -5,8 +5,8 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     line-height: 120%;
-    color: #{$ds-body-color};
-    background-color:#{$ds-body-bg};
+    color: $body-color;
+    background-color:$body-bg;
 }
 
 .main-content {

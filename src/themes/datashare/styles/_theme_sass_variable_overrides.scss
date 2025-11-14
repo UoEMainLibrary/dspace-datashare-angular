@@ -32,14 +32,6 @@
 
 $font-family-sans-serif: "Source Sans Pro", sans-serif !default;
 
-$font-size-base: 1rem * 1.125 !default; // Assumes the browser default, typically `16px`
-$h1-font-size: 40px !default;
-$h2-font-size: 32px !default;
-$h3-font-size: 24px !default;
-$h4-font-size: 18px !default;
-$h5-font-size: 17px !default;
-$h6-font-size: 16px !default;
-
 $gray-100: #f9f9f9 !default;
 $gray-200: #ececec !default;
 $gray-300: #e2e2e2 !default;
@@ -50,12 +42,12 @@ $gray-700: #505050 !default;
 $gray-800: #3a3a3a !default;
 $gray-900: #252525 !default;
 
-$ds-body-bg: #f5f5f5 !default;
-$ds-body-color: #{$gray-800} !default;
+$body-bg: #f5f5f5 !default;
+$body-color: $gray-800 !default;
 
-$input-plaintext-color: #{$ds-body-color};
+$input-plaintext-color: $body-color;
 
-$jumbotron-bg:  #{$ds-body-bg};
+$jumbotron-bg: $body-bg;
 
 $link-color: #004f71 !default;
 $link-hover-color: #002b3e !default;

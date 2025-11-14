@@ -28,9 +28,10 @@ import { BrowserOnlyPipe } from '../../../../../app/shared/utils/browser-only.pi
   // DATASHARE - start
   templateUrl: './auth-nav-menu.component.html',
   // templateUrl: '../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.html',
-  // DATASHARE - end
+  styleUrls: ['../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.scss', './auth-nav-menu.component.scss'],
   // styleUrls: ['./auth-nav-menu.component.scss'],
-  styleUrls: ['../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.scss'],
+  // styleUrls: ['../../../../../app/shared/auth-nav-menu/auth-nav-menu.component.scss'],
+  // DATASHARE - end
   animations: [fadeInOut, fadeOut],
   standalone: true,
   imports: [NgClass, NgIf, NgbDropdownModule, ThemedLogInComponent, RouterLink, RouterLinkActive, ThemedUserMenuComponent, AsyncPipe, TranslateModule, BrowserOnlyPipe],
