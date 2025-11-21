@@ -5,7 +5,7 @@
        (click)="$event.stopPropagation();">
     <div ngbDropdown #loginDrop="ngbDropdown" display="dynamic" placement="bottom-right" class="d-inline-block"
          @fadeInOut>
-      <button class="btn btn-outline-light mx-2 mt-2" [attr.aria-label]="'nav.login' |translate"
+      <button class="auth-nav-menu-login btn btn-outline-light mx-2 mt-1" [attr.aria-label]="'nav.login' |translate"
               (click)="$event.preventDefault()" [attr.data-test]="'login-menu' | dsBrowserOnly"
               role="button"
               tabindex="0"
@@ -32,7 +32,7 @@
         [attr.aria-label]="'nav.user-profile-menu-and-logout' | translate"
         aria-controls="user-menu-dropdown"
         (click)="$event.preventDefault()" [title]="'nav.user-profile-menu-and-logout' | translate"
-        class="dropdownLogout btn btn-link px-0"
+        class="dropdownLogout btn btn-link px-0 mx-3 mt-2"
         [attr.data-test]="'user-menu' | dsBrowserOnly"
         ngbDropdownToggle>
         <i class="fas fa-user-circle fa-lg fa-fw"></i></button>

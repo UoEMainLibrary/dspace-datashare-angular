@@ -1,5 +1,22 @@
 @import '../../../styles/_global-styles.scss'; 
-.btn {
-    background-color: #fff;
+.auth-nav-menu-login.btn {
+    background-color: #fff !important;
     color: #{$body-color};
+}
+
+ .dropdownLogout.btn {
+    background-color: transparent !important;
+}
+
+.auth-nav-menu-login.dropdown-toggle::after, .dropdownLogout.dropdown-toggle::after {
+    margin-left: 0;
+    display: none !important;
+}
+
+.fa-user-circle {
+     background-color: transparent !important;
+}
+
+.fa-lg {
+    font-size: 1.75rem !important;
 }
