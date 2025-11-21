@@ -12,10 +12,12 @@ import { BrowserOnlyPipe } from '../../../../../app/shared/utils/browser-only.pi
 
 @Component({
   selector: 'ds-themed-search-form',
-  // styleUrls: ['./search-form.component.scss'],
-  styleUrls: ['../../../../../app/shared/search-form/search-form.component.scss'],
-  // templateUrl: './search-form.component.html',
-  templateUrl: '../../../../../app/shared/search-form/search-form.component.html',
+  // DATASHARE - start
+  styleUrls: ['../../../../../app/shared/search-form/search-form.component.scss', './search-form.component.scss'],
+  // styleUrls: ['../../../../../app/shared/search-form/search-form.component.scss'],
+  templateUrl: './search-form.component.html',
+  // templateUrl: '../../../../../app/shared/search-form/search-form.component.html',
+  // DATASHARE - end
   standalone: true,
   imports: [FormsModule, NgIf, NgbTooltipModule, AsyncPipe, TranslateModule, BrowserOnlyPipe],
 })

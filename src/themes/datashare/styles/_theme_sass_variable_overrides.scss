@@ -55,7 +55,7 @@ $link-hover-color: #002b3e !default;
 $blue-university:#004f71 !default;
 
 $theme-colors: (
-  primary: #337ab7,
+  primary: $blue-university,
   // secondary: #f9f9f9,
   success: #5cb85c,
   info: #5bc0de,

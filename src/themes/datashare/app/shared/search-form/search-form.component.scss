@@ -1,0 +1,23 @@
+.scope-button {
+  background-color: #fff !important;
+  margin-right: 1rem !important;
+}
+
+// .search-button {
+//   background-color: #fff !important;
+//   margin-left: 1rem !important;
+// }
+
+.search-icon {
+  background-image: url('/assets/datashare/images/search.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent; // Explicitly set to transparent
+  width: 1.2rem;
+  height: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0) saturate(100%) invert(30%);
+//   margin-top: 0.5rem
+}

@@ -1,0 +1,26 @@
+<!-- // DATASHARE - start -->
+<div class="px-3 pt-2 pb-3 bg-primary text-white">
+    <h3 class="border-bottom">Search the Datashare Repository</h3>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" action="/search">
+        <div>
+            <div class="form-group input-group">
+                <div *ngIf="showScopeSelector" class="input-group-prepend ">
+                    <button class="scope-button btn btn-outline-secondary text-truncate"
+                        [ngbTooltip]="dsoNameService.getName(selectedScope | async)" type="button"
+                        (click)="openScopeModal()" role="button" tabindex="0">
+                        {{dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate)}}
+                    </button>
+                </div>
+                <input type="text" [(ngModel)]="query" name="query" class="form-control"
+                    [attr.aria-label]="searchPlaceholder" [attr.data-test]="'search-box' | dsBrowserOnly"
+                    [placeholder]="searchPlaceholder">
+
+                    <button type="submit" class="btn btn-link btn-link-inline"
+                        [attr.data-test]="'search-button' | dsBrowserOnly" role="button" tabindex="0">
+                        <span class="search-icon"></span>
+                    </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- // DATASHARE - end -->
