@@ -11,11 +11,11 @@
                         {{dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate)}}
                     </button>
                 </div>
-                <input type="text" [(ngModel)]="query" name="query" class="form-control"
+                <input type="text" [(ngModel)]="query" name="query" class="form-control no-border"
                     [attr.aria-label]="searchPlaceholder" [attr.data-test]="'search-box' | dsBrowserOnly"
                     [placeholder]="searchPlaceholder">
 
-                    <button type="submit" class="btn btn-link btn-link-inline"
+                    <button type="submit" class="search-button btn btn-link"
                         [attr.data-test]="'search-button' | dsBrowserOnly" role="button" tabindex="0">
                         <span class="search-icon"></span>
                     </button>
