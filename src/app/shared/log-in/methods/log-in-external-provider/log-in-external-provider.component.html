@@ -1,3 +1,7 @@
+<!-- // DATASHARE - start -->
 <button class="btn btn-lg btn-primary btn-block text-white" (click)="redirectToExternalProvider()" role="button" tabindex="0">
-  <i class="fas fa-sign-in-alt"></i> {{getButtonLabel() | translate}}
+  <!-- // DATASHARE - start -->
+  <!-- Replaced: <i class="fas fa-sign-in-alt"></i> {{getButtonLabel() | translate}} -->
+  {{getButtonLabel() | translate}} <i class="fas fa-sign-in-alt"></i> 
+  <!-- // DATASHARE - end -->
 </button>
