@@ -3464,7 +3464,7 @@
 
   "metadata-export-search.submit.error": "Starting the export has failed",
 
-  "mydspace.breadcrumbs": "MyDatashare",
+  "mydspace.breadcrumbs": "Submissions",
 
   "mydspace.description": "",
 
@@ -3518,7 +3518,7 @@
 
   "mydspace.results.no-uri": "No URI",
 
-  "mydspace.search-form.placeholder": "Search in MyDatashare...",
+  "mydspace.search-form.placeholder": "Search in Submissions...",
 
   "mydspace.show.workflow": "Workflow tasks",
 
@@ -3538,7 +3538,7 @@
 
   "mydspace.status.mydspaceWorkspace": "Workspace",
 
-  "mydspace.title": "MyDatashare",
+  "mydspace.title": "Submissions",
 
   "mydspace.upload.upload-failed": "Error creating new workspace. Please verify the content uploaded before retry.",
 
@@ -3574,7 +3574,7 @@
 
   "nav.main.description": "Main navigation bar",
 
-  "nav.mydspace": "MyDatashare",
+  "nav.mydspace": "Submissions",
 
   "nav.profile": "Profile",
 
@@ -4858,7 +4858,7 @@
 
   "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
+  "submission.import-external.back-to-my-dspace": "Back to Submissions",
 
   "submission.import-external.search.placeholder": "Search the external source",
 

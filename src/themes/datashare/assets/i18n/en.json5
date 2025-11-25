@@ -5,11 +5,11 @@
 
   // DSpace default: "DSpace Angular :: "
   "repository.title.prefix": "Edinburgh Datashare :: ",
-  "mydspace.breadcrumbs": "MyDatashare",
-  "mydspace.search-form.placeholder": "Search in MyDatashare...",
-  "mydspace.title": "MyDatashare",
-  "nav.mydspace": "MyDatashare",
-  "submission.import-external.back-to-my-dspace": "Back to MyDatashare",
+  "mydspace.breadcrumbs": "Submissions",
+  "mydspace.search-form.placeholder": "Search in Submissions...",
+  "mydspace.title": "Submissions",
+  "nav.mydspace": "Submissions",
+  "submission.import-external.back-to-my-dspace": "Back to Submissions",
 
   // Datashare customised
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
