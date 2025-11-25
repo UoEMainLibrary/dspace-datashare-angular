@@ -1,7 +1,17 @@
 // DATASHARE - start
-.house-door-fill-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  vertical-align: middle;
+:host {
+    .house-door-fill-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+    }
+
+    #main-navbar ::ng-deep {
+
+        .ds-menu-item {
+            padding: 1rem  0.8rem !important;
+        }
+    }
 }
+
 // DATASHARE - end
