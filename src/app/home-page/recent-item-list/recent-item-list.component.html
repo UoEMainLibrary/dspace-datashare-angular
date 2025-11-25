@@ -8,9 +8,14 @@
         </ds-listable-object-component-loader>
       </li>
     </ul>
-    <button (click)="onLoadMore()" class="btn btn-primary search-button mt-4" role="link" tabindex="0">
-      {{'vocabulary-treeview.load-more' | translate }} ...
-    </button>
+    <!-- DATASHARE - start -->
+     <!-- Added div with text-center -->
+    <div class="text-center">
+      <button (click)="onLoadMore()" class="btn btn-primary search-button mt-4" role="link" tabindex="0">
+        {{'vocabulary-treeview.load-more' | translate }} ...
+      </button>
+    </div>
+    <!-- DATASHARE - end -->
   </div>
   <ds-error *ngIf="itemRD?.hasFailed" message="{{'error.recent-submissions' | translate}}"></ds-error>
   <ds-loading *ngIf="!itemRD || itemRD.isLoading" message="{{'loading.recent-submissions' | translate}}">
