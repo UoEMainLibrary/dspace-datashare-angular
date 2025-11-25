@@ -73,9 +73,13 @@ a:hover {
     font-size: calc(.74375rem + .05625vw);
 }
 
+.footer-affiliations-image {
+    width: 75%;
+    margin: 0;
+}
+
 .core-trust-seal-logo {
-    height: 6rem;
-    margin: auto;
-    display: block
+    width: 5rem;
+    margin-left: 1rem;
   }
 }
