@@ -49,13 +49,24 @@ $input-plaintext-color: $body-color;
 
 $jumbotron-bg: $body-bg;
 
-$link-color: #004f71 !default;
-$link-hover-color: #002b3e !default;
-
+$blue-muted: #004f71 !default;
 $blue-university:#004f71 !default;
 
+$brand-button-primary: $blue-muted !default;
+$brand-button-primary-bg: $blue-muted !default;
+$brand-button-primary-border: $blue-muted !default;
+
+$brand-button-primary-hover-active-bg: #002b3e !default;
+$brand-button-primary-hover-active-border: #002434 !default;
+$brand-button-primary-focus-bg: $blue-muted !default;
+$brand-button-primary-focus-border: rgba($blue-muted, 0.25) !default;
+
+$link-color: $blue-muted !default;
+$link-hover-color: #002b3e !default;
+
+
 $theme-colors: (
-  primary: $blue-university,
+  primary: $blue-muted,
   // secondary: #f9f9f9,
   success: #5cb85c,
   info: #5bc0de,
