@@ -1,22 +1,33 @@
-@import '../../../styles/_global-styles.scss'; 
-.auth-nav-menu-login.btn {
-    background-color: #fff !important;
-    color: #{$body-color};
-}
+@import '../../../styles/_global-styles.scss';
 
- .dropdownLogout.btn {
-    background-color: transparent !important;
-}
+:host {
+    .auth-nav-menu-login.btn {
+        background-color: #fff !important;
+        color: #004f71 !important;
+        border-color: #004f71 !important;
 
-.auth-nav-menu-login.dropdown-toggle::after, .dropdownLogout.dropdown-toggle::after {
-    margin-left: 0;
-    display: none !important;
-}
+        &:hover, &:focus {
+            background-color: #004f71 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+    }
 
-.fa-user-circle {
-     background-color: transparent !important;
-}
+    .dropdownLogout.btn {
+        background-color: transparent !important;
+    }
 
-.fa-lg {
-    font-size: 1.75rem !important;
+    .auth-nav-menu-login.dropdown-toggle::after,
+    .dropdownLogout.dropdown-toggle::after {
+        margin-left: 0;
+        display: none !important;
+    }
+
+    .fa-user-circle {
+        background-color: transparent !important;
+    }
+
+    .fa-lg {
+        font-size: 1.75rem !important;
+    }
 }

@@ -5,7 +5,7 @@
        (click)="$event.stopPropagation();">
     <div ngbDropdown #loginDrop="ngbDropdown" display="dynamic" placement="bottom-right" class="d-inline-block"
          @fadeInOut>
-      <button class="auth-nav-menu-login btn btn-outline-light mx-2 mt-1" [attr.aria-label]="'nav.login' |translate"
+      <button class="auth-nav-menu-login btn  mx-2 mt-1" [attr.aria-label]="'nav.login' |translate"
               (click)="$event.preventDefault()" [attr.data-test]="'login-menu' | dsBrowserOnly"
               role="button"
               tabindex="0"
