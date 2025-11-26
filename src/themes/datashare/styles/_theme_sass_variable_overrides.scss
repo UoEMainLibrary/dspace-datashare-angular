@@ -52,12 +52,15 @@ $jumbotron-bg: $body-bg;
 $blue-muted: #004f71 !default;
 $blue-university:#004f71 !default;
 
-$brand-button-primary: #fff !default;
+$brand-button-primary: #ffffff !default;
 $brand-button-primary-bg: $blue-muted !default;
 $brand-button-primary-border: $blue-muted !default;
 
+$brand-button-primary-hover-active: #ffffff !default;
 $brand-button-primary-hover-active-bg: #002b3e !default;
 $brand-button-primary-hover-active-border: #002434 !default;
+
+$brand-button-primary-focus: #ffffff !default;
 $brand-button-primary-focus-bg: $blue-muted !default;
 $brand-button-primary-focus-border: rgba($blue-muted, 0.25) !default;
 
@@ -72,6 +75,6 @@ $theme-colors: (
   info: #5bc0de,
   warning: #f0ad4e,
   danger: #d9534f,
-  light: #f9f9f9,
+  light: #ffffff,
   dark: #3a3a3a
 ) !default;

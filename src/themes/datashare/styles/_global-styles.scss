@@ -76,11 +76,11 @@ a:hover {
 }
 
 i.fas.fa-globe-asia.fa-lg.fa-fw {
-    color: #fff;
+    color: #ffffff ;
 }
 
 .admin-menu-header h4 {
-    color: #fff;
+    color: #ffffff ;
     border-bottom: none !important;
 }
 
@@ -94,7 +94,7 @@ i.fas.fa-globe-asia.fa-lg.fa-fw {
 
 .nav-breadcrumb,
 .breadcrumb {
-    background-color: #fff !important;
+    background-color: #ffffff !important;
 }
 
 .breadcrumb {
@@ -104,7 +104,7 @@ i.fas.fa-globe-asia.fa-lg.fa-fw {
 
 li.breadcrumb-item {
     padding: 0.75rem 1rem;
-    border-bottom: 4px solid #fff;
+    border-bottom: 4px solid #ffffff ;
 }
 
 li.breadcrumb-item.active {
@@ -149,12 +149,14 @@ button.btn.btn-lg.btn-primary.btn-block {
 
     &:hover,
     &:active {
+        color: var(--datashare-button-brand-primary-hover-active);
         background-color: var(--datashare-brand-button-primary-hover-active-bg);
         border-color: var(--datashare-buttonbrand-button-primary-hover-active-border);
         text-decoration: underline;
     }
 
     &:focus {
+        color: var(--datashare-button-brand-primary-focus);
         background-color: var(-datashare-brand-button-primary-focus-bg);
         border-color: var(-datashare-brand-button-primary-focus-border);
         text-decoration: underline;
@@ -164,12 +166,12 @@ button.btn.btn-lg.btn-primary.btn-block {
 button#save span,
 button#saveForLater span,
 button#deposit span {
-    color: #fff;
+    color: #ffffff ;
 }
 
 
 a.btn.btn-outline-primary {
-    background-color: #fff;
+    background-color: #ffffff ;
     color: #3a3a3a !important;
 }
 
@@ -194,7 +196,7 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 
 .facet-filter,
 .setting-option {
-    background-color: #fff !important;
+    background-color: #ffffff !important;
     border: 1px solid var(--datashare-button-brand-primary) !important;
 }
 
@@ -222,7 +224,7 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 .dropdown-item:focus {
     // color: var(--datashare-button-brand-primary);
     text-decoration: underline;
-    background-color: #FFF;
+    background-color: #ffffff ;
 }
 
 .dropdown-item.active,
