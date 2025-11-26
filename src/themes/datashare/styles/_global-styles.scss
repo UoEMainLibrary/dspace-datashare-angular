@@ -170,9 +170,21 @@ button#deposit span {
 }
 
 
-a.btn.btn-outline-primary {
+a.btn.btn-outline-primary,
+a.btn.btn-outline-secondary {
     background-color: #ffffff ;
-    color: #3a3a3a !important;
+    color: var(--datashare-bs-muted) !important;
+    border-color: var(--datashare-bs-muted) !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: var(-datashare-brand-button-primary-focus);
+        border-color: var(-datashare-brand-button-primary-focus-border);
+        text-decoration: underline;
+    }
+
+
 }
 
 i.fas.fa-info-circle {
