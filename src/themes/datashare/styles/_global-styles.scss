@@ -142,26 +142,24 @@ li[ds-navbar-section] {
 .btn-primary,
 .btn-secondary,
 button.btn.btn-lg.btn-primary.btn-block {
-    color: var(--datashare-button-brand-primary) !important;
-    background-color: var(--datashare-button-brand-primary-bg) !important;
-    border-color: var(--datashare-button-brand-primary-border) !important;
-    text-decoration: none !important; 
+    color: var(--datashare-button-brand-primary);
+    background-color: var(--datashare-button-brand-primary-bg);
+    border-color: var(--datashare-button-brand-primary-border);
+    text-decoration: none; 
+
+    &:hover,
+    &:active {
+        background-color: var(--datashare-brand-button-primary-hover-active-bg);
+        border-color: var(--datashare-buttonbrand-button-primary-hover-active-border);
+        text-decoration: underline;
+    }
+
+    &:focus {
+        background-color: var(-datashare-brand-button-primary-focus-bg);
+        border-color: var(-datashare-brand-button-primary-focus-border);
+        text-decoration: underline;
+    }
 }
-
-    .btn-primary:hover,
-    .btn-primary:active {
-        background-color: var(--datashare-brand-button-primary-hover-active-bg) !important;
-        border-color: var(--datashare-buttonbrand-button-primary-hover-active-border) !important;
-        text-decoration: underline !important;
-    }
-
-    .btn-primary:focus {
-        background-color: var(-datashare-brand-button-primary-focus-bg) !important;
-        border-color: var(-datashare-brand-button-primary-focus-border) !important;
-        text-decoration: underline !important;
-    }
-        
-
 
 button#save span,
 button#saveForLater span,
