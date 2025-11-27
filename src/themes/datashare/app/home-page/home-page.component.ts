@@ -19,10 +19,12 @@ import { PageWithSidebarComponent } from '../../../../app/shared/sidebar/page-wi
 
 @Component({
   selector: 'ds-themed-home-page',
+  // DATASHARE - start
   styleUrls: ['../../../../app/home-page/home-page.component.scss', './home-page.component.scss'],
   // styleUrls: ['../../../../app/home-page/home-page.component.scss'],
   templateUrl: './home-page.component.html',
   // templateUrl: '../../../../app/home-page/home-page.component.html',
+  // DATASHARE - end
   standalone: true,
   imports: [ThemedHomeNewsComponent, NgTemplateOutlet, NgIf, ThemedSearchFormComponent, ThemedTopLevelCommunityListComponent, RecentItemListComponent, AsyncPipe, TranslateModule, NgClass, SuggestionsPopupComponent, ThemedConfigurationSearchPageComponent, PageWithSidebarComponent, HomeCoarComponent],
 })

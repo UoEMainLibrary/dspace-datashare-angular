@@ -2,17 +2,23 @@
   display: block;
   margin-top: calc(-1 * var(--ds-content-spacing));
   margin-bottom: calc(-1 * var(--ds-content-spacing));
-}
-
-.display-3 {
-  word-break: break-word;
-}
 
 
-a {
-  color: var(--ds-home-news-link-color);
+  .display-3 {
+    word-break: break-word;
+  }
 
-  @include hover {
-    color: var(--ds-home-news-link-hover-color);
+
+  a {
+    color: var(--ds-home-news-link-color);
+
+    @include hover {
+      color: var(--ds-home-news-link-hover-color);
+    }
+  }
+
+  .jumbotron {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0rem !important;
   }
 }
