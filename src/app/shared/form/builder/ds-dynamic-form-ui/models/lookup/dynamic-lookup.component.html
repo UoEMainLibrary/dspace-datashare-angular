@@ -5,11 +5,13 @@
   <div class="form-row align-items-center">
     <!--Simple lookup, first field -->
     <div class="col right-addon">
+      <!-- DATASHARE - start -->
       <i dsAuthorityConfidenceState
-         class="far fa-circle fa-2x fa-fw position-absolute mt-1 p-0 pr-2"
+         class="fa fa-search fa-2x fa-fw position-absolute mt-1 p-0 pr-2"
          aria-hidden="true"
          [authorityValue]="model.value"
          (whenClickOnConfidenceNotAccepted)="whenClickOnConfidenceNotAccepted(sdRef, $event)"></i>
+      <!-- DATASHARE - end -->
       <input class="form-control"
              [attr.aria-labelledby]="'label_' + model.id"
              [attr.autoComplete]="model.autoComplete"
