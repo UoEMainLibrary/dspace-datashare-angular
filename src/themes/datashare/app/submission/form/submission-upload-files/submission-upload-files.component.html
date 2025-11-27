@@ -1,5 +1,7 @@
 <!-- DATASHARE - start -->
-<p class="text" [innerHTML]="'datashare.submission.sections.upload.info' | translate"></p>
+<ds-alert [content]="'datashare.submission.sections.upload.info'"
+          [dismissible]="false"
+          [type]="AlertTypeEnum.Info"></ds-alert>
 
 <ds-uploader *ngIf="uploadFilesOptions.url"
              [dropMsg]="dropMsg"
