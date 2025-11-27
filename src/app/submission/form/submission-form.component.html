@@ -35,6 +35,11 @@
             </ds-submission-section-container>
         </ng-container>
     </div>
+
+    <!-- DATASHARE - start -->
+    <p class="text-center text-danger lead">Fields marked with a <span class="text-dark">*</span> are mandatory</p>
+    <!-- DATASHARE - end -->
+
     <div *ngIf="(isLoading$ | async) !== true" class="submission-form-footer mt-3 mb-3 position-sticky">
         <ds-submission-form-footer [submissionId]="submissionId"></ds-submission-form-footer>
     </div>
