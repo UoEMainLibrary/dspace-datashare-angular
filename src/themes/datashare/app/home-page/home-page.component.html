@@ -14,15 +14,14 @@
 <ds-suggestions-popup></ds-suggestions-popup>
 
 <ng-template #homeContent>
+  <!-- DATASHARE - start -->
   <!-- <div class="px-3 pb-3 bg-primary text-white">.
     <h3 class="border-bottom">Search the Datashare Repository</h3>
      -->
   <ds-search-form [inPlaceSearch]="false"
                          [searchPlaceholder]="'home.search-form.placeholder' | translate">
   </ds-search-form>
-  <!-- </div>
-   -->
-  <!-- DATASHARE - start -->
+  <!-- </div> -->
   <!-- <ds-top-level-community-list></ds-top-level-community-list> -->
   <!-- DATASHARE - end -->
   <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
