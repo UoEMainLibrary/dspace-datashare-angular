@@ -1,4 +1,4 @@
 .login-logo {
-  height: var(--datashare-login-logo-height);
-  width: var(--datashare-login-logo-width);
+  height: var(--datashare-login-logo-height) !important;
+  padding-right: 2px !important;
 }
