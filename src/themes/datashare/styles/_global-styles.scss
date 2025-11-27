@@ -108,7 +108,7 @@ li.breadcrumb-item {
 }
 
 li.breadcrumb-item.active {
-    border-bottom: 4px solid var(--datashare-button-brand-primary) !important;
+    border-bottom: 4px solid var(--datashare-body-color) !important;
     background-color: #f9f9f9 !important;
 }
 
@@ -123,13 +123,13 @@ li.breadcrumb-item.active {
 }
 
 li.breadcrumb-item:hover {
-    // border-bottom: 4px solid var(--datashare-button-brand-primary);
+    // border-bottom: 4px solid var(--datashare-body-color);
     background-color: #f9f9f9;
 }
 
 li.breadcrumb-item:hover a.text-truncate {
     text-decoration: none;
-    // color: var(--datashare-button-brand-primary) !important;
+    // color: var(--datashare-body-color) !important;
 }
 
 li[ds-navbar-section] {
@@ -142,23 +142,21 @@ li[ds-navbar-section] {
 .btn-primary,
 .btn-secondary,
 button.btn.btn-lg.btn-primary.btn-block {
-    color: var(--datashare-button-brand-primary);
-    background-color: var(--datashare-button-brand-primary-bg);
-    border-color: var(--datashare-button-brand-primary-border);
+    color: var(--datashare-button-brand-primary-color) !important;
+    background-color: var(--datashare-button-brand-primary-bg) !important;
+    border-color: var(--datashare-button-brand-primary-border) !important;
     text-decoration: none; 
 
     &:hover,
     &:active {
-        color: var(--datashare-button-brand-primary-hover-active);
-        background-color: var(--datashare-brand-button-primary-hover-active-bg);
-        border-color: var(--datashare-buttonbrand-button-primary-hover-active-border);
+        background-color: var(--datashare-brand-button-primary-hover-active-bg) !important;
+        border-color: var(--datashare-buttonbrand-button-primary-hover-active-border) !important;
         text-decoration: underline;
     }
 
     &:focus {
-        color: var(--datashare-button-brand-primary-focus);
-        background-color: var(-datashare-brand-button-primary-focus-bg);
-        border-color: var(-datashare-brand-button-primary-focus-border);
+        background-color: var(-datashare-brand-button-primary-focus-bg) !important;
+        border-color: var(-datashare-brand-button-primary-focus-border) !important;
         text-decoration: underline;
     }
 }
@@ -193,34 +191,34 @@ i.fas.fa-info-circle {
 
 .btn-outline-secondary:hover,
 a.btn.btn-outline-primary:hover {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
     background-color: #fff9fd;
     text-decoration: underline !important;
 }
 
 a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
 }
 
 .form-control {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
 }
 
 .facet-filter,
 .setting-option {
     background-color: #ffffff !important;
-    border: 1px solid var(--datashare-button-brand-primary) !important;
+    border: 1px solid var(--datashare-body-color) !important;
 }
 
 .filters .toggle-more-filters a,
 .filter-value {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
     text-decoration: none !important;
 }
 
 .filters .toggle-more-filters a:hover,
 .filter-value:hover {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
     text-decoration: underline !important;
 }
 
@@ -229,12 +227,12 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 }
 
 .dropdown-item {
-    color: var(--datashare-button-brand-primary);
+    color: var(--datashare-body-color);
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    // color: var(--datashare-button-brand-primary);
+    // color: var(--datashare-body-color);
     text-decoration: underline;
     background-color: #ffffff ;
 }
@@ -242,26 +240,26 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 .dropdown-item.active,
 .dropdown-item:active {
     background-color: #f9f9f9 !important;
-    // color: var(--datashare-button-brand-primary) !important;
+    // color: var(--datashare-body-color) !important;
 }
 
 // .page-link {
-//     color: var(--datashare-button-brand-primary);
+//     color: var(--datashare-body-color);
 // }
 
 // .page-item.active .page-link {
-//     // background-color: var(--datashare-button-brand-primary) !important;
-//     // border-color: var(--datashare-button-brand-primary) !important;
-//     color: var(--datashare-button-brand-primary) !important;
+//     // background-color: var(--datashare-body-color) !important;
+//     // border-color: var(--datashare-body-color) !important;
+//     color: var(--datashare-body-color) !important;
 // }
 
 // .badge-info,
 // .badge-secondary {
-//     background-color: var(--datashare-button-brand-primary);
+//     background-color: var(--datashare-body-color);
 // }
 
 // .item-page-title-field span {
-//     // color: var(--datashare-button-brand-primary);
+//     // color: var(--datashare-body-color);
 // }
 
 .navbar-header {
@@ -270,11 +268,11 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 
 .nav-item .nav-link,
 .nav-item .nav-link span {
-    color: var(--datashare-button-brand-primary);
+    color: var(--datashare-body-color);
 }
 
 .dropdown-toggle::after {
-    color: var(--datashare-button-brand-primary) !important;
+    color: var(--datashare-body-color) !important;
 }
 
 
@@ -283,15 +281,15 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
     font-size: 1.1rem;
     font-weight: 400;
     padding: 10px 0px;
-    // color: var(--datashare-button-brand-primary);
+    // color: var(--datashare-body-color);
 }
 
 .facet-filter .fas {
-    // color: var(--datashare-button-brand-primary);
+    // color: var(--datashare-body-color);
 }
 
 i.fas.fa-lock {
-    // color: var(--datashare-button-brand-primary);
+    // color: var(--datashare-body-color);
 }
 
 .position-relative {
