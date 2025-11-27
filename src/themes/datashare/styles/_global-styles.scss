@@ -109,7 +109,7 @@ li.breadcrumb-item {
 
 li.breadcrumb-item.active {
     border-bottom: 4px solid var(--datashare-body-color) !important;
-    background-color: #f9f9f9 !important;
+    background-color: var(--datashare-body-bg) !important;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -117,14 +117,14 @@ li.breadcrumb-item.active {
 }
 
 .text-truncate {
-    color: #3a3a3a !important;
+    color: var(--datashare-gray-800) !important;
     font-size: 1.1rem;
     font-weight: 400;
 }
 
 li.breadcrumb-item:hover {
     // border-bottom: 4px solid var(--datashare-body-color);
-    background-color: #f9f9f9;
+    background-color: var(--datashare-body-bg);
 }
 
 li.breadcrumb-item:hover a.text-truncate {
@@ -186,7 +186,7 @@ a.btn.btn-outline-secondary {
 }
 
 i.fas.fa-info-circle {
-    color: #3a3a3a !important;
+    color: var(--datashare-gray-800) !important;
 }
 
 .btn-outline-secondary:hover,
@@ -239,7 +239,7 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 
 .dropdown-item.active,
 .dropdown-item:active {
-    background-color: #f9f9f9 !important;
+    background-color: var(--datashare-body-bg) !important;
     // color: var(--datashare-body-color) !important;
 }
 
