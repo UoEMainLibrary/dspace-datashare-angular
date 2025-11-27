@@ -1,0 +1,12 @@
+<!-- DATASHARE - start -->
+<p class="text" [innerHTML]="'datashare.submission.sections.upload.info' | translate"></p>
+
+<ds-uploader *ngIf="uploadFilesOptions.url"
+             [dropMsg]="dropMsg"
+             [dropOverDocumentMsg]="dropOverDocumentMsg"
+             [enableDragOverDocument]="enableDragOverDocument"
+             [onBeforeUpload]="onBeforeUpload"
+             [uploadFilesOptions]="uploadFilesOptions"
+             (onCompleteItem)="onCompleteItem($event)"
+             (onUploadError)="onUploadError()"></ds-uploader>
+<!-- DATASHARE - end -->
