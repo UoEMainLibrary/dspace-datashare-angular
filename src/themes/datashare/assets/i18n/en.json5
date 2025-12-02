@@ -61,6 +61,7 @@
   "menu.section.browse_global_by_jacs": "By Subject Classifications",
   "vocabulary-treeview.tree.description.jacs": "Subject Classifications",
   "browse.comcol.by.jacs": "By Subject Classifications",
+  "browse.comcol.by.subject_classification": "By Subject Classifications",
 
   "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
   "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
@@ -132,7 +133,6 @@
   "search.filters.filter.jacs.head": "Subject Classifications",
   // "search.filters.filter.show-tree": "Browse {{ name }} tree",
   "search.filters.filter.show-tree": "Browse Subject Classifications tree",
-  "browse.comcol.by.jacs": "By Subject Classifications",
   "browse.metadata.jacs": "Subject Classifications",
   "browse.metadata.jacs.breadcrumbs": "Browse by Subject Classification",
   "browse.metadata.jacs.tree.descrption": "Select a Subject Classification to add as search filter",
