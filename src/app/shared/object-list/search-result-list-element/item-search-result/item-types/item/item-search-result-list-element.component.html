@@ -21,6 +21,8 @@
          [innerHTML]="dsoTitle" role="link" tabindex="0"></a>
       <span *ngIf="linkType === linkTypes.None" class="lead item-list-title dont-break-out"
             [innerHTML]="dsoTitle"></span>
+      <!-- DATASHARE - start -->
+      <div class="my-2">
       <span class="text-muted">
         <ds-truncatable-part [id]="dso.id" [minLines]="1">
           <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
@@ -36,6 +38,8 @@
           </span>
         </ds-truncatable-part>
       </span>
+      </div>
+      <!-- DATASHARE - end -->
       <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
         <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
           [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>

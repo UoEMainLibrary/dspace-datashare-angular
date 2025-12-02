@@ -2,8 +2,9 @@
   <div #content class="content dont-break-out preserve-line-breaks">
     <ng-content></ng-content>
   </div>
+  <!-- DATASHARE - start -->
   <button
-    class="btn btn-link p-0 {{isExpanded ? 'collapseButton' : 'expandButton'}}"
+    class="btn btn-link p-0 mt-2 {{isExpanded ? 'collapseButton' : 'expandButton'}}"
     dsDragClick
     (actualClick)="toggle()"
     (keyup.Enter)="toggle()"
@@ -15,4 +16,5 @@
     <i class="fas {{isExpanded ? 'fa-angle-up' : 'fa-angle-down'}}"></i>
     <span class="ml-1">{{ 'item.truncatable-part.show-' + (isExpanded ? 'less' : 'more') | translate }}</span>
   </button>
+  <!-- DATASHARE - end -->
 </div>
