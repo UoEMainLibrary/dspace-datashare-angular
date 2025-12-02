@@ -384,6 +384,12 @@ i.fas.fa-lock {
     font-size: 1.1rem !important;
 }
 
+// Responsive card body max-width (not mobiles, etc)
+@media (min-width: 576px) { /* Targets screens wider than 575px */
+    .card-body {
+        max-width: 80%;
+    }
+}
 // DATASHARE - start
 
 // The fa-circle class was appearing too big in the treeview. This is a fix for that.
