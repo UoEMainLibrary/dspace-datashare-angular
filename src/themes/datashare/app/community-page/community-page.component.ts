@@ -31,7 +31,9 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
   // templateUrl: './community-page.component.html',
   templateUrl: '../../../../app/community-page/community-page.component.html',
   // styleUrls: ['./community-page.component.scss']
-  styleUrls: ['../../../../app/community-page/community-page.component.scss'],
+  // DATASHARE - start
+  styleUrls: ['../../../../app/community-page/community-page.component.scss', './community-page.component.scss'],
+  // DATASHARE - end
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   standalone: true,
