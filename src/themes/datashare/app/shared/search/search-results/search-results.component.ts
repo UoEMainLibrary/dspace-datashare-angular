@@ -21,7 +21,10 @@ import { SearchResultsSkeletonComponent } from '../../../../../../app/shared/sea
   selector: 'ds-themed-search-results',
   // templateUrl: './search-results.component.html',
   templateUrl: '../../../../../../app/shared/search/search-results/search-results.component.html',
-  styleUrls: ['../../../../../../app/shared/search/search-results/search-results.component.scss'],
+  // DATASHARE - start 
+  // using both global and local styles
+  styleUrls: ['../../../../../../app/shared/search/search-results/search-results.component.scss', './search-results.component.scss'],
+  // DATASHARE - end
   animations: [
     fadeIn,
     fadeInOut,

@@ -384,13 +384,19 @@ i.fas.fa-lock {
     font-size: 1.1rem !important;
 }
 
+// @media (min-width: 576px) 
 // Responsive card body max-width (not mobiles, etc)
 @media (min-width: 576px) { /* Targets screens wider than 575px */
     .card-body {
         max-width: 80%;
     }
+     
+    /* top | left and right | bottom */
+    .jumbotron {
+        padding: 2rem 2rem 1rem !important;
+    }
 }
-// DATASHARE - start
+
 
 // The fa-circle class was appearing too big in the treeview. This is a fix for that.
 .dropdown .fa-2x,
@@ -431,5 +437,11 @@ ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
 #label_dc_contributor_CONCAT_GROUP {
     opacity: 0;
 }
+
+/* Badge styles override */
+.badge {
+  /* top and bottom | left and right */
+  margin: 1rem 0rem !important;
+}  
 
 // DATASHARE - end
