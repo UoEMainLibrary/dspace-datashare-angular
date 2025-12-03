@@ -5,4 +5,8 @@
     .dropdown-item {
         padding-left: 20px;
     }
+
+    #paginationControls.btn ::ng-deep {
+        line-height: 1 !important;
+    }
 }
