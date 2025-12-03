@@ -3500,7 +3500,7 @@
 
   "mydspace.new-submission-external-short": "Import metadata",
 
-  "mydspace.results.head": "Your submissions",
+  "mydspace.results.head": "Submissions",
 
   "mydspace.results.no-abstract": "No Abstract",
 
@@ -3522,7 +3522,7 @@
 
   "mydspace.show.workflow": "Workflow tasks",
 
-  "mydspace.show.workspace": "Your submissions",
+  "mydspace.show.workspace": "Submissions",
 
   "mydspace.show.supervisedWorkspace": "Supervised items",
 
@@ -5732,7 +5732,7 @@
 
   "supervisedWorkspace.search.results.head": "Supervised Items",
 
-  "workspace.search.results.head": "Your submissions",
+  "workspace.search.results.head": "Submissions",
 
   "workflowAdmin.search.results.head": "Administer Workflow",
 
@@ -6994,7 +6994,7 @@
 
   "submission.sections.submit.progressbar.metadatapageone": "Metadata",
 
-  "datashare.submission.sections.upload.info": "You may upload up to 20 GB for deposit via this form. If you wish to create a deposit of between 20 GB and 100 GB please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>.",
+  "datashare.submission.sections.upload.info": "If you wish to create a deposit of between 20 GB and 100 GB please contact the Research Data Service to arrange a batch import on <a href='mailto:data-support@64;ed.ac.uk'>data-support@ed.ac.uk</a>.",
 
   "datashare.submission.sections.upload.exceeded_size_limit": "You have exceeded the maximum upload size of 20 GB. Please delete some files to proceed to the next step.",
 
