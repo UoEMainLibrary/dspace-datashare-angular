@@ -443,6 +443,14 @@ ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
 .badge {
   /* top and bottom | left and right */
   margin: 1rem 0rem !important;
-}  
+}
+
+label {
+    font-weight: bold !important;
+}
+
+legend {
+    font-weight: bold !important;
+}
 
 // DATASHARE - end
