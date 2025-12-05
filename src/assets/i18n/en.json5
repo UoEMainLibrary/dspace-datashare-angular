@@ -2138,7 +2138,7 @@
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Communities in Edinburgh Datashare",
+  "home.top-level-communities.head": "Communities in Edinburgh DataShare",
 
   "home.top-level-communities.help": "Select a community to browse its collections.",
 
@@ -3316,7 +3316,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "Browse Edinburgh Datashare",
+  "menu.section.browse_global": "Browse Edinburgh DataShare",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -4272,7 +4272,7 @@
 
   "repository.title": "DSpace Repository",
 
-  "repository.title.prefix": "Edinburgh Datashare :: ",
+  "repository.title.prefix": "Edinburgh DataShare :: ",
 
   "resource-policies.add.button": "Add",
 

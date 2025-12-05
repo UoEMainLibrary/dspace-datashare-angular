@@ -1,17 +1,17 @@
 {
   // DSpace default: "All of DSpace"
-  "menu.section.browse_global": "Browse Edinburgh Datashare",
-  "home.top-level-communities.head": "Communities in Edinburgh Datashare",
+  "menu.section.browse_global": "Browse Edinburgh DataShare",
+  "home.top-level-communities.head": "Communities in Edinburgh DataShare",
 
   // DSpace default: "DSpace Angular :: "
-  "repository.title.prefix": "Edinburgh Datashare :: ",
+  "repository.title.prefix": "Edinburgh DataShare :: ",
   "mydspace.breadcrumbs": "Submissions",
   "mydspace.search-form.placeholder": "Search in Submissions...",
   "mydspace.title": "Submissions",
   "nav.mydspace": "Submissions",
   "submission.import-external.back-to-my-dspace": "Back to Submissions",
 
-  // Datashare customised
+  // DataShare customised
   
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
   "submission.sections.submit.progressbar.license": "Depositor Agreement",
