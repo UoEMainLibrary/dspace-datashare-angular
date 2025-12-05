@@ -1,6 +1,6 @@
 <!-- // DATASHARE - start -->
 <div class="datashare-search-form-container px-3 py-3 my-3 bg-primary text-white">
-    <h3 class="border-bottom">Search Datashare</h3>
+    <h3>Search Datashare</h3>
     <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" action="/search">
         <div>
             <div class="form-group input-group">
@@ -11,7 +11,7 @@
                         {{dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate)}}
                     </button>
                 </div>
-                <input type="text" [(ngModel)]="query" name="query" class="form-control no-border"
+                <input type="text" [(ngModel)]="query" name="query" class="datashare-search-form-input form-control no-border"
                     [attr.aria-label]="searchPlaceholder" [attr.data-test]="'search-box' | dsBrowserOnly"
                     [placeholder]="searchPlaceholder">
 
