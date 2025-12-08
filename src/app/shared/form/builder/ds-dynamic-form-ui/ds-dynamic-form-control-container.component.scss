@@ -15,6 +15,7 @@
   appearance: none;
 }
 
+// DATASHARE - start
 /* Override Bootstrap .col-sm-4 to full width inside the dynamic form container
    Scoped with :host ::ng-deep so it only affects this component's subtree */
 :host ::ng-deep {
@@ -25,4 +26,5 @@
     }
   }
 }
+// DATASHARE - end
 

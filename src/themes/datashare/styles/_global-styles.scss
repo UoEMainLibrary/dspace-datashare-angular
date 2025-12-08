@@ -433,10 +433,18 @@ ds-item-page-abstract-field .simple-view-element-body .dont-break-out {
     border-radius: 0.25rem !important;
 }
 
-/* Hides the contributor CONCAT_GROUP field in submission form */
+/* Settings to hide for ds-dynamic-form-control-container, form-row ancestors of dc_contributor_CONCAT_GROUP.
+   That is the hidden from view and holds the owner of the item as dc.contributor */
 #dc_contributor_CONCAT_GROUP,
-#label_dc_contributor_CONCAT_GROUP {
-    opacity: 0;
+#label_dc_contributor_CONCAT_GROUP,
+ds-dynamic-form-control-container:has(#dc_contributor_CONCAT_GROUP),
+ds-dynamic-form-control-container:has(#label_dc_contributor_CONCAT_GROUP),
+.form-row:has(#dc_contributor_CONCAT_GROUP),
+.form-row:has(#label_dc_contributor_CONCAT_GROUP) { 
+    opacity: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Badge styles override */
@@ -452,5 +460,4 @@ label {
 legend {
     font-weight: bold !important;
 }
-
 // DATASHARE - end
