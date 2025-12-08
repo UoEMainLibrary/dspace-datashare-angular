@@ -16,7 +16,9 @@ import { HoverOutsideDirective } from '../../../../../app/shared/utils/hover-out
   // templateUrl: './expandable-navbar-section.component.html',
   templateUrl: '../../../../../app/navbar/expandable-navbar-section/expandable-navbar-section.component.html',
   // styleUrls: ['./expandable-navbar-section.component.scss'],
-  styleUrls: ['../../../../../app/navbar/expandable-navbar-section/expandable-navbar-section.component.scss'],
+  // DATASHARE - start
+  styleUrls: ['../../../../../app/navbar/expandable-navbar-section/expandable-navbar-section.component.scss', './expandable-navbar-section.component.scss'],
+  // DATASHARE - end
   animations: [slide],
   standalone: true,
   imports: [
