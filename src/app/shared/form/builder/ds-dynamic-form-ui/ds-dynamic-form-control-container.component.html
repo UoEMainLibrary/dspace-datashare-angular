@@ -2,7 +2,8 @@
      [class.d-none]="model.hidden"
      [formGroup]="group"
      [ngClass]="[getClass('element', 'container'), getClass('grid', 'container'), 'my-2']">
-  <label *ngIf="!isCheckbox && hasLabel"
+     
+     <label *ngIf="!isCheckbox && hasLabel"
          [id]="'label_' + model.id"
          [for]="id"
          [innerHTML]="(model.required && model.label) ? (model.label | translate) + ' *' : (model.label | translate)"
@@ -26,7 +27,6 @@
            [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
         <small *ngFor="let message of errorMessages" class="invalid-feedback d-block">{{ message | translate: model.validators }}</small>
       </div>
-
     </div>
     <div *ngIf="model.languageCodes && model.languageCodes.length > 0" class="col-xs-2" >
       <select

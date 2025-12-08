@@ -14,3 +14,15 @@
   -moz-appearance: none;
   appearance: none;
 }
+
+/* Override Bootstrap .col-sm-4 to full width inside the dynamic form container
+   Scoped with :host ::ng-deep so it only affects this component's subtree */
+:host ::ng-deep {
+  @media (min-width: 576px) {
+    .col-sm-4 {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
