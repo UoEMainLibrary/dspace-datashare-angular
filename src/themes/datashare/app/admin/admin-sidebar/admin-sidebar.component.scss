@@ -1,3 +1,52 @@
-img#admin-sidebar-logo {
-    height: var(--datashare-admin-sidebar-logo-height) !important;
+// img#admin-sidebar-logo {
+//     height: var(--datashare-admin-sidebar-logo-height) !important;
+// }
+
+:host ::ng-deep {
+    color: #FFFFFF;
+    /* White text color for sidebar */
+
+    img#admin-sidebar-logo {
+        height: var(--datashare-admin-sidebar-logo-height) !important;
+    }
+
+    a {
+        color: #FFFFFF !important;
+        /* White */
+        text-decoration: none !important;
+        /* Optional, removes underline */
+
+        &:focus {
+            // outline-color: #FFFF00;
+            // outline-style: solid;
+            // outline-width: medium;
+            outline: 2px solid #ADD8E6 !important; /* Light Blue outline on focus */
+            outline-offset: 2px;
+            /* Optional, adds space between outline and element */
+        }
+
+        &:hover {
+            color: #ADD8E6 !important;
+            /* Light Blue on hover */
+            text-decoration: underline;
+            /* Optional, adds underline on hover */
+        }
+
+        &.active {
+            font-weight: bold;
+            /* Bold for active link */
+            color: #FFFFFF !important;
+            /* White for active link */
+        }
+
+        &.disabled {
+            color: #777777;
+            /* Gray for disabled link */
+            pointer-events: none;
+            /* Disable click events */
+            cursor: default;
+            /* Default cursor */
+        }
+
+    }
 }
