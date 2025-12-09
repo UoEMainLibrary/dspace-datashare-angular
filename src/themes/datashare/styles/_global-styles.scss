@@ -207,8 +207,8 @@ a.btn.btn-outline-primary:hover i.fas.fa-info-circle {
 
 .facet-filter,
 .setting-option {
-    background-color: #ffffff !important;
-    border: 1px solid var(--datashare-body-color) !important;
+    background-color: var(--datashare-facet-background-color) !important;
+    // border: 1px solid var(--datashare-body-color) !important;
 }
 
 .filters .toggle-more-filters a,
