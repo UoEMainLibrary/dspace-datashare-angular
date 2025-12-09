@@ -17,6 +17,7 @@
         /* Optional, removes underline */
 
         &:focus {
+            // outline-color:#FF0000 ; 
             // outline-color: #FFFF00;
             // outline-style: solid;
             // outline-width: medium;
@@ -26,7 +27,8 @@
         }
 
         &:hover {
-            color: #ADD8E6 !important;
+            color: #00FFFF; /* Cyan */
+            // color: #ADD8E6 !important;
             /* Light Blue on hover */
             text-decoration: underline;
             /* Optional, adds underline on hover */
