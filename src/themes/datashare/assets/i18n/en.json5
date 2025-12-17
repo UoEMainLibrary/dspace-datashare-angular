@@ -123,37 +123,7 @@
   "menu.section.browse_global_by_dateavailable": "By Available Date",
   "menu.section.browse_global_by_dateembargo": "By Embargo Date",
 
-  // Search filters re-named
-  "search.filters.namedresourcetype.Archived": "Archived",
-  "search.filters.namedresourcetype.Validation": "Validation",
-  "search.filters.namedresourcetype.Waiting for Controller": "Pool",
-  "search.filters.namedresourcetype.Workflow": "Draft",
-  "search.filters.namedresourcetype.Workspace": "In review",
-
-  "admin.workflow.item.workspace": "In review",
-  "item.version.history.table.workspaceItem": "In review item",
-  "item.version.history.table.action.editWorkspaceItem": "Edit in review item",
-  "mydspace.show.supervisedWorkspace": "In review items",
-  "mydspace.status.mydspaceWorkspace": "In review",
-  "search.filters.namedresourcetype.Workspace": "In review",
-  "supervisedWorkspace.search.results.head": "In Review Items",
-  "supervision.search.results.head": "Draft and In Review tasks",
-  "workspace-item.view.breadcrumbs": "In Review View",
-  "workspace-item.view.title": "In Review View",
-  "workspace-item.delete.breadcrumbs": "In Review Delete",
-
-  "admin.workflow.breadcrumbs": "Administer Draft Items",
-  "admin.workflow.title": "Administer Draft Items",
-  "admin.workflow.item.workflow": "Draft",
-  "item.version.history.table.workflowItem": "Draft item",
-  "menu.section.workflow": "Administer Draft Items",
-  "mydspace.show.workflow": "Draft Items tasks",
-  "mydspace.status.mydspaceWorkflow": "Draft",
-  "search.filters.namedresourcetype.Workflow": "Draft",
-  "workflowAdmin.search.results.head": "Administer Draft Items",
-  "workflow.search.results.head": "Draft Items tasks",
  
-
   // Custom components
   "info.about.title": "About",
   "info.about.breadcrumbs": "About",

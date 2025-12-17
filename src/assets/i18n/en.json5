@@ -3526,11 +3526,11 @@
 
   "mydspace.show.supervisedWorkspace": "In review items",
 
-  "mydspace.status": "My DSpace status:",
+  "mydspace.status": "Submissions status:",
 
   "mydspace.status.mydspaceArchived": "Archived",
 
-  "mydspace.status.mydspaceValidation": "Validation",
+  "mydspace.status.mydspaceValidation": "My tasks",
 
   "mydspace.status.mydspaceWaitingController": "Waiting for reviewer",
 
@@ -4658,7 +4658,7 @@
 
   "search.filters.namedresourcetype.Archived": "Archived",
 
-  "search.filters.namedresourcetype.Validation": "Validation",
+  "search.filters.namedresourcetype.Validation": "My tasks",
 
   "search.filters.namedresourcetype.Waiting for Controller": "Pool",
 
