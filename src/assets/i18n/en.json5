@@ -766,13 +766,13 @@
 
   "administrativeView.search.results.head": "Administrative Search",
 
-  "admin.workflow.breadcrumbs": "Administer Workflow",
+  "admin.workflow.breadcrumbs": "Administer Draft Items",
 
-  "admin.workflow.title": "Administer Workflow",
+  "admin.workflow.title": "Administer Draft Items",
 
-  "admin.workflow.item.workflow": "Workflow",
+  "admin.workflow.item.workflow": "Draft",
 
-  "admin.workflow.item.workspace": "Workspace",
+  "admin.workflow.item.workspace": "In review",
 
   "admin.workflow.item.delete": "Delete",
 
@@ -2978,13 +2978,13 @@
 
   "item.version.history.table.summary": "Summary",
 
-  "item.version.history.table.workspaceItem": "Workspace item",
+  "item.version.history.table.workspaceItem": "In review item",
 
-  "item.version.history.table.workflowItem": "Workflow item",
+  "item.version.history.table.workflowItem": "Draft item",
 
   "item.version.history.table.actions": "Action",
 
-  "item.version.history.table.action.editWorkspaceItem": "Edit workspace item",
+  "item.version.history.table.action.editWorkspaceItem": "Edit in review item",
 
   "item.version.history.table.action.editSummary": "Edit summary",
 
@@ -3456,7 +3456,7 @@
 
   "menu.section.toggle.statistics_task": "Toggle Statistics Task section",
 
-  "menu.section.workflow": "Administer Workflow",
+  "menu.section.workflow": "Administer Draft Items",
 
   "metadata-export-search.tooltip": "Export search results as CSV",
 
@@ -3520,11 +3520,11 @@
 
   "mydspace.search-form.placeholder": "Search in Submissions...",
 
-  "mydspace.show.workflow": "Workflow tasks",
+  "mydspace.show.workflow": "Draft Items tasks",
 
   "mydspace.show.workspace": "Submissions",
 
-  "mydspace.show.supervisedWorkspace": "Supervised items",
+  "mydspace.show.supervisedWorkspace": "In review items",
 
   "mydspace.status": "My DSpace status:",
 
@@ -3534,9 +3534,9 @@
 
   "mydspace.status.mydspaceWaitingController": "Waiting for reviewer",
 
-  "mydspace.status.mydspaceWorkflow": "Workflow",
+  "mydspace.status.mydspaceWorkflow": "Draft",
 
-  "mydspace.status.mydspaceWorkspace": "Workspace",
+  "mydspace.status.mydspaceWorkspace": "In review",
 
   "mydspace.title": "Submissions",
 
@@ -4660,11 +4660,11 @@
 
   "search.filters.namedresourcetype.Validation": "Validation",
 
-  "search.filters.namedresourcetype.Waiting for Controller": "Waiting for reviewer",
+  "search.filters.namedresourcetype.Waiting for Controller": "Pool",
 
-  "search.filters.namedresourcetype.Workflow": "Workflow",
+  "search.filters.namedresourcetype.Workflow": "Draft",
 
-  "search.filters.namedresourcetype.Workspace": "Workspace",
+  "search.filters.namedresourcetype.Workspace": "In review",
 
   "search.filters.withdrawn.true": "Yes",
 
@@ -5730,15 +5730,15 @@
 
   "virtual-metadata.delete-relationship.modal-head": "Select the items for which you want to save the virtual metadata as real metadata",
 
-  "supervisedWorkspace.search.results.head": "Supervised Items",
+  "supervisedWorkspace.search.results.head": "In Review Items",
 
   "workspace.search.results.head": "Submissions",
 
-  "workflowAdmin.search.results.head": "Administer Workflow",
+  "workflowAdmin.search.results.head": "Administer Draft Items",
 
-  "workflow.search.results.head": "Workflow tasks",
+  "workflow.search.results.head": "Draft Items tasks",
 
-  "supervision.search.results.head": "Workflow and Workspace tasks",
+  "supervision.search.results.head": "Draft and In Review tasks",
 
   "workflow-item.edit.breadcrumbs": "Edit workflowitem",
 
@@ -5778,11 +5778,11 @@
 
   "workflow-item.view.breadcrumbs": "Workflow View",
 
-  "workspace-item.view.breadcrumbs": "Workspace View",
+  "workspace-item.view.breadcrumbs": "In Review View",
 
-  "workspace-item.view.title": "Workspace View",
+  "workspace-item.view.title": "In Review View",
 
-  "workspace-item.delete.breadcrumbs": "Workspace Delete",
+  "workspace-item.delete.breadcrumbs": "In Review Delete",
 
   "workspace-item.delete.header": "Delete workspace item",
 
