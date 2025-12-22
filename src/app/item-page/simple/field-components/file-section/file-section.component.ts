@@ -155,9 +155,9 @@ export class FileSectionComponent implements OnInit {
       } else if (hasValue(bitstreamsRD.payload)) {
         const current: Bitstream[] = this.bitstreams$.getValue();
         // For debugging.
-        // bitstreamsRD.payload.page.forEach(bitstream => {
-        //   console.log('Bitstream:', bitstream);
-        // });
+        bitstreamsRD.payload.page.forEach(bitstream => {
+          console.log('Bitstream:', bitstream);
+        });
         this.bitstreams$.next([...current, ...bitstreamsRD.payload.page]);
         this.isLoading = false;
         this.isLastPage = this.currentPage === bitstreamsRD.payload.totalPages;
@@ -170,9 +170,9 @@ export class FileSectionComponent implements OnInit {
           } else if (hasValue(licenseRD.payload)) {
             const updated: Bitstream[] = this.bitstreams$.getValue();
             // For debugging.
-            // licenseRD.payload.page.forEach(bitstream => {
-            //   console.log('Bitstream:', bitstream);
-            // });
+            licenseRD.payload.page.forEach(bitstream => {
+              console.log('Bitstream:', bitstream;
+            });
             this.bitstreams$.next([...updated, ...licenseRD.payload.page]);
           }
           this.isLoading = false;
