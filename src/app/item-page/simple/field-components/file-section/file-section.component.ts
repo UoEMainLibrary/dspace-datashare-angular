@@ -171,7 +171,7 @@ export class FileSectionComponent implements OnInit {
             const updated: Bitstream[] = this.bitstreams$.getValue();
             // For debugging.
             licenseRD.payload.page.forEach(bitstream => {
-              console.log('Bitstream:', bitstream;
+              console.log('Bitstream:', bitstream);
             });
             this.bitstreams$.next([...updated, ...licenseRD.payload.page]);
           }

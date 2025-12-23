@@ -279,8 +279,8 @@ export class MetadataFieldSelectorComponent implements OnInit, OnDestroy, AfterV
         metadataFieldsToString(),
         // DATASHARE - Start
         // Custom code added to only display Dublin Core metadata field in Metadata Selector.
-        // Filter metadata items that start with 'dc.'
-        map((fields: string[]) => fields.filter(field => field.startsWith('dc.'))),
+        // Filter metadata items that start with 'dc.' or 'ds.'
+        map((fields: string[]) => fields.filter(field => field.startsWith('dc.') || field.startsWith('ds.'))),
         // DATASHARE - End
       );
   }
