@@ -109,7 +109,21 @@ jobs:
       - name: Run specs (unit tests)
         env:
           NODE_OPTIONS: '--max-old-space-size=8192'
-        run: yarn run test:headless
+        run: |
+          yarn run test:headless 2>&1 | tee test-output.log
+          TEST_EXIT=$?
+          echo "::group::Test Summary"
+          grep -E "TOTAL|FAILED|SUCCESS|tests completed|Disconnected|ERROR" test-output.log || true
+          echo "::endgroup::"
+          exit $TEST_EXIT
+
+      - name: Upload test log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-log-${{ matrix.node-version }}
+          path: 'test-output.log'
+          retention-days: 7
 
       # Upload code coverage report to artifact (for one version of Node only),
       # so that it can be shared with the 'codecov' job (see below)
