@@ -45,11 +45,11 @@ import { SectionsService } from '../sections/sections.service';
 import { SectionsType } from '../sections/sections-type';
 import { VisibilityType } from '../sections/visibility-type';
 import { SubmissionService } from '../submission.service';
+import { DatashareSubmissionFormSectionContainerService } from './../../datashare/datashare-submission-form-section-container.service';
 import { SubmissionFormCollectionComponent } from './collection/submission-form-collection.component';
 import { SubmissionFormFooterComponent } from './footer/submission-form-footer.component';
 import { SubmissionFormSectionAddComponent } from './section-add/submission-form-section-add.component';
 import { ThemedSubmissionUploadFilesComponent } from './submission-upload-files/themed-submission-upload-files.component';
-import { DatashareSubmissionFormSectionContainerService } from './../../datashare/datashare-submission-form-section-container.service';
 
 /**
  * This component represents the submission form.
@@ -179,7 +179,7 @@ export class SubmissionFormComponent implements OnChanges, OnDestroy {
     private submissionService: SubmissionService,
     private sectionsService: SectionsService,
     // DATASHARE - start
-    private datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService
+    private datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService,
     // DATASHARE - end
   ) {
     this.isActive = true;

@@ -15,6 +15,8 @@ import { BrowseService } from '../../../../core/browse/browse.service';
 import { BrowseDefinitionDataService } from '../../../../core/browse/browse-definition-data.service';
 import { BrowseDefinition } from '../../../../core/shared/browse-definition.model';
 import { Item } from '../../../../core/shared/item.model';
+// DATASHARE - start
+import { MetadataValue } from '../../../../core/shared/metadata.models';
 import {
   getFirstCompletedRemoteData,
   getPaginatedListPayload,
@@ -22,8 +24,6 @@ import {
 } from '../../../../core/shared/operators';
 import { MetadataValuesComponent } from '../../../field-components/metadata-values/metadata-values.component';
 import { ImageField } from './image-field';
-// DATASHARE - start
-import { MetadataValue } from '../../../../core/shared/metadata.models';
 // DATASHARE - end
 
 /**
@@ -75,7 +75,7 @@ export class ItemPageFieldComponent {
   /**
    * Whether any valid HTTP(S) URL should be rendered as a link
    */
- urlRegex?: string;
+  urlRegex?: string;
 
   /**
    * Image Configuration

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ThemedComponent } from '../../shared/theme-support/themed.component';
 import { CopyrightComponent } from './copyright.component';
 
@@ -6,11 +7,11 @@ import { CopyrightComponent } from './copyright.component';
  * Themed wrapper for Component
  */
 @Component({
-  selector: 'ds-themed-copyright',
+  selector: 'ds-copyright',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,
-  imports: [CopyrightComponent]
+  imports: [CopyrightComponent],
 })
 export class ThemedCopyrightComponent extends ThemedComponent<CopyrightComponent> {
   protected getComponentName(): string {

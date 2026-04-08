@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ThemedComponent } from '../../shared/theme-support/themed.component';
 import { AboutComponent } from './about.component';
 
@@ -6,11 +7,11 @@ import { AboutComponent } from './about.component';
  * Themed wrapper for Component
  */
 @Component({
-  selector: 'ds-themed-about',
+  selector: 'ds-about',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,
-  imports: [AboutComponent]
+  imports: [AboutComponent],
 })
 export class ThemedAboutComponent extends ThemedComponent<AboutComponent> {
   protected getComponentName(): string {

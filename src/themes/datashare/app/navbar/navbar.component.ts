@@ -6,14 +6,14 @@ import {
   NgIf,
 } from '@angular/common';
 import { Component } from '@angular/core';
+// DATASHARE - start
+import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemedUserMenuComponent } from 'src/app/shared/auth-nav-menu/user-menu/themed-user-menu.component';
 
 import { NavbarComponent as BaseComponent } from '../../../../app/navbar/navbar.component';
 import { slideMobileNav } from '../../../../app/shared/animations/slide';
-// DATASHARE - start
-import { RouterLink } from '@angular/router';
 // DATASHARE - end
 
 /**

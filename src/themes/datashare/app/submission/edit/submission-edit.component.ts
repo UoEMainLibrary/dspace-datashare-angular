@@ -1,4 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, Component, computed, effect, inject, OnDestroy, signal, ViewChild, ElementRef } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  inject,
+  OnDestroy,
+  signal,
+  ViewChild,
+} from '@angular/core';
 
 import { SubmissionEditComponent as BaseComponent } from '../../../../../app/submission/edit/submission-edit.component';
 import { SubmissionFormComponent } from '../../../../../app/submission/form/submission-form.component';
@@ -151,7 +162,7 @@ export class SubmissionEditComponent extends BaseComponent implements AfterViewI
   }
 
   private setupMutationObserver(): void {
-    if (!this.dropdownElement) return;
+    if (!this.dropdownElement) {return;}
 
     // console.log('👁️ Setting up mutation observer for dropdown changes');
 
@@ -187,7 +198,7 @@ export class SubmissionEditComponent extends BaseComponent implements AfterViewI
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ['aria-selected', 'class', 'title']
+      attributeFilter: ['aria-selected', 'class', 'title'],
     });
 
     // Also observe the parent element in case the selected element is created there
@@ -196,7 +207,7 @@ export class SubmissionEditComponent extends BaseComponent implements AfterViewI
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ['aria-selected', 'class', 'title']
+        attributeFilter: ['aria-selected', 'class', 'title'],
       });
     }
   }
@@ -207,7 +218,7 @@ export class SubmissionEditComponent extends BaseComponent implements AfterViewI
     const elementInfo = Array.from(allElements).map(el => ({
       id: el.id,
       tag: el.tagName,
-      classes: Array.from(el.classList).join(' ')
+      classes: Array.from(el.classList).join(' '),
     }));
     // console.log('Available license-related elements:', elementInfo);
     return elementInfo.map(info => info.id).filter(id => id);
