@@ -1,7 +1,12 @@
-import { Injectable, computed, signal } from '@angular/core';
-import { Observable, BehaviorSubject, take, switchMap, of as observableOf, map, filter, } from 'rxjs';
-import { NotificationsService } from '../shared/notifications/notifications.service';
+import {
+  computed,
+  Injectable,
+  signal,
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+
+import { NotificationsService } from '../shared/notifications/notifications.service';
 
 @Injectable({
   providedIn: 'root'
