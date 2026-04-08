@@ -14,8 +14,7 @@ describe('CopyrightComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [CopyrightComponent],
+      imports: [TranslateModule.forRoot(), CopyrightComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));

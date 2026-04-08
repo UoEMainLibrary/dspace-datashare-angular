@@ -105,7 +105,7 @@ describe('DsoEditMenuSectionComponent', () => {
     });
 
     it('should show a button with the icon', () => {
-      const button = fixture.debugElement.query(By.css('.btn-dark'));
+      const button = fixture.debugElement.query(By.css('.btn-secondary'));
       expect(button.nativeElement.innerHTML).toContain('fa-' + iconString);
     });
 
@@ -130,7 +130,7 @@ describe('DsoEditMenuSectionComponent', () => {
       it('should call the activate method when clicking the button', () => {
         spyOn(component, 'activate');
 
-        const button = fixture.debugElement.query(By.css('.btn-dark'));
+        const button = fixture.debugElement.query(By.css('.btn-secondary'));
         button.triggerEventHandler('click', null);
 
         expect(component.activate).toHaveBeenCalled();

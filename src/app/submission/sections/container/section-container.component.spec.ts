@@ -2,6 +2,7 @@
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
+  signal,
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -14,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { of as observableOf } from 'rxjs';
 
+import { DatashareSubmissionFormSectionContainerService } from '../../../datashare/datashare-submission-form-section-container.service';
 import {
   mockSubmissionCollectionId,
   mockSubmissionId,
@@ -86,6 +88,11 @@ describe('SubmissionSectionContainerComponent test suite', () => {
       providers: [
         { provide: SectionsService, useValue: sectionsServiceStub },
         { provide: SubmissionService, useValue: submissionServiceStub },
+        { provide: DatashareSubmissionFormSectionContainerService, useValue: {
+          openPanelId: signal('traditionalpageone'),
+          sectionPanelIds: signal([]),
+          setOpenPanelId: jasmine.createSpy('setOpenPanelId'),
+        }},
         SubmissionSectionContainerComponent,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

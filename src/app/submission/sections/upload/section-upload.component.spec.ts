@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   NO_ERRORS_SCHEMA,
+  signal,
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -51,6 +52,18 @@ import { SectionsService } from '../sections.service';
 import { SectionsType } from '../sections-type';
 import { SubmissionSectionUploadComponent } from './section-upload.component';
 import { SectionUploadService } from './section-upload.service';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
+
+const mockDatashareSubmissionService = {
+  hasUploadFilesErrorsSignal: signal(false),
+  updatehasUploadFilesErrors: jasmine.createSpy('updatehasUploadFilesErrors'),
+  calculateTotalUploadedFilesSize: jasmine.createSpy('calculateTotalUploadedFilesSize').and.returnValue(0),
+  isTotalUploadedFilesSizeExceeded: jasmine.createSpy('isTotalUploadedFilesSizeExceeded').and.returnValue(false),
+  formatBytes: jasmine.createSpy('formatBytes').and.returnValue('0 Bytes'),
+  getDuplicateFileNames: jasmine.createSpy('getDuplicateFileNames').and.returnValue([]),
+  createDuplicateFileNameDetector: jasmine.createSpy('createDuplicateFileNameDetector').and.returnValue({ detect: jasmine.createSpy('detect') }),
+  sendCannotSubmitNotification: jasmine.createSpy('sendCannotSubmitNotification'),
+};
 
 function getMockSubmissionUploadsConfigService(): SubmissionFormsConfigDataService {
   return jasmine.createSpyObj('SubmissionUploadsConfigService', {
@@ -190,6 +203,7 @@ describe('SubmissionSectionUploadComponent test suite', () => {
         { provide: SectionsService, useClass: SectionsServiceStub },
         { provide: SubmissionService, useValue: submissionServiceStub },
         { provide: SectionUploadService, useValue: bitstreamService },
+        { provide: DatashareSubmissionService, useValue: mockDatashareSubmissionService },
         { provide: 'sectionDataProvider', useValue: sectionObject },
         { provide: 'submissionIdProvider', useValue: submissionId },
         { provide: ThemeService, useValue: getMockThemeService() },

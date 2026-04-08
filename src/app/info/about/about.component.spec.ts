@@ -14,8 +14,7 @@ describe('AboutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [AboutComponent],
+      imports: [TranslateModule.forRoot(), AboutComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));

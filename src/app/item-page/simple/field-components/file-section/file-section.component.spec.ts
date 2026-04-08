@@ -169,7 +169,8 @@ describe('FileSectionComponent', () => {
       });
       it('should contain another bitstream', () => {
         const fileDownloadLink = fixture.debugElement.queryAll(By.css('ds-file-download-link'));
-        expect(fileDownloadLink.length).toEqual(2);
+        // DATASHARE: getNextPage() fetches both ORIGINAL and CC-LICENSE bundles
+        expect(fileDownloadLink.length).toEqual(3);
       });
     });
   });

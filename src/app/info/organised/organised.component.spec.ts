@@ -14,8 +14,7 @@ describe('OrganisedComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [OrganisedComponent],
+      imports: [TranslateModule.forRoot(), OrganisedComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
