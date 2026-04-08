@@ -27,6 +27,7 @@ import { ResourcePolicy } from '../../../core/resource-policy/models/resource-po
 import { ResourcePolicyDataService } from '../../../core/resource-policy/resource-policy-data.service';
 import { Collection } from '../../../core/shared/collection.model';
 import { PageInfo } from '../../../core/shared/page-info.model';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 import { AlertComponent } from '../../../shared/alert/alert.component';
 import { getMockSectionUploadService } from '../../../shared/mocks/section-upload.service.mock';
 import {
@@ -52,7 +53,6 @@ import { SectionsService } from '../sections.service';
 import { SectionsType } from '../sections-type';
 import { SubmissionSectionUploadComponent } from './section-upload.component';
 import { SectionUploadService } from './section-upload.service';
-import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 
 const mockDatashareSubmissionService = {
   hasUploadFilesErrorsSignal: signal(false),

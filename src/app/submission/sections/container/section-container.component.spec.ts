@@ -92,7 +92,7 @@ describe('SubmissionSectionContainerComponent test suite', () => {
           openPanelId: signal('traditionalpageone'),
           sectionPanelIds: signal([]),
           setOpenPanelId: jasmine.createSpy('setOpenPanelId'),
-        }},
+        } },
         SubmissionSectionContainerComponent,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
