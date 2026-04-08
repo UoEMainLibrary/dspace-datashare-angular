@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ds-deposit-button',
+  selector: 'ds-base-deposit-button',
   standalone: true,
   imports: [],
   templateUrl: './deposit-button.component.html',

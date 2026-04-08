@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { NotificationsService } from '../shared/notifications/notifications.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DatashareSubmissionService {
 
@@ -21,8 +21,8 @@ export class DatashareSubmissionService {
   public readonly hasUploadFilesErrorsSignal = this._hasUploadFilesErrorsSignal.asReadonly();
 
   constructor(private notificationsService: NotificationsService,
-    private translate: TranslateService
-  ) { 
+    private translate: TranslateService,
+  ) {
     console.log('DatashareSubmissionService created');
   }
 
@@ -60,7 +60,9 @@ export class DatashareSubmissionService {
    * @returns Formatted string (e.g., "1.5 MB")
    */
   formatBytes(bytes: number): string {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) {
+      return '0 Bytes';
+    }
 
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
@@ -114,7 +116,7 @@ export class DatashareSubmissionService {
       getDuplicateFileNamesDisplay: () => this.getDuplicateFileNamesDisplay(fileNamesSignal()),
     };
   }
-  
+
   createObservableDuplicateDetector$(fileNames$: Observable<string[]>): Observable<boolean> {
     return new Observable<boolean>(subscriber => {
       fileNames$.subscribe(fileNames => {
