@@ -107,7 +107,7 @@ jobs:
         run: yarn run build:prod
 
       - name: Run specs (unit tests)
-        run: yarn run test:headless --browsers=ChromeHeadlessCI
+        run: yarn run test:headless
 
       # Upload code coverage report to artifact (for one version of Node only),
       # so that it can be shared with the 'codecov' job (see below)
