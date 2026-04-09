@@ -35,7 +35,13 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    // DataShare fork needs more time for code coverage data collection (5000+ tests)
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-dev-shm-usage'],
+      },
+    },
+    // DataShare fork: CI needs more time for code coverage data collection (5000+ tests)
     browserNoActivityTimeout: 600000,
     singleRun: false,
     restartOnFileChange: true
