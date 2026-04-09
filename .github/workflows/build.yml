@@ -35,7 +35,8 @@ jobs:
       # Comment this out to use the latest release
       #CHROME_VERSION: "90.0.4430.212-1"
       # Bump Node heap size (OOM in CI after upgrading to Angular 15)
-      NODE_OPTIONS: '--max-old-space-size=4096'
+      # Increased to 8192 from upstream 4096 — DataShare fork has more code/tests
+      NODE_OPTIONS: '--max-old-space-size=8192'
       # Project name to use when running "docker compose" prior to e2e tests
       COMPOSE_PROJECT_NAME: 'ci'
       # Docker Registry to use for Docker compose scripts below.
