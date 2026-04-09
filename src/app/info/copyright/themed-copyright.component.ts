@@ -7,7 +7,8 @@ import { CopyrightComponent } from './copyright.component';
  * Themed wrapper for Component
  */
 @Component({
-  selector: 'ds-copyright',
+  // eslint-disable-next-line dspace-angular-ts/themed-component-selectors
+  selector: 'ds-themed-copyright',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,

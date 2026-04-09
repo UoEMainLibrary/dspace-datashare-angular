@@ -7,7 +7,8 @@ import { OrganisedComponent } from './organised.component';
  * Themed wrapper for Component
  */
 @Component({
-  selector: 'ds-organised',
+  // eslint-disable-next-line dspace-angular-ts/themed-component-selectors
+  selector: 'ds-themed-organised',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,
