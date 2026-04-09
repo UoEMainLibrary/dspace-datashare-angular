@@ -41,7 +41,7 @@ module.exports = function (config) {
         flags: [
           '--no-sandbox',
           '--disable-dev-shm-usage',
-          '--js-flags=--max-old-space-size=4096',
+          '--js-flags=--max-old-space-size=8192',
         ],
       },
     },
