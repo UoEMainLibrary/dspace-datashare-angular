@@ -368,7 +368,7 @@ export class FormComponent implements OnDestroy, OnInit {
       // In case of qualdrop value remove event must be dispatched before removing the control from array
       this.removeArrayItem.emit(event);
     }
-    if (index === 0 && formArrayControl.value?.length === 1) {
+    if (index === 0 && formArrayControl.length === 1) {
       // Don't remove the last item, just clear its value to prevent the array from becoming empty
       event.model = cloneDeep(event.model);
       const fieldId = event.model.id;
