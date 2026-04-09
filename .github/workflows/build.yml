@@ -59,6 +59,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # DataShare fork: code coverage instrumentation needs more memory than the
+      # default 7GB runner provides. Add swap so Chrome + Node can coexist.
+      - name: Increase swap for code coverage tests
+        run: |
+          sudo fallocate -l 4G /mnt/swapfile
+          sudo chmod 600 /mnt/swapfile
+          sudo mkswap /mnt/swapfile
+          sudo swapon /mnt/swapfile
+
       # If CHROME_VERSION env variable specified above, then pin to that version.
       # Otherwise, just install latest version of Chrome.
       - name: Install Chrome (for e2e tests)
