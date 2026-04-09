@@ -38,7 +38,11 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--disable-dev-shm-usage'],
+        flags: [
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--js-flags=--max-old-space-size=4096',
+        ],
       },
     },
     // DataShare fork: CI needs more time for code coverage data collection (5000+ tests)
