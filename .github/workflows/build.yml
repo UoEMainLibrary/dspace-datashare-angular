@@ -35,7 +35,8 @@ jobs:
       # Comment this out to use the latest release
       #CHROME_VERSION: "90.0.4430.212-1"
       # Bump Node heap size (OOM in CI after upgrading to Angular 15)
-      NODE_OPTIONS: '--max-old-space-size=4096'
+      # DataShare fork needs 8GB for coverage-instrumented test compilation
+      NODE_OPTIONS: '--max-old-space-size=8192'
       # Project name to use when running "docker compose" prior to e2e tests
       COMPOSE_PROJECT_NAME: 'ci'
       # Docker Registry to use for Docker compose scripts below.
@@ -63,10 +64,12 @@ jobs:
       # default 7GB runner provides. Add swap so Chrome + Node can coexist.
       - name: Increase swap for code coverage tests
         run: |
-          sudo fallocate -l 4G /mnt/swapfile
+          free -h
+          sudo fallocate -l 4G /mnt/swapfile || sudo dd if=/dev/zero of=/mnt/swapfile bs=1M count=4096
           sudo chmod 600 /mnt/swapfile
           sudo mkswap /mnt/swapfile
           sudo swapon /mnt/swapfile
+          free -h
 
       # If CHROME_VERSION env variable specified above, then pin to that version.
       # Otherwise, just install latest version of Chrome.
