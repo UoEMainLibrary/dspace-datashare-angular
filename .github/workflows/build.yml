@@ -106,10 +106,10 @@ jobs:
       - name: Run build
         run: yarn run build:prod
 
-      # DataShare fork: --source-map=false overrides the npm script's --source-map=true
-      # to reduce the coverage-instrumented bundle size (Chrome OOM with source maps)
+      # DataShare fork: bypass npm script to ensure --source-map=false is applied.
+      # Source maps + coverage instrumentation creates a bundle too large for Chrome.
       - name: Run specs (unit tests)
-        run: yarn run test:headless --source-map=false
+        run: npx ng test --source-map=false --watch=false --configuration test --browsers=ChromeHeadlessCI --code-coverage
 
       # Upload code coverage report to artifact (for one version of Node only),
       # so that it can be shared with the 'codecov' job (see below)
