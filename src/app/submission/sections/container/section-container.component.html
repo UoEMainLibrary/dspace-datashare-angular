@@ -44,9 +44,7 @@
           </a>
         </div>
       </ng-template>
-      <!-- DATASHARE - start  -->
-      <ng-template ngbPanelContent  *ngIf="datashareSubmissionFormSectionContainerService.openPanelId() === sectionData.id || ''">
-      <!-- DATASHARE - end  -->
+      <ng-template ngbPanelContent>
         <div id="sectionGenericError_{{sectionData.id}}" *ngIf="sectionRef.hasGenericErrors()">
           <ds-alert *ngFor="let error of sectionRef.getErrors(); let i = index" [content]="error" [dismissible]="true"
             [type]="AlertTypeEnum.Error" (close)="sectionRef.removeError(i)"></ds-alert>
