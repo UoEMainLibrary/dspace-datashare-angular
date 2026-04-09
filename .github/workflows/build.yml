@@ -112,7 +112,7 @@ jobs:
       # DSpace works because their test suite is smaller. The --code-coverage
       # flag is preserved in package.json test:headless for local use.
       - name: Run specs (unit tests)
-        run: npx ng test --watch=false --configuration test --browsers=ChromeHeadlessCI
+        run: yarn ng test --watch=false --configuration test --browsers=ChromeHeadlessCI
 
       # Upload code coverage report to artifact (for one version of Node only),
       # so that it can be shared with the 'codecov' job (see below)
