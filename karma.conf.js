@@ -38,11 +38,12 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox'],
+        flags: ['--no-sandbox', '--disable-gpu', '--js-flags=--max-old-space-size=4096'],
       },
     },
-    // DataShare fork: CI needs more time for code coverage data collection (5000+ tests)
-    browserNoActivityTimeout: 600000,
+    browserDisconnectTimeout: 60000,
+    browserDisconnectTolerance: 3,
+    browserNoActivityTimeout: 120000,
     singleRun: false,
     restartOnFileChange: true
   });
