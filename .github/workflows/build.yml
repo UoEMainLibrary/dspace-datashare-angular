@@ -106,13 +106,8 @@ jobs:
       - name: Run build
         run: yarn run build:prod
 
-      # DataShare fork: run tests WITHOUT --code-coverage in CI.
-      # Coverage instrumentation creates a bundle too large for Chrome on the
-      # 7GB GitHub Actions runner (Chrome OOM after ~60% of tests). Upstream
-      # DSpace works because their test suite is smaller. The --code-coverage
-      # flag is preserved in package.json test:headless for local use.
       - name: Run specs (unit tests)
-        run: yarn run test --browsers=ChromeHeadlessCI
+        run: yarn run test:headless
 
       # Upload code coverage report to artifact (for one version of Node only),
       # so that it can be shared with the 'codecov' job (see below)
