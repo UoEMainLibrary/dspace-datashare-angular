@@ -61,7 +61,13 @@ const mockDatashareSubmissionService = {
   isTotalUploadedFilesSizeExceeded: jasmine.createSpy('isTotalUploadedFilesSizeExceeded').and.returnValue(false),
   formatBytes: jasmine.createSpy('formatBytes').and.returnValue('0 Bytes'),
   getDuplicateFileNames: jasmine.createSpy('getDuplicateFileNames').and.returnValue([]),
-  createDuplicateFileNameDetector: jasmine.createSpy('createDuplicateFileNameDetector').and.returnValue({ detect: jasmine.createSpy('detect') }),
+  createDuplicateFileNameDetector: jasmine.createSpy('createDuplicateFileNameDetector').and.returnValue({
+    fileNamesSignal: signal<string[]>([]),
+    hasUploadFilesErrorsSignal: signal(false),
+    updateFileNames: jasmine.createSpy('updateFileNames'),
+    getDuplicates: jasmine.createSpy('getDuplicates').and.returnValue([]),
+    getDuplicateFileNamesDisplay: jasmine.createSpy('getDuplicateFileNamesDisplay').and.returnValue(''),
+  }),
   sendCannotSubmitNotification: jasmine.createSpy('sendCannotSubmitNotification'),
 };
 
