@@ -168,6 +168,16 @@ jobs:
           name: e2e-test-screenshots-${{ matrix.node-version }}
           path: cypress/screenshots
 
+      # List failing test screenshot filenames in job summary for easier debugging
+      - name: List e2e test failure screenshots
+        if: failure()
+        run: |
+          echo "## Cypress e2e Failure Screenshots (Node ${{ matrix.node-version }})" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find cypress/screenshots -name '*.png' 2>/dev/null || echo "No screenshots found"
+          find cypress/screenshots -name '*.png' 2>/dev/null >> $GITHUB_STEP_SUMMARY || echo "No screenshots found" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
       - name: Stop app (in case it stays up after e2e tests)
         run: |
           app_pid=$(lsof -t -i:4000)
