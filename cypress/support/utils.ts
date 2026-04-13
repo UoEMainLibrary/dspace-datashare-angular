@@ -1,4 +1,4 @@
-import { Result } from 'axe-core';
+import { Result, RunOptions, Spec } from 'axe-core';
 import { Options } from 'cypress-axe';
 
 // Log violations to terminal/commandline in a table format.
@@ -40,5 +40,45 @@ export const testA11y = (context?: any, options?: Options) => {
       { id: 'color-contrast', enabled: false },
     ],
   });
+
+  // Run axe manually to capture & write violations BEFORE asserting
+  cy.window({ log: false }).then((win) => {
+    // Merge global rule config with test-specific options
+    const mergedRules: Record<string, any> = { 'color-contrast': { enabled: false } };
+    if (options && (options as any).rules) {
+      Object.entries((options as any).rules).forEach(([ruleId, ruleOpts]: [string, any]) => {
+        mergedRules[ruleId] = ruleOpts;
+      });
+    }
+    const axeRunOptions: any = {
+      rules: mergedRules,
+    };
+
+    return new Cypress.Promise((resolve) => {
+      (win as any).axe.run(context || win.document, axeRunOptions, (err: any, results: any) => {
+        resolve({ err, results });
+      });
+    });
+  }).then((outcome: any) => {
+    const { results } = outcome;
+    if (results && results.violations && results.violations.length > 0) {
+      // Write violations to file BEFORE the test fails
+      const specName = Cypress.spec.name.replace(/[^a-zA-Z0-9]/g, '_');
+      const fileName = `cypress/results/a11y-violations-${specName}.json`;
+      const violationData = results.violations.map(
+        (v: any) => ({
+          id: v.id,
+          impact: v.impact,
+          description: v.description,
+          nodes: v.nodes.length,
+          html: v.nodes.map((n: any) => n.html),
+        }),
+      );
+      cy.writeFile(fileName, JSON.stringify(violationData, null, 2));
+      cy.task('log', `A11Y VIOLATIONS FOUND: ${JSON.stringify(violationData)}`);
+    }
+  });
+
+  // Now run the actual checkA11y which will assert & fail if violations exist
   cy.checkA11y(context, options, terminalLog);
 };
