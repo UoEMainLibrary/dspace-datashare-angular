@@ -181,12 +181,6 @@ jobs:
           while IFS= read -r f; do
             echo "::warning file=cypress/screenshots::FAILED_TEST: $f"
           done < <(find cypress/screenshots -name '*.png' 2>/dev/null)
-          # Print a11y violation details if any were written by testA11y diagnostic
-          for f in cypress/results/a11y-violations-*.json; do
-            if [ -f "$f" ]; then
-              echo "::warning file=$f::A11Y_VIOLATIONS: $(cat "$f" | tr '\n' ' ' | head -c 500)"
-            fi
-          done
 
       - name: Stop app (in case it stays up after e2e tests)
         run: |

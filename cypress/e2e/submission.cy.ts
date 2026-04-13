@@ -41,6 +41,9 @@ describe('New Submission page', () => {
                 // All select boxes fail to have a name / aria-label.
                 // This is a bug in ng-dynamic-forms and may require https://github.com/DSpace/dspace-angular/issues/2216
                 'select-name': { enabled: false },
+                // DataShare's custom inline relation-group form renders sub-field inputs
+                // without programmatic label association (upstream uses a modal popup instead).
+                'label': { enabled: false },
               },
 
             } as Options,
