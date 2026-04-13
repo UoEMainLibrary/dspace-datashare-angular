@@ -178,9 +178,9 @@ jobs:
           find cypress/screenshots -name '*.png' 2>/dev/null >> $GITHUB_STEP_SUMMARY || echo "No screenshots found" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           # Also emit as workflow warning annotations so they're visible via API
-          for f in $(find cypress/screenshots -name '*.png' 2>/dev/null); do
-            echo "::warning file=cypress/screenshots::Failed test screenshot: $f"
-          done
+          while IFS= read -r f; do
+            echo "::warning file=cypress/screenshots::FAILED_TEST: $f"
+          done < <(find cypress/screenshots -name '*.png' 2>/dev/null)
 
       - name: Stop app (in case it stays up after e2e tests)
         run: |
