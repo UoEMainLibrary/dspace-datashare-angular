@@ -352,3 +352,5 @@ jobs:
           attempt_limit: 5
           # Run again in 30 seconds
           attempt_delay: 30000
+        # Only run if coverage was generated (coverage is currently disabled due to Chrome OOM)
+        continue-on-error: true
