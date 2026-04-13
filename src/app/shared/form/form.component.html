@@ -12,8 +12,7 @@
       (dfFocus)="onFocus($event)"
       (ngbEvent)="onCustomEvent($event)">
       <!-- DATASHARE start -->
-      <!-- DATASHARE: Added let-model--> 
-      <ng-template modelType="ARRAY" let-model let-group let-index="index" let-context="context">
+      <ng-template modelType="ARRAY" let-group let-index="index" let-context="context">
         <!--Array with repeatable items-->
         <div *ngIf="(!context.notRepeatable) && !isVirtual(context, index) && group.context.groups.length !== 1 && !isItemReadOnly(context, index)"
              class="col-xs-2 d-flex flex-column justify-content-sm-start align-items-end">
@@ -27,11 +26,11 @@
         <div *ngIf="(!context.notRepeatable) && index === (group.context.groups.length - 1) && !isItemReadOnly(context, index)" class="clearfix pl-4 w-100">
           <div class="btn-group" role="group">
             <button type="button" role="button" class="ds-form-add-more btn btn-link"
-                    title="{{'form.add' | translate}} {{ model.context.label }}"
-                    attr.aria-label="{{'form.add' | translate}} {{ model.context.label }}"
+                    title="{{'form.add' | translate}}"
+                    attr.aria-label="{{'form.add' | translate}}"
                     (click)="insertItem($event, group.context, group.context.groups.length)">
-              <span><i class="fas fa-plus"></i>&nbsp;{{ model.context.label }}</span>
-              <!-- DATASHARE: Replaced  {{'form.add' | translate}} with {{ model.context.label }} -->
+              <span><i class="fas fa-plus"></i>&nbsp;{{'form.add' | translate}}</span>
+              <!-- DATASHARE: kept i18n text for button name a11y compliance -->
             </button>
           </div>
         </div>
