@@ -5368,6 +5368,8 @@
 
   "submission.sections.toggle.aria.close": "Collapse {{sectionHeader}} section",
 
+  "submission.sections.remove": "Remove {{sectionHeader}} section",
+
   "submission.sections.upload.primary.make": "Make {{fileName}} the primary bitstream",
 
   "submission.sections.upload.primary.remove": "Remove {{fileName}} as the primary bitstream",

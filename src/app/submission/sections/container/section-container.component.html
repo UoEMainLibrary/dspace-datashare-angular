@@ -34,8 +34,9 @@
             <span *ngIf="!sectionRef.isOpen()" class="fas fa-chevron-down fa-fw"></span>
           </a>
           <a href="javascript:void(0);" class="close mr-3" *ngIf="!sectionRef.isMandatory()"
-            (click)="removeSection($event)">
-            <i class="fas fa-trash-o" aria-hidden="true" tabindex="0"></i>
+            (click)="removeSection($event)"
+            [attr.aria-label]="'submission.sections.remove' | translate: {sectionHeader: ('submission.sections.'+sectionData.header | translate)}">
+            <i class="fas fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>
       </ng-template>

@@ -40,22 +40,5 @@ export const testA11y = (context?: any, options?: Options) => {
       { id: 'color-contrast', enabled: false },
     ],
   });
-  cy.checkA11y(context, options, (violations) => {
-    // Write violation details to a JSON file for CI diagnostics
-    const specName = Cypress.spec.name.replace(/[^a-zA-Z0-9]/g, '_');
-    const fileName = `cypress/results/a11y-violations-${specName}.json`;
-    const violationData = violations.map(
-      ({ id, impact, description, helpUrl, nodes }) => ({
-        id,
-        impact,
-        description,
-        helpUrl,
-        nodes: nodes.length,
-        html: nodes.map(node => node.html),
-      }),
-    );
-    cy.writeFile(fileName, JSON.stringify(violationData, null, 2));
-    // Also log to terminal
-    terminalLog(violations);
-  });
+  cy.checkA11y(context, options, terminalLog);
 };
