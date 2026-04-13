@@ -1,4 +1,4 @@
-import { Result, RunOptions, Spec } from 'axe-core';
+import { Result } from 'axe-core';
 import { Options } from 'cypress-axe';
 
 // Log violations to terminal/commandline in a table format.
