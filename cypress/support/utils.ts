@@ -41,5 +41,4 @@ export const testA11y = (context?: any, options?: Options) => {
     ],
   });
   cy.checkA11y(context, options, terminalLog);
-  cy.checkA11y(context, options, terminalLog);
 };

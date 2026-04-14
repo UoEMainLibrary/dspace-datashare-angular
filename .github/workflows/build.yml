@@ -38,9 +38,9 @@ jobs:
       NODE_OPTIONS: '--max-old-space-size=4096'
       # Project name to use when running "docker compose" prior to e2e tests
       COMPOSE_PROJECT_NAME: 'ci'
-      # DataShare fork: use DockerHub (default) instead of GHCR.
-      # Upstream DSpace uses GHCR, but those images are private to the DSpace org.
-      # The fork's GITHUB_TOKEN cannot access them. DockerHub images are public.
+      # Docker images: uses upstream DSpace images from DockerHub (docker.io/dspace/*).
+      # Upstream CI uses GHCR (ghcr.io) which requires authentication via GITHUB_TOKEN.
+      # This fork uses the default DockerHub registry instead (no auth needed).
       # DOCKER_REGISTRY: ghcr.io
     strategy:
       # Create a matrix of Node versions to test against (in parallel)
@@ -167,20 +167,6 @@ jobs:
         with:
           name: e2e-test-screenshots-${{ matrix.node-version }}
           path: cypress/screenshots
-
-      # List failing test screenshot filenames in job summary for easier debugging
-      - name: List e2e test failure screenshots
-        if: failure()
-        run: |
-          echo "## Cypress e2e Failure Screenshots (Node ${{ matrix.node-version }})" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          find cypress/screenshots -name '*.png' 2>/dev/null || echo "No screenshots found"
-          find cypress/screenshots -name '*.png' 2>/dev/null >> $GITHUB_STEP_SUMMARY || echo "No screenshots found" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          # Also emit as workflow warning annotations so they're visible via API
-          while IFS= read -r f; do
-            echo "::warning file=cypress/screenshots::FAILED_TEST: $f"
-          done < <(find cypress/screenshots -name '*.png' 2>/dev/null)
 
       - name: Stop app (in case it stays up after e2e tests)
         run: |
@@ -343,14 +329,12 @@ jobs:
         uses: Wandalen/wretry.action@v1.3.0
         with:
           action: codecov/codecov-action@v4
-          # Ensure codecov-action throws an error when it fails to upload
-          # This allows us to auto-restart the action if an error is thrown
+          # NOTE: fail_ci_if_error is false because coverage is currently disabled (Chrome OOM).
+          # Change to true once coverage is re-enabled.
           with: |
-            fail_ci_if_error: true
+            fail_ci_if_error: false
             token: ${{ secrets.CODECOV_TOKEN }}
           # Try re-running action 5 times max
           attempt_limit: 5
           # Run again in 30 seconds
           attempt_delay: 30000
-        # Only run if coverage was generated (coverage is currently disabled due to Chrome OOM)
-        continue-on-error: true
