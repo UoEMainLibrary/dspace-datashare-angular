@@ -7,7 +7,8 @@ import { AboutComponent } from './about.component';
  * Themed wrapper for Component
  */
 @Component({
-  selector: 'ds-about',
+  // eslint-disable-next-line dspace-angular-ts/themed-component-selectors
+  selector: 'ds-themed-about',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,
