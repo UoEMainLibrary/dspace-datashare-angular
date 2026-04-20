@@ -2,7 +2,7 @@
   [ngClass]="{ 'section-focus' : sectionRef.isSectionActive() }" [mandatory]="sectionData.mandatory"
   [submissionId]="submissionId" [sectionType]="sectionData.sectionType" [sectionId]="sectionData.id">
   <!-- DATASHARE - start  -->
-  <!-- Use the signal-based method to determine if the section is open  and recording panel changes-->
+  <!-- Use the signal-based method to determine if the section is open and recording panel changes-->
   <ngb-accordion #acc="ngbAccordion" *ngIf="(sectionRef.isEnabled() | async)"
     (panelChange)="onPanelChange($event)" [activeIds]="datashareSubmissionFormSectionContainerService.openPanelId() === sectionData.id ? sectionData.id : ''" [destroyOnHide]="false"
     [class]="isSectionOpen() ? 'ds-open' : 'ds-closed'">
@@ -39,8 +39,9 @@
           </a>
           <!-- DATASHARE - end  -->
           <a href="javascript:void(0);" class="close mr-3" *ngIf="!sectionRef.isMandatory()"
-            (click)="removeSection($event)">
-            <i class="fas fa-trash-o" aria-hidden="true" tabindex="0"></i>
+            (click)="removeSection($event)"
+            [attr.aria-label]="'submission.sections.remove' | translate: {sectionHeader: ('submission.sections.'+sectionData.header | translate)}">
+            <i class="fas fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>
       </ng-template>

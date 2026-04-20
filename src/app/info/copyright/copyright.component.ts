@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ds-copyright',
+  selector: 'ds-base-copyright',
   templateUrl: './copyright.component.html',
   styleUrls: ['./copyright.component.scss'],
   standalone: true,

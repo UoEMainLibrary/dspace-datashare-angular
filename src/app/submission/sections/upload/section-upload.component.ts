@@ -6,9 +6,7 @@ import {
 import {
   ChangeDetectorRef,
   Component,
-  computed,
   Inject,
-  signal,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -40,6 +38,7 @@ import { Group } from '../../../core/eperson/models/group.model';
 import { ResourcePolicyDataService } from '../../../core/resource-policy/resource-policy-data.service';
 import { Collection } from '../../../core/shared/collection.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 import { AlertComponent } from '../../../shared/alert/alert.component';
 import { AlertType } from '../../../shared/alert/alert-type';
 import {
@@ -57,7 +56,6 @@ import { SectionsService } from '../sections.service';
 import { SubmissionSectionUploadAccessConditionsComponent } from './accessConditions/submission-section-upload-access-conditions.component';
 import { ThemedSubmissionSectionUploadFileComponent } from './file/themed-section-upload-file.component';
 import { SectionUploadService } from './section-upload.service';
-import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
@@ -154,8 +152,8 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   protected subs: Subscription[] = [];
 
   // DATASHARE - Start
-  public totalUploadedFilesSize: number = 0;
-  public isTotalUploadedFilesSizeExceeded: boolean = false;
+  public totalUploadedFilesSize = 0;
+  public isTotalUploadedFilesSizeExceeded = false;
 
   // Duplicate file name detector from service
   private duplicateDetector = this.datashareSubmissionService.createDuplicateFileNameDetector();

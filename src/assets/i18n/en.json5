@@ -4612,7 +4612,7 @@
 
   "search.filters.filter.show-more": "Show more",
 
-  "search.filters.filter.subject.head": "Subject",
+  "search.filters.filter.subject.head": "Subject Keywords",
 
   "search.filters.filter.subject.placeholder": "Subject",
 
@@ -5367,6 +5367,8 @@
   "submission.sections.toggle.aria.open": "Expand {{sectionHeader}} section",
 
   "submission.sections.toggle.aria.close": "Collapse {{sectionHeader}} section",
+
+  "submission.sections.remove": "Remove {{sectionHeader}} section",
 
   "submission.sections.upload.primary.make": "Make {{fileName}} the primary bitstream",
 

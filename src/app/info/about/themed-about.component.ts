@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ThemedComponent } from '../../shared/theme-support/themed.component';
 import { AboutComponent } from './about.component';
 
@@ -6,11 +7,14 @@ import { AboutComponent } from './about.component';
  * Themed wrapper for Component
  */
 @Component({
+  // DATASHARE: DSpace 8 convention requires themed wrappers to use 'ds-about' instead of 'ds-themed-about',
+  // but DataShare theme files reference this component by 'ds-themed-about'. Changing it would break the theme.
+  // eslint-disable-next-line dspace-angular-ts/themed-component-selectors
   selector: 'ds-themed-about',
   styleUrls: [],
   templateUrl: '../../shared/theme-support/themed.component.html',
   standalone: true,
-  imports: [AboutComponent]
+  imports: [AboutComponent],
 })
 export class ThemedAboutComponent extends ThemedComponent<AboutComponent> {
   protected getComponentName(): string {
