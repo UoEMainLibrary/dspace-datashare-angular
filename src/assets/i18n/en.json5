@@ -6972,8 +6972,6 @@
 
   "file-download-link.download": "Download ",
 
-  "file-download-link.embargo-until": "Embargo until {{ date }}",
-
   "register-page.registration.aria.label": "Enter your e-mail address",
 
   "forgot-email.form.aria.label": "Enter your e-mail address",

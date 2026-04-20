@@ -19,6 +19,7 @@ import { hasValue, isEmpty } from '../../../../../../../app/shared/empty.util';
 import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
 import { followLink } from '../../../../../../../app/shared/utils/follow-link-config.model';
 import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
+import { AccessStatusDataService } from '../../../../../../../app/core/data/access-status-data.service';
 import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
 import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-name.service';
 import { APP_CONFIG, AppConfig } from '../../../../../../../config/app-config.interface';
@@ -54,6 +55,7 @@ export class FileSectionComponent extends BaseComponent {
   licenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
   downloadLink$: Observable<string>;
   downloadLinkAvailable$: Observable<boolean>;
+  hasEmbargo$: Observable<boolean>;
 
   cclicenseOptions = Object.assign(new PaginationComponentOptions(), {
     id: 'cclbo',
@@ -76,6 +78,7 @@ export class FileSectionComponent extends BaseComponent {
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     protected downloadLinkService: DownloadLinkService,
+    protected accessStatusDataService: AccessStatusDataService,
   ) {
     super(bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
 
@@ -122,6 +125,11 @@ export class FileSectionComponent extends BaseComponent {
     this.downloadLink$ = this.downloadLinkService.getDownloadLink(this.item.id).pipe(
       filter(link => hasValue(link) && link.length > 0),
       map(link => link)
+    );
+
+    this.hasEmbargo$ = this.accessStatusDataService.findAccessStatusFor(this.item).pipe(
+      getFirstCompletedRemoteData(),
+      map(rd => rd?.hasSucceeded && rd.payload?.status === 'embargo'),
     );
 
   }
