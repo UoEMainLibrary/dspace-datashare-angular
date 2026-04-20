@@ -38,6 +38,8 @@
 
   "access-status.embargo.listelement.badge": "Embargo",
 
+  "embargo.listelement.badge": "Embargo until {{ date }}",
+
   "access-status.metadata.only.listelement.badge": "Metadata only",
 
   "access-status.open.access.listelement.badge": "Open Access",
@@ -6969,6 +6971,8 @@
   "browse.search-form.placeholder": "Search ...",
 
   "file-download-link.download": "Download ",
+
+  "file-download-link.embargo-until": "Embargo until {{ date }}",
 
   "register-page.registration.aria.label": "Enter your e-mail address",
 

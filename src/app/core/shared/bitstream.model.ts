@@ -10,6 +10,8 @@ import {
   typedObject,
 } from '../cache/builders/build-decorators';
 import { RemoteData } from '../data/remote-data';
+import { AccessStatusObject } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.model';
+import { ACCESS_STATUS } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.resource-type';
 import { BITSTREAM } from './bitstream.resource-type';
 import { BitstreamFormat } from './bitstream-format.model';
 import { BITSTREAM_FORMAT } from './bitstream-format.resource-type';
@@ -52,6 +54,7 @@ export class Bitstream extends DSpaceObject implements ChildHALResource {
     format: HALLink;
     content: HALLink;
     thumbnail: HALLink;
+    accessStatus: HALLink;
   };
 
   /**
@@ -74,6 +77,13 @@ export class Bitstream extends DSpaceObject implements ChildHALResource {
    */
   @link(BUNDLE)
   bundle?: Observable<RemoteData<Bundle>>;
+
+  /**
+   * The access status for this Bitstream
+   * Will be undefined unless the accessStatus {@link HALLink} has been resolved.
+   */
+  @link(ACCESS_STATUS, false, 'accessStatus')
+  accessStatus?: Observable<RemoteData<AccessStatusObject>>;
 
   getParentLinkKey(): keyof this['_links'] {
     return 'format';

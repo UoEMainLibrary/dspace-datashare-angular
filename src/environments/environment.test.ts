@@ -287,6 +287,7 @@ export const environment: BuildConfig = {
       // Rounded to the nearest size in the list of selectable sizes on the
       // settings menu.  See pageSizeOptions in 'pagination-component-options.model.ts'.
       pageSize: 5,
+      showAccessStatuses: true,
     },
   },
   community: {
