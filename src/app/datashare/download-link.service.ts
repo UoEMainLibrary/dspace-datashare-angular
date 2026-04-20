@@ -1,21 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Item } from '../core/shared/item.model';
-import { BaseDataService } from '../core/data/base/base-data.service';
-import { RequestService } from '../core/data/request.service';
-import { RemoteDataBuildService } from '../core/cache/builders/remote-data-build.service';
-import { ObjectCacheService } from '../core/cache/object-cache.service';
-import { HALEndpointService } from '../core/shared/hal-endpoint.service';
-import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DownloadLinkService {
-
 
   constructor(
     protected httpClient: HttpClient,
@@ -32,7 +25,7 @@ export class DownloadLinkService {
       map((response: string) => {
         // console.log('response:', response);
         return response;
-      })
+      }),
     );
 
   }

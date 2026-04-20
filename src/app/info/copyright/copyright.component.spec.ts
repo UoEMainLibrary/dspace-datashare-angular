@@ -1,7 +1,12 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { CopyrightComponent } from './copyright.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  ComponentFixture,
+  TestBed,
+  waitForAsync,
+} from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { CopyrightComponent } from './copyright.component';
 
 describe('CopyrightComponent', () => {
   let component: CopyrightComponent;
@@ -9,9 +14,8 @@ describe('CopyrightComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [CopyrightComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      imports: [TranslateModule.forRoot(), CopyrightComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

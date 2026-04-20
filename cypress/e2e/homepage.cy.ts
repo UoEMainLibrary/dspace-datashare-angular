@@ -6,8 +6,8 @@ describe('Homepage', () => {
     cy.visit('/');
   });
 
-  it('should display translated title "DSpace Repository :: Home"', () => {
-    cy.title().should('eq', 'DSpace Repository :: Home');
+  it('should display translated title "Edinburgh DataShare :: Home"', () => {
+    cy.title().should('eq', 'Edinburgh DataShare :: Home');
   });
 
   it('should contain a news section', () => {
@@ -25,6 +25,9 @@ describe('Homepage', () => {
   it('should pass accessibility tests', () => {
     // Wait for homepage tag to appear
     cy.get('ds-home-page').should('be.visible');
+
+    // Wait for all loading components to finish before running a11y check
+    cy.get('ds-loading').should('not.exist');
 
     // Analyze <ds-home-page> for accessibility issues
     testA11y('ds-home-page');

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+
 import { AccessibilityStatementComponent as BaseComponent } from '../../../../../app/info/accessibility-statement/accessibility-statement.component';
 
 
 @Component({
-  selector: 'ds-accessibility-statement',
+  selector: 'ds-themed-accessibility-statement',
   styleUrls: ['./accessibility-statement.component.scss'],
   templateUrl: './accessibility-statement.component.html',
   standalone: true,
