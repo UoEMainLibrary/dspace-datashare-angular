@@ -23,6 +23,9 @@ describe('Edit Item > Edit Metadata tab', () => {
     // <ds-edit-item-page> tag must be loaded
     cy.get('ds-edit-item-page').should('be.visible');
 
+    // Wait for any loading spinners to disappear
+    cy.get('ds-edit-item-page ds-loading').should('not.exist');
+
     // wait for all the ds-dso-edit-metadata-value components to be rendered
     cy.get('ds-dso-edit-metadata-value div[role="row"]').each(($row: HTMLDivElement) => {
       cy.wrap($row).find('div[role="cell"]').should('be.visible');

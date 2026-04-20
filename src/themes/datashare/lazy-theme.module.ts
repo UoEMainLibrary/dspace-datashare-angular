@@ -30,14 +30,21 @@ import { CommunityListPageComponent } from './app/community-list-page/community-
 import { CommunityPageComponent } from './app/community-page/community-page.component';
 import { CommunityPageSubCollectionListComponent } from './app/community-page/sections/sub-com-col-section/sub-collection-list/community-page-sub-collection-list.component';
 import { CommunityPageSubCommunityListComponent } from './app/community-page/sections/sub-com-col-section/sub-community-list/community-page-sub-community-list.component';
+import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
 import { DsoEditMetadataComponent } from './app/dso-shared/dso-edit-metadata/dso-edit-metadata.component';
 import { ForbiddenComponent } from './app/forbidden/forbidden.component';
 import { ForgotEmailComponent } from './app/forgot-password/forgot-password-email/forgot-email.component';
 import { ForgotPasswordFormComponent } from './app/forgot-password/forgot-password-form/forgot-password-form.component';
 import { HomePageComponent } from './app/home-page/home-page.component';
+// DATASHARE - start
+// Custom Components specifically created for Datashare
+import { AboutComponent } from './app/info/about/about.component';
+import { AccessibilityStatementComponent } from './app/info/accessibility-statement/accessibility-statement.component';
+import { CopyrightComponent } from './app/info/copyright/copyright.component';
 import { EndUserAgreementComponent } from './app/info/end-user-agreement/end-user-agreement.component';
 import { FeedbackComponent } from './app/info/feedback/feedback.component';
 import { FeedbackFormComponent } from './app/info/feedback/feedback-form/feedback-form.component';
+import { OrganisedComponent } from './app/info/organised/organised.component';
 import { PrivacyComponent } from './app/info/privacy/privacy.component';
 import { ItemAlertsComponent } from './app/item-page/alerts/item-alerts.component';
 import { ItemStatusComponent } from './app/item-page/edit-item-page/item-status/item-status.component';
@@ -105,14 +112,6 @@ import { ThumbnailComponent } from './app/thumbnail/thumbnail.component';
 import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workflow-item-delete/workflow-item-delete.component';
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
-
-// DATASHARE - start
-// Custom Components specifically created for Datashare
-import { AboutComponent} from './app/info/about/about.component';
-import { AccessibilityStatementComponent} from './app/info/accessibility-statement/accessibility-statement.component';
-import { CopyrightComponent } from './app/info/copyright/copyright.component';
-import { DepositButtonComponent } from './app/datashare/deposit-button/deposit-button.component';
-import { OrganisedComponent } from './app/info/organised/organised.component';
 // DATASHARE - end
 
 const DECLARATIONS = [

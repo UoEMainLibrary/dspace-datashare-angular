@@ -4,16 +4,19 @@ import {
   NgIf,
 } from '@angular/common';
 import { Component } from '@angular/core';
-
-import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
-import {  DepositButtonComponent as BaseComponent } from '../../../../../app/datashare/deposit-button/deposit-button.component';
 import { AuthorizationDataService } from '../../../../../app/core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../../../../app/core/data/feature-authorization/feature-id';
-import { Observable } from 'rxjs/internal/Observable';
+import {  DepositButtonComponent as BaseComponent } from '../../../../../app/datashare/deposit-button/deposit-button.component';
 import { ThemedCreateItemParentSelectorComponent } from '../../../../../app/shared/dso-selector/modal-wrappers/create-item-parent-selector/themed-create-item-parent-selector.component';
+
 @Component({
   selector: 'ds-themed-deposit-button',
   styleUrls: ['./deposit-button.component.scss'],

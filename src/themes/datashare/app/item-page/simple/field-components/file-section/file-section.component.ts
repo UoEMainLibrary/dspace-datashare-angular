@@ -1,32 +1,48 @@
 // DATASHARE - start
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import {
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
+import {
+  filter,
+  map,
+  Observable,
+  switchMap,
+  tap,
+} from 'rxjs';
 
+import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-name.service';
+import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
+import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
+import { RemoteData } from '../../../../../../../app/core/data/remote-data';
+import { PaginationService } from '../../../../../../../app/core/pagination/pagination.service';
+import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
+import { DownloadLinkService } from '../../../../../../../app/datashare/download-link.service';
 import { FileSectionComponent as BaseComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component';
+import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
 import { slideSidebarPadding } from '../../../../../../../app/shared/animations/slide';
+import {
+  hasValue,
+  isEmpty,
+} from '../../../../../../../app/shared/empty.util';
 import { ThemedFileDownloadLinkComponent } from '../../../../../../../app/shared/file-download-link/themed-file-download-link.component';
 import { ThemedLoadingComponent } from '../../../../../../../app/shared/loading/themed-loading.component';
 import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
+import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
+import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
+import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
 import { FileSizePipe } from '../../../../../../../app/shared/utils/file-size-pipe';
 import { VarDirective } from '../../../../../../../app/shared/utils/var.directive';
-import { getFirstCompletedRemoteData } from '../../../../../../../app/core/shared/operators';
-import { filter, map, Observable, switchMap, tap } from 'rxjs';
-import { RemoteData } from '../../../../../../../app/core/data/remote-data';
-import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
-import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
-import { hasValue, isEmpty } from '../../../../../../../app/shared/empty.util';
-import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
-import { followLink } from '../../../../../../../app/shared/utils/follow-link-config.model';
-import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
-import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
-import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-name.service';
-import { APP_CONFIG, AppConfig } from '../../../../../../../config/app-config.interface';
-import { PaginationService } from '../../../../../../../app/core/pagination/pagination.service';
-import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
-import { DownloadLinkService } from '../../../../../../../app/datashare/download-link.service';
-import { response } from 'express';
-import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
+import {
+  APP_CONFIG,
+  AppConfig,
+} from '../../../../../../../config/app-config.interface';
 
 
 @Component({
@@ -45,10 +61,10 @@ import { GenericItemPageFieldComponent } from '../../../../../../../app/item-pag
     TranslateModule,
     FileSizePipe,
     VarDirective,
-    GenericItemPageFieldComponent
+    GenericItemPageFieldComponent,
   ],
 })
-export class FileSectionComponent extends BaseComponent {
+export class FileSectionComponent extends BaseComponent implements OnInit {
 
   cclicenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
   licenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
@@ -121,7 +137,7 @@ export class FileSectionComponent extends BaseComponent {
 
     this.downloadLink$ = this.downloadLinkService.getDownloadLink(this.item.id).pipe(
       filter(link => hasValue(link) && link.length > 0),
-      map(link => link)
+      map(link => link),
     );
 
   }

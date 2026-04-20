@@ -19,5 +19,5 @@ import { FooterComponent as BaseComponent } from '../../../../app/footer/footer.
   imports: [NgIf, RouterLink, AsyncPipe, DatePipe, TranslateModule],
 })
 export class FooterComponent extends BaseComponent {
-    currentYear: number = new Date().getFullYear();
+  currentYear: number = new Date().getFullYear();
 }
