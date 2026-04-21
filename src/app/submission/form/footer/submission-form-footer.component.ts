@@ -16,12 +16,11 @@ import { map } from 'rxjs/operators';
 
 import { SubmissionRestService } from '../../../core/submission/submission-rest.service';
 import { SubmissionScopeType } from '../../../core/submission/submission-scope-type';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 import { BtnDisabledDirective } from '../../../shared/btn-disabled.directive';
 import { isNotEmpty } from '../../../shared/empty.util';
 import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
 import { SubmissionService } from '../../submission.service';
-import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
-import { ItemPageFieldComponent } from "../../../item-page/simple/field-components/specific-field/item-page-field.component";
 
 /**
  * This component represents submission form footer bar.
@@ -74,13 +73,13 @@ export class SubmissionFormFooterComponent implements OnChanges {
   // Signal access
   public  hasUploadFileErrorsSignal = this.datashareSubmissionService.hasUploadFilesErrorsSignal;
 
-   // Optional: Create a computed signal for more complex logic
+  // Optional: Create a computed signal for more complex logic
   public hasUploadFileErrors = computed(() => {
     // Combine the signal with other conditions if needed
     return this.hasUploadFileErrorsSignal();
   });
 
-   
+
   /**
    * Initialize instance variables
    *

@@ -60,7 +60,7 @@ describe('DsoEditMenuExpandableSectionComponent', () => {
   });
 
   it('should show a button with the icon', () => {
-    const button = fixture.debugElement.query(By.css('.btn-dark'));
+    const button = fixture.debugElement.query(By.css('.btn-secondary'));
     expect(button.nativeElement.innerHTML).toContain('fa-' + iconString);
   });
 });

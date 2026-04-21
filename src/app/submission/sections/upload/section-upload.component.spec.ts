@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   NO_ERRORS_SCHEMA,
+  signal,
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -26,6 +27,7 @@ import { ResourcePolicy } from '../../../core/resource-policy/models/resource-po
 import { ResourcePolicyDataService } from '../../../core/resource-policy/resource-policy-data.service';
 import { Collection } from '../../../core/shared/collection.model';
 import { PageInfo } from '../../../core/shared/page-info.model';
+import { DatashareSubmissionService } from '../../../datashare/datashare-submission.service';
 import { AlertComponent } from '../../../shared/alert/alert.component';
 import { getMockSectionUploadService } from '../../../shared/mocks/section-upload.service.mock';
 import {
@@ -51,6 +53,23 @@ import { SectionsService } from '../sections.service';
 import { SectionsType } from '../sections-type';
 import { SubmissionSectionUploadComponent } from './section-upload.component';
 import { SectionUploadService } from './section-upload.service';
+
+const mockDatashareSubmissionService = {
+  hasUploadFilesErrorsSignal: signal(false),
+  updatehasUploadFilesErrors: jasmine.createSpy('updatehasUploadFilesErrors'),
+  calculateTotalUploadedFilesSize: jasmine.createSpy('calculateTotalUploadedFilesSize').and.returnValue(0),
+  isTotalUploadedFilesSizeExceeded: jasmine.createSpy('isTotalUploadedFilesSizeExceeded').and.returnValue(false),
+  formatBytes: jasmine.createSpy('formatBytes').and.returnValue('0 Bytes'),
+  getDuplicateFileNames: jasmine.createSpy('getDuplicateFileNames').and.returnValue([]),
+  createDuplicateFileNameDetector: jasmine.createSpy('createDuplicateFileNameDetector').and.returnValue({
+    fileNamesSignal: signal<string[]>([]),
+    hasUploadFilesErrorsSignal: signal(false),
+    updateFileNames: jasmine.createSpy('updateFileNames'),
+    getDuplicates: jasmine.createSpy('getDuplicates').and.returnValue([]),
+    getDuplicateFileNamesDisplay: jasmine.createSpy('getDuplicateFileNamesDisplay').and.returnValue(''),
+  }),
+  sendCannotSubmitNotification: jasmine.createSpy('sendCannotSubmitNotification'),
+};
 
 function getMockSubmissionUploadsConfigService(): SubmissionFormsConfigDataService {
   return jasmine.createSpyObj('SubmissionUploadsConfigService', {
@@ -190,6 +209,7 @@ describe('SubmissionSectionUploadComponent test suite', () => {
         { provide: SectionsService, useClass: SectionsServiceStub },
         { provide: SubmissionService, useValue: submissionServiceStub },
         { provide: SectionUploadService, useValue: bitstreamService },
+        { provide: DatashareSubmissionService, useValue: mockDatashareSubmissionService },
         { provide: 'sectionDataProvider', useValue: sectionObject },
         { provide: 'submissionIdProvider', useValue: submissionId },
         { provide: ThemeService, useValue: getMockThemeService() },

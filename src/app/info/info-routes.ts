@@ -8,27 +8,27 @@ import { i18nBreadcrumbResolver } from '../core/breadcrumbs/i18n-breadcrumb.reso
 import { notifyInfoGuard } from '../core/coar-notify/notify-info/notify-info.guard';
 import { feedbackGuard } from '../core/feedback/feedback.guard';
 import { hasValue } from '../shared/empty.util';
+// CUSTOMISED
+import { ThemedAboutComponent } from './about/themed-about.component';
 import { AccessibilitySettingsComponent } from './accessibility-settings/accessibility-settings.component';
+import { ThemedAccessibilityStatementComponent } from './accessibility-statement/themed-accessibility-statement.component';
+import { ThemedCopyrightComponent } from './copyright/themed-copyright.component';
 import { ThemedEndUserAgreementComponent } from './end-user-agreement/themed-end-user-agreement.component';
 import { ThemedFeedbackComponent } from './feedback/themed-feedback.component';
 import {
+  ABOUT_PATH,
   ACCESSIBILITY_SETTINGS_PATH,
+  ACCESSIBILITY_STATEMENT_PATH,
   COAR_NOTIFY_SUPPORT,
+  COPYRIGHT_PATH,
   END_USER_AGREEMENT_PATH,
   FEEDBACK_PATH,
+  ORGANISED_PATH,
   PRIVACY_PATH,
-  ABOUT_PATH, 
-  ACCESSIBILITY_STATEMENT_PATH, 
-  COPYRIGHT_PATH, 
-  ORGANISED_PATH
 } from './info-routing-paths';
 import { NotifyInfoComponent } from './notify-info/notify-info.component';
-import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
-// CUSTOMISED
-import { ThemedAboutComponent } from './about/themed-about.component';
-import { ThemedAccessibilityStatementComponent } from './accessibility-statement/themed-accessibility-statement.component';
-import { ThemedCopyrightComponent } from './copyright/themed-copyright.component';
 import { ThemedOrganisedComponent } from './organised/themed-organised.component';
+import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
 
 
 
@@ -74,25 +74,25 @@ export const ROUTES: Routes = [
     path: ABOUT_PATH,
     component: ThemedAboutComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
-    data: { title: 'info.about.title', breadcrumbKey: 'info.about' }
+    data: { title: 'info.about.title', breadcrumbKey: 'info.about' },
   },
   {
     path: ACCESSIBILITY_STATEMENT_PATH,
     component: ThemedAccessibilityStatementComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
-    data: { title: 'info.accessibility-statement.title', breadcrumbKey: 'info.accessibility-statement' }
+    data: { title: 'info.accessibility-statement.title', breadcrumbKey: 'info.accessibility-statement' },
   },
   {
     path: COPYRIGHT_PATH,
     component: ThemedCopyrightComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
-    data: { title: 'info.copyright.title', breadcrumbKey: 'info.copyright' }
+    data: { title: 'info.copyright.title', breadcrumbKey: 'info.copyright' },
   },
   {
     path: ORGANISED_PATH,
     component: ThemedOrganisedComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
-    data: { title: 'info.organised.title', breadcrumbKey: 'info.organised' }
-  }
+    data: { title: 'info.organised.title', breadcrumbKey: 'info.organised' },
+  },
 
 ].filter((route: Route) => hasValue(route));

@@ -1,7 +1,12 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { OrganisedComponent } from './organised.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  ComponentFixture,
+  TestBed,
+  waitForAsync,
+} from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { OrganisedComponent } from './organised.component';
 
 describe('OrganisedComponent', () => {
   let component: OrganisedComponent;
@@ -9,9 +14,8 @@ describe('OrganisedComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [OrganisedComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      imports: [TranslateModule.forRoot(), OrganisedComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

@@ -79,7 +79,7 @@ export class SubmissionSectionContainerComponent implements OnInit {
    */
   @ViewChild('sectionRef') sectionRef: SectionsDirective;
 
-  public activePanelId: string = '';
+  public activePanelId = '';
 
   /**
    * Initialize instance variables
@@ -89,7 +89,7 @@ export class SubmissionSectionContainerComponent implements OnInit {
   constructor(
     private injector: Injector,
     // DATASHARE - start
-    public datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService
+    public datashareSubmissionFormSectionContainerService: DatashareSubmissionFormSectionContainerService,
     // DATASHARE - end
   ) { }
 
@@ -138,7 +138,7 @@ export class SubmissionSectionContainerComponent implements OnInit {
   }
 
   /**
-   * Handle the panel change event by setting the open panel ID to the signal 
+   * Handle the panel change event by setting the open panel ID to the signal
    * @param event The event emitted by the accordion when a panel is opened or closed
    */
   onPanelChange(event: any) {

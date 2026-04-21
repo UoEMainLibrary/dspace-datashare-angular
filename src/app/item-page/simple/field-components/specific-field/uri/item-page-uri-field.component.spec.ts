@@ -27,7 +27,7 @@ let comp: ItemPageUriFieldComponent;
 let fixture: ComponentFixture<ItemPageUriFieldComponent>;
 
 const mockField = 'dc.identifier.uri';
-const mockValue = 'test value';
+const mockValue = 'https://doi.org/10.1234/test';
 const mockLabel = 'test label';
 
 describe('ItemPageUriFieldComponent', () => {

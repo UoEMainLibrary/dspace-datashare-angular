@@ -41,6 +41,9 @@ describe('New Submission page', () => {
                 // All select boxes fail to have a name / aria-label.
                 // This is a bug in ng-dynamic-forms and may require https://github.com/DSpace/dspace-angular/issues/2216
                 'select-name': { enabled: false },
+                // DataShare's custom inline relation-group form renders sub-field inputs
+                // without programmatic label association (upstream uses a modal popup instead).
+                'label': { enabled: false },
               },
 
             } as Options,
@@ -69,6 +72,9 @@ describe('New Submission page', () => {
     // First section should have an exclamation error in the header
     // (as it has required fields)
     cy.get('div#traditionalpageone-header i.fa-exclamation-circle').should('be.visible');
+
+    // DATASHARE: Open first section panel (DataShare uses one-section-at-a-time accordion)
+    cy.get('#traditionalpageone-header button').click();
 
     // Title field should have class "is-invalid" applied, as it's required
     cy.get('input#dc_title').should('have.class', 'is-invalid');
@@ -119,13 +125,22 @@ describe('New Submission page', () => {
     // This page is restricted, so we will be shown the login form. Fill it out & submit.
     cy.loginViaForm(Cypress.env('DSPACE_TEST_SUBMIT_USER'), Cypress.env('DSPACE_TEST_SUBMIT_USER_PASSWORD'));
 
+    // DATASHARE: Open first section panel (DataShare uses one-section-at-a-time accordion)
+    cy.get('#traditionalpageone-header button').click();
+
     // Fill out all required fields (Title, Date)
     cy.get('input#dc_title').type('DSpace logo uploaded via e2e tests');
     cy.get('input#dc_date_issued_year').type('2022');
 
+    // DATASHARE: Open license section
+    cy.get('#license-header button').click();
+
     // Confirm the required license by checking checkbox
     // (NOTE: requires "force:true" cause Cypress claims this checkbox is covered by its own <span>)
     cy.get('input#granted').check( { force: true } );
+
+    // DATASHARE: Open upload section
+    cy.get('#upload-header button').click();
 
     // Before using Cypress drag & drop, we have to manually trigger the "dragover" event.
     // This ensures our UI displays the dropzone that covers the entire submission page.
@@ -200,6 +215,9 @@ describe('New Submission page', () => {
 
             } as Options,
     );
+
+    // DATASHARE: Open person section panel (DataShare uses one-section-at-a-time accordion)
+    cy.get('#personStep-header button').click();
 
     // Click the lookup button next to "Publication" field
     cy.get('button[data-test="lookup-button"]').click();
