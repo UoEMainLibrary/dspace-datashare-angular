@@ -1,1 +1,35 @@
+span {
+  white-space: normal;
+}
+
+:host {
+  ::ng-deep .access-status-list-element-badge {
+    margin-right: 0.35rem;
+  }
+
+  // Embargo — DataShare blue with white text
+  ::ng-deep .access-status-embargo-listelement-badge,
+  ::ng-deep .embargo-listelement-badge {
+    background-color: #004f71 !important;
+    color: #fff !important;
+  }
+
+  // Open access — DataShare success green
+  ::ng-deep .access-status-open-access-listelement-badge {
+    background-color: #5cb85c !important;
+    color: #fff !important;
+  }
+
+  // Restricted — DataShare darker blue
+  ::ng-deep .access-status-restricted-listelement-badge {
+    background-color: #002b3e !important;
+    color: #fff !important;
+  }
+
+  // Metadata only — DataShare muted
+  ::ng-deep .access-status-metadata-only-listelement-badge {
+    background-color: #495057 !important;
+    color: #fff !important;
+  }
+}
 

@@ -8,7 +8,7 @@ import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 
-import { AccessStatusDataService } from '../../../../../core/data/access-status-data.service';
+import { LinkService } from '../../../../../core/cache/builders/link.service';
 import { Item } from '../../../../../core/shared/item.model';
 import { createSuccessfulRemoteDataObject$ } from '../../../../remote-data.utils';
 import { TruncatePipe } from '../../../../utils/truncate.pipe';
@@ -25,7 +25,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
   let embargoStatus: AccessStatusObject;
   let restrictedStatus: AccessStatusObject;
 
-  let accessStatusDataService: AccessStatusDataService;
+  let linkService: LinkService;
 
   let item: Item;
 
@@ -50,13 +50,14 @@ describe('ItemAccessStatusBadgeComponent', () => {
       status: 'restricted',
     });
 
-    accessStatusDataService = jasmine.createSpyObj('accessStatusDataService', {
-      findAccessStatusFor: createSuccessfulRemoteDataObject$(unknownStatus),
+    linkService = jasmine.createSpyObj('linkService', {
+      resolveLink: {},
     });
 
     item = Object.assign(new Item(), {
       uuid: 'item-uuid',
       type: 'item',
+      accessStatus: createSuccessfulRemoteDataObject$(unknownStatus),
     });
   }
 
@@ -65,7 +66,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
       imports: [TranslateModule.forRoot(), AccessStatusBadgeComponent, TruncatePipe],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        { provide: AccessStatusDataService, useValue: accessStatusDataService },
+        { provide: LinkService, useValue: linkService },
       ],
     }).compileComponents();
   }
@@ -113,7 +114,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
   describe('When the findAccessStatusFor method returns metadata.only', () => {
     beforeEach(waitForAsync(() => {
       init();
-      (accessStatusDataService.findAccessStatusFor as jasmine.Spy).and.returnValue(createSuccessfulRemoteDataObject$(metadataOnlyStatus));
+      item.accessStatus = createSuccessfulRemoteDataObject$(metadataOnlyStatus);
       initTestBed();
     }));
     beforeEach(() => {
@@ -127,7 +128,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
   describe('When the findAccessStatusFor method returns open.access', () => {
     beforeEach(waitForAsync(() => {
       init();
-      (accessStatusDataService.findAccessStatusFor as jasmine.Spy).and.returnValue(createSuccessfulRemoteDataObject$(openAccessStatus));
+      item.accessStatus = createSuccessfulRemoteDataObject$(openAccessStatus);
       initTestBed();
     }));
     beforeEach(() => {
@@ -141,7 +142,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
   describe('When the findAccessStatusFor method returns embargo', () => {
     beforeEach(waitForAsync(() => {
       init();
-      (accessStatusDataService.findAccessStatusFor as jasmine.Spy).and.returnValue(createSuccessfulRemoteDataObject$(embargoStatus));
+      item.accessStatus = createSuccessfulRemoteDataObject$(embargoStatus);
       initTestBed();
     }));
     beforeEach(() => {
@@ -155,7 +156,7 @@ describe('ItemAccessStatusBadgeComponent', () => {
   describe('When the findAccessStatusFor method returns restricted', () => {
     beforeEach(waitForAsync(() => {
       init();
-      (accessStatusDataService.findAccessStatusFor as jasmine.Spy).and.returnValue(createSuccessfulRemoteDataObject$(restrictedStatus));
+      item.accessStatus = createSuccessfulRemoteDataObject$(restrictedStatus);
       initTestBed();
     }));
     beforeEach(() => {

@@ -11,12 +11,12 @@
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <br>
   <div class="download-all-container" *ngIf="(downloadLink$ | async) as downloadLink">
-    <a class="btn btn-primary" href="{{downloadLink}}" target="_blank">Download all files <i class="fa-solid fa-download"></i></a>
+    <a *ngIf="(hasEmbargo$ | async) !== true" class="btn btn-primary" href="{{downloadLink}}" target="_blank">Download all files <i class="fa-solid fa-download"></i></a>
   </div>
   <br/>
   <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
     <div class="file-section">
-      <ds-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item">
+      <ds-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item" [showAccessStatusBadge]="true">
         <span>
           <span *ngIf="primaryBitsreamId === file.id" class="badge badge-primary">{{ 'item.page.bitstreams.primary' |
             translate }}</span>

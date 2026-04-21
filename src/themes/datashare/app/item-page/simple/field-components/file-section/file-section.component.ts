@@ -34,6 +34,18 @@ import {
 import { ThemedFileDownloadLinkComponent } from '../../../../../../../app/shared/file-download-link/themed-file-download-link.component';
 import { ThemedLoadingComponent } from '../../../../../../../app/shared/loading/themed-loading.component';
 import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
+import { FileSizePipe } from '../../../../../../../app/shared/utils/file-size-pipe';
+import { VarDirective } from '../../../../../../../app/shared/utils/var.directive';
+import { getFirstCompletedRemoteData } from '../../../../../../../app/core/shared/operators';
+import { filter, map, Observable, switchMap, tap } from 'rxjs';
+import { RemoteData } from '../../../../../../../app/core/data/remote-data';
+import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
+import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
+import { hasValue, isEmpty } from '../../../../../../../app/shared/empty.util';
+import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
+import { followLink } from '../../../../../../../app/shared/utils/follow-link-config.model';
+import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
+import { AccessStatusDataService } from '../../../../../../../app/core/data/access-status-data.service';
 import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
 import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
 import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
@@ -70,6 +82,7 @@ export class FileSectionComponent extends BaseComponent implements OnInit {
   licenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
   downloadLink$: Observable<string>;
   downloadLinkAvailable$: Observable<boolean>;
+  hasEmbargo$: Observable<boolean>;
 
   cclicenseOptions = Object.assign(new PaginationComponentOptions(), {
     id: 'cclbo',
@@ -92,6 +105,7 @@ export class FileSectionComponent extends BaseComponent implements OnInit {
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     protected downloadLinkService: DownloadLinkService,
+    protected accessStatusDataService: AccessStatusDataService,
   ) {
     super(bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
 
@@ -138,6 +152,11 @@ export class FileSectionComponent extends BaseComponent implements OnInit {
     this.downloadLink$ = this.downloadLinkService.getDownloadLink(this.item.id).pipe(
       filter(link => hasValue(link) && link.length > 0),
       map(link => link),
+    );
+
+    this.hasEmbargo$ = this.accessStatusDataService.findAccessStatusFor(this.item).pipe(
+      getFirstCompletedRemoteData(),
+      map(rd => rd?.hasSucceeded && rd.payload?.status === 'embargo'),
     );
 
   }

@@ -38,6 +38,8 @@
 
   "access-status.embargo.listelement.badge": "Embargo",
 
+  "embargo.listelement.badge": "Embargo until {{ date }}",
+
   "access-status.metadata.only.listelement.badge": "Metadata only",
 
   "access-status.open.access.listelement.badge": "Open Access",

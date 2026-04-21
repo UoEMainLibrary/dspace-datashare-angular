@@ -31,13 +31,14 @@ import {
   hasValue,
   isNotEmpty,
 } from '../empty.util';
+import { ThemedAccessStatusBadgeComponent } from '../object-collection/shared/badges/access-status-badge/themed-access-status-badge.component';
 
 @Component({
   selector: 'ds-base-file-download-link',
   templateUrl: './file-download-link.component.html',
   styleUrls: ['./file-download-link.component.scss'],
   standalone: true,
-  imports: [RouterLink, NgClass, NgIf, NgTemplateOutlet, AsyncPipe, TranslateModule],
+  imports: [RouterLink, NgClass, NgIf, NgTemplateOutlet, AsyncPipe, TranslateModule, ThemedAccessStatusBadgeComponent],
 })
 /**
  * Component displaying a download link
@@ -64,6 +65,11 @@ export class FileDownloadLinkComponent implements OnInit {
   @Input() isBlank = false;
 
   @Input() enableRequestACopy = true;
+
+  /**
+   * A boolean indicating whether the access status badge is displayed
+   */
+  @Input() showAccessStatusBadge = true;
 
   bitstreamPath$: Observable<{
     routerLink: string,
