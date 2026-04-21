@@ -21,8 +21,8 @@ import { LinkService } from '../../../../../core/cache/builders/link.service';
 import { Bitstream } from '../../../../../core/shared/bitstream.model';
 import { Item } from '../../../../../core/shared/item.model';
 import { getFirstSucceededRemoteDataPayload } from '../../../../../core/shared/operators';
-import { followLink } from '../../../../utils/follow-link-config.model';
 import { hasValue } from '../../../../empty.util';
+import { followLink } from '../../../../utils/follow-link-config.model';
 import { AccessStatusObject } from './access-status.model';
 
 @Component({

@@ -4,8 +4,8 @@ import { AccessStatusObject } from 'src/app/shared/object-collection/shared/badg
 
 import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
 import { ObjectCacheService } from '../cache/object-cache.service';
-import { HALEndpointService } from '../shared/hal-endpoint.service';
 import { Bitstream } from '../shared/bitstream.model';
+import { HALEndpointService } from '../shared/hal-endpoint.service';
 import { Item } from '../shared/item.model';
 import { BaseDataService } from './base/base-data.service';
 import { RemoteData } from './remote-data';

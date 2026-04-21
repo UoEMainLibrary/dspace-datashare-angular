@@ -18,11 +18,13 @@ import {
 } from 'rxjs';
 
 import { DSONameService } from '../../../../../../../app/core/breadcrumbs/dso-name.service';
+import { AccessStatusDataService } from '../../../../../../../app/core/data/access-status-data.service';
 import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
 import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
 import { RemoteData } from '../../../../../../../app/core/data/remote-data';
 import { PaginationService } from '../../../../../../../app/core/pagination/pagination.service';
 import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
+import { getFirstCompletedRemoteData } from '../../../../../../../app/core/shared/operators';
 import { DownloadLinkService } from '../../../../../../../app/datashare/download-link.service';
 import { FileSectionComponent as BaseComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component';
 import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
@@ -34,18 +36,6 @@ import {
 import { ThemedFileDownloadLinkComponent } from '../../../../../../../app/shared/file-download-link/themed-file-download-link.component';
 import { ThemedLoadingComponent } from '../../../../../../../app/shared/loading/themed-loading.component';
 import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
-import { FileSizePipe } from '../../../../../../../app/shared/utils/file-size-pipe';
-import { VarDirective } from '../../../../../../../app/shared/utils/var.directive';
-import { getFirstCompletedRemoteData } from '../../../../../../../app/core/shared/operators';
-import { filter, map, Observable, switchMap, tap } from 'rxjs';
-import { RemoteData } from '../../../../../../../app/core/data/remote-data';
-import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
-import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
-import { hasValue, isEmpty } from '../../../../../../../app/shared/empty.util';
-import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';
-import { followLink } from '../../../../../../../app/shared/utils/follow-link-config.model';
-import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
-import { AccessStatusDataService } from '../../../../../../../app/core/data/access-status-data.service';
 import { NotificationsService } from '../../../../../../../app/shared/notifications/notifications.service';
 import { PaginationComponent } from '../../../../../../../app/shared/pagination/pagination.component';
 import { PaginationComponentOptions } from '../../../../../../../app/shared/pagination/pagination-component-options.model';

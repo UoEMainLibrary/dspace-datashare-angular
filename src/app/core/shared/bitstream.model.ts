@@ -5,13 +5,13 @@ import {
 } from 'cerialize';
 import { Observable } from 'rxjs';
 
+import { AccessStatusObject } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.model';
+import { ACCESS_STATUS } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.resource-type';
 import {
   link,
   typedObject,
 } from '../cache/builders/build-decorators';
 import { RemoteData } from '../data/remote-data';
-import { AccessStatusObject } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.model';
-import { ACCESS_STATUS } from '../../shared/object-collection/shared/badges/access-status-badge/access-status.resource-type';
 import { BITSTREAM } from './bitstream.resource-type';
 import { BitstreamFormat } from './bitstream-format.model';
 import { BITSTREAM_FORMAT } from './bitstream-format.resource-type';

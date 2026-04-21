@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ThemedAccessStatusBadgeComponent } from '../../../../../app/shared/object-collection/shared/badges/access-status-badge/themed-access-status-badge.component';
 import { FileDownloadLinkComponent as BaseComponent } from '../../../../../app/shared/file-download-link/file-download-link.component';
+import { ThemedAccessStatusBadgeComponent } from '../../../../../app/shared/object-collection/shared/badges/access-status-badge/themed-access-status-badge.component';
 
 @Component({
   selector: 'ds-themed-file-download-link',
