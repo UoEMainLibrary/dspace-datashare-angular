@@ -6992,6 +6992,12 @@
 
   "metadata-export-search.submit.error.limit-exceeded": "Only the first {{limit}} items will be exported",
 
+  "item.preview.organization.url": "URL",
+
+  "item.preview.organization.address.addressLocality": "City",
+
+  "item.preview.organization.alternateName": "Alternative name",
+
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
 
   "submission.sections.submit.datashare.dropzone": "TBD: INSTRUCTIONS FOR DROPZONE.",
