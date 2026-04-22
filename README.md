@@ -1,12 +1,5 @@
 [![Build Status](https://github.com/DSpace/dspace-angular/workflows/Build/badge.svg?branch=main)](https://github.com/DSpace/dspace-angular/actions?query=workflow%3ABuild) [![Coverage Status](https://codecov.io/gh/DSpace/dspace-angular/branch/main/graph/badge.svg)](https://codecov.io/gh/DSpace/dspace-angular) [![Universal Angular](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
 
-> ### DataShare / UoE upgrade note (DSpace 8.2 → 8.3)
->
-> An upgrade to **DSpace 8.3** is in progress on branch **`uoe/upgrade-to-83`**.
-> The full progress log, customizations inventory, conflict resolutions and
-> open risks live in [UPGRADE-8.3.md](UPGRADE-8.3.md).
-> Backup tag of the pre-merge tip: `backup/pre-8.3-merge-before`.
-
 dspace-angular
 ==============
 
