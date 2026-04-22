@@ -26,6 +26,11 @@ describe('Edit Item > Edit Metadata tab', () => {
     // Wait for any loading spinners to disappear
     cy.get('ds-edit-item-page ds-loading').should('not.exist');
 
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
+
     // wait for all the ds-dso-edit-metadata-value components to be rendered
     cy.get('ds-dso-edit-metadata-value div[role="row"]').each(($row: HTMLDivElement) => {
       cy.wrap($row).find('div[role="cell"]').should('be.visible');
@@ -49,6 +54,11 @@ describe('Edit Item > Status tab', () => {
     // <ds-item-status> tag must be loaded
     cy.get('ds-item-status').should('be.visible');
 
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
+
     // Analyze for accessibility issues
     testA11y('ds-item-status');
   });
@@ -66,6 +76,11 @@ describe('Edit Item > Bitstreams tab', () => {
 
     // <ds-item-bitstreams> tag must be loaded
     cy.get('ds-item-bitstreams').should('be.visible');
+
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
 
     // Table of item bitstreams must also be loaded
     cy.get('div.item-bitstreams').should('be.visible');
@@ -96,6 +111,11 @@ describe('Edit Item > Curate tab', () => {
     // <ds-item-curate> tag must be loaded
     cy.get('ds-item-curate').should('be.visible');
 
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
+
     // Analyze for accessibility issues
     testA11y('ds-item-curate');
   });
@@ -113,6 +133,11 @@ describe('Edit Item > Relationships tab', () => {
 
     // <ds-item-relationships> tag must be loaded
     cy.get('ds-item-relationships').should('be.visible');
+
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
 
     // Analyze for accessibility issues
     testA11y('ds-item-relationships');
@@ -132,6 +157,11 @@ describe('Edit Item > Version History tab', () => {
     // <ds-item-version-history> tag must be loaded
     cy.get('ds-item-version-history').should('be.visible');
 
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
+
     // Analyze for accessibility issues
     testA11y('ds-item-version-history');
   });
@@ -150,6 +180,11 @@ describe('Edit Item > Access Control tab', () => {
     // <ds-item-access-control> tag must be loaded
     cy.get('ds-item-access-control').should('be.visible');
 
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
+
     // Analyze for accessibility issues
     testA11y('ds-item-access-control');
   });
@@ -167,6 +202,11 @@ describe('Edit Item > Collection Mapper tab', () => {
 
     // <ds-item-collection-mapper> tag must be loaded
     cy.get('ds-item-collection-mapper').should('be.visible');
+
+    // wait for all the tabs to be rendered on this page
+    cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
+      cy.wrap($row).find('a[role="tab"]').should('be.visible');
+    });
 
     // Analyze entire page for accessibility issues
     testA11y('ds-item-collection-mapper');
