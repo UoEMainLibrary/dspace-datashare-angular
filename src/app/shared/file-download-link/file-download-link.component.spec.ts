@@ -21,6 +21,7 @@ import { Bitstream } from '../../core/shared/bitstream.model';
 import { Item } from '../../core/shared/item.model';
 import { URLCombiner } from '../../core/url-combiner/url-combiner';
 import { getItemModuleRoute } from '../../item-page/item-page-routing-paths';
+import { ThemedAccessStatusBadgeComponent } from '../object-collection/shared/badges/access-status-badge/themed-access-status-badge.component';
 import { ActivatedRouteStub } from '../testing/active-router.stub';
 import { RouterLinkDirectiveStub } from '../testing/router-link-directive.stub';
 import { FileDownloadLinkComponent } from './file-download-link.component';
@@ -66,7 +67,7 @@ describe('FileDownloadLinkComponent', () => {
       ],
     })
       .overrideComponent(FileDownloadLinkComponent, {
-        remove: { imports: [RouterLink] },
+        remove: { imports: [RouterLink, ThemedAccessStatusBadgeComponent] },
         add: { imports: [RouterLinkDirectiveStub] },
       })
       .compileComponents();

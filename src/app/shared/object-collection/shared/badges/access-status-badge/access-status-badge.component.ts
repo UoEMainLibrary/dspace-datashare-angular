@@ -1,7 +1,4 @@
-import {
-  AsyncPipe,
-  NgIf,
-} from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   Component,
   Input,
@@ -18,13 +15,14 @@ import {
   catchError,
   map,
 } from 'rxjs/operators';
-import { AccessStatusDataService } from 'src/app/core/data/access-status-data.service';
 import { environment } from 'src/environments/environment';
 
-import { DSpaceObject } from '../../../../../core/shared/dspace-object.model';
+import { LinkService } from '../../../../../core/cache/builders/link.service';
+import { Bitstream } from '../../../../../core/shared/bitstream.model';
 import { Item } from '../../../../../core/shared/item.model';
-import { ITEM } from '../../../../../core/shared/item.resource-type';
+import { getFirstSucceededRemoteDataPayload } from '../../../../../core/shared/operators';
 import { hasValue } from '../../../../empty.util';
+import { followLink } from '../../../../utils/follow-link-config.model';
 import { AccessStatusObject } from './access-status.model';
 
 @Component({
@@ -32,15 +30,17 @@ import { AccessStatusObject } from './access-status.model';
   templateUrl: './access-status-badge.component.html',
   styleUrls: ['./access-status-badge.component.scss'],
   standalone: true,
-  imports: [NgIf, AsyncPipe, TranslateModule],
+  imports: [AsyncPipe, TranslateModule],
 })
 /**
- * Component rendering the access status of an item as a badge
+ * Component rendering the access status of an item or bitstream as a badge
  */
 export class AccessStatusBadgeComponent implements OnDestroy, OnInit {
 
-  @Input() object: DSpaceObject;
+  @Input() object: Item | Bitstream;
+
   accessStatus$: Observable<string>;
+  embargoDate$: Observable<string>;
 
   /**
    * Whether to show the access status badge or not
@@ -57,33 +57,38 @@ export class AccessStatusBadgeComponent implements OnDestroy, OnInit {
    */
   subs: Subscription[] = [];
 
-  /**
-   * Initialize instance variables
-   *
-   * @param {AccessStatusDataService} accessStatusDataService
-   */
-  constructor(private accessStatusDataService: AccessStatusDataService) { }
+  constructor(
+    private linkService: LinkService,
+  ) { }
 
   ngOnInit(): void {
-    this.showAccessStatus = environment.item.showAccessStatuses;
-    if (this.object.type.toString() !== ITEM.value || !this.showAccessStatus || this.object == null) {
-      // Do not show the badge if the feature is inactive or if the item is null.
+    if (!hasValue(this.object)) {
       return;
     }
-
-    const item = this.object as Item;
-    if (item.accessStatus == null) {
+    if (!hasValue(this.object.accessStatus)) {
       // In case the access status has not been loaded, do it individually.
-      item.accessStatus = this.accessStatusDataService.findAccessStatusFor(item);
+      this.linkService.resolveLink(this.object, followLink('accessStatus'));
     }
-    this.accessStatus$ = item.accessStatus.pipe(
-      map((accessStatusRD) => {
-        if (accessStatusRD.statusCode !== 401 && hasValue(accessStatusRD.payload)) {
-          return accessStatusRD.payload;
-        } else {
-          return [];
-        }
-      }),
+    switch ((this.object as any).type) {
+      case Item.type.value:
+        this.handleItem();
+        break;
+      case Bitstream.type.value:
+        this.handleBitstream();
+        break;
+    }
+  }
+
+  /**
+   * Method to handle the object type Item
+   */
+  private handleItem() {
+    this.showAccessStatus = environment.item.showAccessStatuses;
+    if (!this.showAccessStatus) {
+      return;
+    }
+    this.accessStatus$ = this.object.accessStatus.pipe(
+      getFirstSucceededRemoteDataPayload(),
       map((accessStatus: AccessStatusObject) => hasValue(accessStatus.status) ? accessStatus.status : 'unknown'),
       map((status: string) => `access-status.${status.toLowerCase()}.listelement.badge`),
       catchError(() => observableOf('access-status.unknown.listelement.badge')),
@@ -95,6 +100,29 @@ export class AccessStatusBadgeComponent implements OnDestroy, OnInit {
         map((accessStatusClass: string) => accessStatusClass.replace(/\./g, '-')),
       ).subscribe((accessStatusClass: string) => {
         this.accessStatusClass = accessStatusClass;
+      }),
+    );
+  }
+
+  /**
+   * Method to handle the object type Bitstream
+   */
+  private handleBitstream() {
+    this.showAccessStatus = environment.item.bitstream.showAccessStatuses;
+    if (!this.showAccessStatus) {
+      return;
+    }
+    this.embargoDate$ = this.object.accessStatus.pipe(
+      getFirstSucceededRemoteDataPayload(),
+      map((accessStatus: AccessStatusObject) => hasValue(accessStatus.embargoDate) ? accessStatus.embargoDate : null),
+      catchError(() => observableOf(null)),
+    );
+    this.accessStatus$ = this.embargoDate$.pipe(
+      map(date => hasValue(date) ? 'embargo.listelement.badge' : null),
+    );
+    this.subs.push(
+      this.embargoDate$.subscribe(date => {
+        this.accessStatusClass = hasValue(date) ? 'embargo-listelement-badge' : '';
       }),
     );
   }

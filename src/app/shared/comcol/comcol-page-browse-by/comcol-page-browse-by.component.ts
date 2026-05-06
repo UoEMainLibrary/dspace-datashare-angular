@@ -100,9 +100,9 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
         const allOptions: ComColPageNavOption[] = [];
         if (browseDefListRD.hasSucceeded) {
           let comColRoute: string;
-           // DATASHARE - start
-           // Commented out bits and changed
-           // Search disabled at Community & Sub-Community level
+          // DATASHARE - start
+          // Commented out bits and changed
+          // Search disabled at Community & Sub-Community level
           if (this.contentType === 'collection') {
             comColRoute = getCollectionPageRoute(this.id);
             allOptions.push({
@@ -123,7 +123,7 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
               routerLink: `${comColRoute}/subcoms-cols`,
             });
           }
-           // DATASHARE - end
+          // DATASHARE - end
 
           allOptions.push(...browseDefListRD.payload.page.map((config: BrowseDefinition) => ({
             id: `browse_${config.id}`,
@@ -159,7 +159,7 @@ export class ComcolPageBrowseByComponent implements OnDestroy, OnInit {
     ]).subscribe(([navOptions, url]: [ComColPageNavOption[], string]) => {
       for (const option of navOptions) {
         if (url?.split('?')[0] === comColRoute && option.id === this.appConfig[this.contentType].defaultBrowseTab) {
-          void this.router.navigate([option.routerLink], { queryParams: option.params });
+          void this.router.navigate([option.routerLink], { queryParams: option.params, replaceUrl: true  });
           break;
         } else if (option.routerLink === url?.split('?')[0]) {
           this.currentOption$.next(option);

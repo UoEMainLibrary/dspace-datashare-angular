@@ -449,17 +449,75 @@ describe('FormComponent test suite', () => {
     }));
 
     it('should dispatch FormChangeAction when an item has been removed from an array', inject([FormBuilderService], (service: FormBuilderService) => {
-      formComp.removeItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 0);
+      // Add a second item first so we can actually remove one (the last item is never removed, only cleared)
+      formComp.insertItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 1);
+      (store.dispatch as jasmine.Spy).calls.reset();
+
+      formComp.removeItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 1);
 
       expect(store.dispatch).toHaveBeenCalledWith(new FormChangeAction('testFormArray', service.getValueFromModel(formComp.formModel)));
     }));
 
     it('should emit removeArrayItem Event when an item has been removed from an array', inject([FormBuilderService], (service: FormBuilderService) => {
+      // Add a second item first so we can actually remove one
+      formComp.insertItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 1);
       spyOn(formComp.removeArrayItem, 'emit');
 
-      formComp.removeItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 0);
+      formComp.removeItem(new Event('click'), formComp.formModel[0] as DynamicFormArrayModel, 1);
 
       expect(formComp.removeArrayItem.emit).toHaveBeenCalled();
+    }));
+
+    it('should not remove the last item from the array, but clear its value instead', inject([FormBuilderService], (service: FormBuilderService) => {
+      const arrayModel = formComp.formModel[0] as DynamicFormArrayModel;
+
+      // Verify there is exactly 1 item in the array
+      expect(arrayModel.groups.length).toBe(1);
+
+      // Attempt to remove the last (and only) item
+      formComp.removeItem(new Event('click'), arrayModel, 0);
+
+      // The array should still have 1 item (not removed, just cleared)
+      expect(arrayModel.groups.length).toBe(1);
+    }));
+
+    it('should clear the value of the last item when trying to remove it', inject([FormBuilderService], (service: FormBuilderService) => {
+      const arrayModel = formComp.formModel[0] as DynamicFormArrayModel;
+      const formArrayControl = formComp.formGroup.get(service.getPath(arrayModel));
+
+      // Set a value on the input
+      const inputControl = formArrayControl.get([0, 'bootstrapArrayGroupInput']);
+      inputControl.setValue('test value');
+      expect(inputControl.value).toBe('test value');
+
+      // Attempt to remove the last item - should clear value instead
+      formComp.removeItem(new Event('click'), arrayModel, 0);
+
+      // Value should be cleared
+      expect(inputControl.value).toBeNull();
+      // But the array should still have 1 group
+      expect(arrayModel.groups.length).toBe(1);
+    }));
+
+    it('should allow removing items when there are multiple items in the array', inject([FormBuilderService], (service: FormBuilderService) => {
+      const arrayModel = formComp.formModel[0] as DynamicFormArrayModel;
+
+      // Add more items
+      formComp.insertItem(new Event('click'), arrayModel, 1);
+      formComp.insertItem(new Event('click'), arrayModel, 2);
+      expect(arrayModel.groups.length).toBe(3);
+
+      // Remove one item - should actually remove it
+      formComp.removeItem(new Event('click'), arrayModel, 2);
+      expect(arrayModel.groups.length).toBe(2);
+
+      // Remove another
+      formComp.removeItem(new Event('click'), arrayModel, 1);
+      expect(arrayModel.groups.length).toBe(1);
+
+      // Try to remove the last one - should NOT remove it
+      formComp.removeItem(new Event('click'), arrayModel, 0);
+      expect(arrayModel.groups.length).toBe(1);
     }));
   });
 });

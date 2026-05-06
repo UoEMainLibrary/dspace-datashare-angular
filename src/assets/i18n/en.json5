@@ -38,6 +38,8 @@
 
   "access-status.embargo.listelement.badge": "Embargo",
 
+  "embargo.listelement.badge": "Embargo until {{ date }}",
+
   "access-status.metadata.only.listelement.badge": "Metadata only",
 
   "access-status.open.access.listelement.badge": "Open Access",
@@ -4612,7 +4614,7 @@
 
   "search.filters.filter.show-more": "Show more",
 
-  "search.filters.filter.subject.head": "Subject",
+  "search.filters.filter.subject.head": "Subject Keywords",
 
   "search.filters.filter.subject.placeholder": "Subject",
 
@@ -5367,6 +5369,8 @@
   "submission.sections.toggle.aria.open": "Expand {{sectionHeader}} section",
 
   "submission.sections.toggle.aria.close": "Collapse {{sectionHeader}} section",
+
+  "submission.sections.remove": "Remove {{sectionHeader}} section",
 
   "submission.sections.upload.primary.make": "Make {{fileName}} the primary bitstream",
 
@@ -6987,6 +6991,12 @@
   "dynamic-form-array.sortable-list.label": "Sortable list",
 
   "metadata-export-search.submit.error.limit-exceeded": "Only the first {{limit}} items will be exported",
+
+  "item.preview.organization.url": "URL",
+
+  "item.preview.organization.address.addressLocality": "City",
+
+  "item.preview.organization.alternateName": "Alternative name",
 
   "submission.sections.submit.progressbar.datashare.license": "End-user Licence",
 

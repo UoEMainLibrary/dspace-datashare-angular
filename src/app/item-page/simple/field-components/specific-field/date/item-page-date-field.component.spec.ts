@@ -28,7 +28,7 @@ import { ItemPageDateFieldComponent } from './item-page-date-field.component';
 let comp: ItemPageDateFieldComponent;
 let fixture: ComponentFixture<ItemPageDateFieldComponent>;
 
-const mockField = 'dc.date.issued';
+const mockField = 'dc.date.available';
 const mockValue = 'test value';
 
 describe('ItemPageDateFieldComponent', () => {

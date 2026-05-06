@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
-import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
-import { DepositButtonComponent } from '../../datashare/deposit-button/deposit-button.component';
 import { ThemedDepositButtonComponent } from '../../../../../app/datashare/deposit-button/themed-deposit-button.component';
+import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
 
 @Component({
   selector: 'ds-themed-home-news',

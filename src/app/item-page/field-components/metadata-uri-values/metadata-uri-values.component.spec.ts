@@ -27,11 +27,11 @@ let fixture: ComponentFixture<MetadataUriValuesComponent>;
 const mockMetadata = [
   {
     language: 'en_US',
-    value: 'http://fakelink.org',
+    value: 'https://doi.org/10.1234/fakelink',
   },
   {
     language: 'en_US',
-    value: 'http://another.fakelink.org',
+    value: 'https://doi.org/10.5678/another-fakelink',
   },
 ] as MetadataValue[];
 const mockSeperator = '<br/>';

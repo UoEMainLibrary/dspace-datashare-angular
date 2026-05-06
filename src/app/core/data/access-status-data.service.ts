@@ -4,6 +4,7 @@ import { AccessStatusObject } from 'src/app/shared/object-collection/shared/badg
 
 import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
 import { ObjectCacheService } from '../cache/object-cache.service';
+import { Bitstream } from '../shared/bitstream.model';
 import { HALEndpointService } from '../shared/hal-endpoint.service';
 import { Item } from '../shared/item.model';
 import { BaseDataService } from './base/base-data.service';
@@ -11,7 +12,7 @@ import { RemoteData } from './remote-data';
 import { RequestService } from './request.service';
 
 /**
- * Data service responsible for retrieving the access status of Items
+ * Data service responsible for retrieving the access status of Items and Bitstreams
  */
 @Injectable({ providedIn: 'root' })
 export class AccessStatusDataService extends BaseDataService<AccessStatusObject> {
@@ -31,5 +32,13 @@ export class AccessStatusDataService extends BaseDataService<AccessStatusObject>
    */
   findAccessStatusFor(item: Item): Observable<RemoteData<AccessStatusObject>> {
     return this.findByHref(item._links.accessStatus.href);
+  }
+
+  /**
+   * Returns {@link RemoteData} of {@link AccessStatusObject} that is the access status of the given bitstream
+   * @param bitstream Bitstream we want the access status of
+   */
+  findAccessStatusForBitstream(bitstream: Bitstream): Observable<RemoteData<AccessStatusObject>> {
+    return this.findByHref(bitstream._links.accessStatus.href);
   }
 }

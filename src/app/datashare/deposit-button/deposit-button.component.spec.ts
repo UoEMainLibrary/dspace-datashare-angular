@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 
 import { DepositButtonComponent } from './deposit-button.component';
 
@@ -8,10 +11,10 @@ describe('DepositButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DepositButtonComponent]
+      imports: [DepositButtonComponent],
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(DepositButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
