@@ -2000,6 +2000,8 @@
 
   "form.first-name": "First name",
 
+  "form.vocabulary.load-error": "Something went wrong while loading the options. Please try again.",
+
   "form.group-collapse": "Collapse",
 
   "form.group-collapse-help": "Click here to collapse",
@@ -2805,6 +2807,8 @@
   "item.page.edit": "Edit this item",
 
   "item.page.files": "Files",
+
+  "item.page.filesection.checksum": "Checksum:",
 
   "item.page.filesection.description": "Description:",
 
@@ -7151,6 +7155,8 @@
   "item.page.type": "Type",
 
   "item.page.doi": "Persistent Identifier",
+
+  "item.page.doi.pending": "DOI registration in progress",
 
   "item.page.date.available": "Date Available",
 
