@@ -21,6 +21,7 @@ import {
   NgbDropdownModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import {
+  DynamicFormArrayGroupModel,
   DynamicFormLayoutService,
   DynamicFormValidationService,
 } from '@ng-dynamic-forms/core';
@@ -59,6 +60,7 @@ import { BtnDisabledDirective } from '../../../../../btn-disabled.directive';
 import {
   hasValue,
   isEmpty,
+  isNotEmpty,
 } from '../../../../../empty.util';
 import { FormFieldMetadataValueObject } from '../../../models/form-field-metadata-value.model';
 import { DsDynamicVocabularyComponent } from '../dynamic-vocabulary.component';
@@ -203,12 +205,91 @@ export class DsDynamicScrollableDropdownComponent extends DsDynamicVocabularyCom
    */
   openDropdown(sdRef: NgbDropdown) {
     if (!this.model.readOnly) {
+      sdRef.open();
+    }
+  }
+
+  /**
+   * Called by the NgbDropdown itself, so it covers every way the menu can be opened — the input,
+   * the keyboard, and the toggle caret, which opens the menu through the directive without going
+   * through {@link openDropdown} and therefore used to show an unfiltered, stale option list.
+   *
+   * @param open Whether the dropdown is now open.
+   */
+  onOpenChange(open: boolean) {
+    if (open) {
       this.group.markAsUntouched();
       this.inputText = null;
       this.updatePageInfo(this.model.maxOptions, 1);
       this.loadOptions(false);
-      sdRef.open();
     }
+  }
+
+  /**
+   * The identities already selected in the OTHER rows of the same repeatable field.
+   *
+   * Always read from the live models. A snapshot taken when the dropdown was opened went stale as
+   * soon as any row was added, removed or edited, which both hid options that had become free again
+   * and offered options that were in use.
+   */
+  get usedSiblingValues(): Set<any> {
+    const used = new Set<any>();
+    const parent = this.model.parent;
+    if (parent instanceof DynamicFormArrayGroupModel) {
+      parent.context.groups
+        .filter((rowGroup) => rowGroup !== parent)
+        .forEach((rowGroup) => {
+          rowGroup.group
+            .filter((siblingModel) => siblingModel.name === this.model.name)
+            .forEach((siblingModel) => {
+              this.identityKeys((siblingModel as any).value).forEach((key) => used.add(key));
+            });
+        });
+    }
+    return used;
+  }
+
+  /**
+   * Every identity a vocabulary value can be recognised by.
+   *
+   * The same entry reaches this component in two different shapes: as a `VocabularyEntry` when it
+   * was picked in this session, and as a `FormFieldMetadataValueObject` when it was rebuilt from
+   * the stored metadata — and only one of the two may carry an authority. Comparing a single
+   * "canonical" key therefore missed duplicates whenever the two sides disagreed about it, so both
+   * the authority and the normalised value are emitted and a match on either one is a duplicate.
+   */
+  private identityKeys(entry: any): string[] {
+    if (isEmpty(entry)) {
+      return [];
+    }
+    if (typeof entry === 'string') {
+      return [`v:${entry.trim().toLowerCase()}`];
+    }
+    const keys = [];
+    if (isNotEmpty(entry.authority)) {
+      keys.push(`a:${entry.authority}`);
+    }
+    if (isNotEmpty(entry.value)) {
+      keys.push(`v:${String(entry.value).trim().toLowerCase()}`);
+    }
+    return keys;
+  }
+
+  isOptionDisabled(entry: any): boolean {
+    const keys = this.identityKeys(entry);
+    if (isEmpty(keys)) {
+      return false;
+    }
+    const used = this.usedSiblingValues;
+    return keys.some((key) => used.has(key));
+  }
+
+  selectEntry(entry: any, sdRef: NgbDropdown) {
+    if (this.isOptionDisabled(entry)) {
+      return;
+    }
+    this.onSelect(entry);
+    sdRef.close();
   }
 
   navigateDropdown(event: KeyboardEvent) {
@@ -240,10 +321,14 @@ export class DsDynamicScrollableDropdownComponent extends DsDynamicVocabularyCom
       event.preventDefault();
       event.stopPropagation();
       if (sdRef.isOpen()) {
-        this.onSelect(this.optionsList[this.selectedIndex]);
-        sdRef.close();
+        // Guard against selecting a stale/undefined entry while options are still
+        // (re)loading after a keyboard filter keystroke.
+        const candidate = this.optionsList?.[this.selectedIndex];
+        if (!this.loading && hasValue(candidate)) {
+          this.selectEntry(candidate, sdRef);
+        }
       } else {
-        sdRef.open();
+        this.openDropdown(sdRef);
       }
     } else if (keyName === 'ArrowDown' || keyName === 'ArrowUp') {
       event.preventDefault();
@@ -330,6 +415,9 @@ export class DsDynamicScrollableDropdownComponent extends DsDynamicVocabularyCom
    * @param event The value to emit.
    */
   onSelect(event) {
+    if (this.isOptionDisabled(event)) {
+      return;
+    }
     this.group.markAsDirty();
     this.dispatchUpdate(event);
     this.setCurrentValue(event);
