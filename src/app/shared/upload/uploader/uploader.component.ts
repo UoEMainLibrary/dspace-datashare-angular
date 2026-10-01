@@ -15,6 +15,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import uniqueId from 'lodash/uniqueId';
 import {
+  FileItem,
   FileUploader,
   FileUploadModule,
 } from 'ng2-file-upload';
@@ -33,8 +34,7 @@ import {
   isNotEmpty,
   isUndefined,
 } from '../../empty.util';
-import { UploaderCompleteEvent } from './uploader-complete-event.model';
-import { UploaderError } from './uploader-error.model';
+import { LiveRegionService } from '../../live-region/live-region.service';
 import { UploaderOptions } from './uploader-options.model';
 import { UploaderProperties } from './uploader-properties.model';
 
@@ -95,15 +95,9 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   @Output() onCompleteItem: EventEmitter<any> = new EventEmitter<any>();
 
   /**
-   * The function to call when upload is completed, carrying the parsed response together with the
-   * client-side file name. Emitted alongside {@link onCompleteItem} so existing consumers are unaffected.
-   */
-  @Output() onCompleteItemWithFile: EventEmitter<UploaderCompleteEvent> = new EventEmitter<UploaderCompleteEvent>();
-
-  /**
    * The function to call on error occurred
    */
-  @Output() onUploadError: EventEmitter<UploaderError> = new EventEmitter<UploaderError>();
+  @Output() onUploadError: EventEmitter<any> = new EventEmitter<any>();
 
   /**
    * The function to call when a file is selected
@@ -115,10 +109,26 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   public isOverBaseDropZone = observableOf(false);
   public isOverDocumentDropZone = observableOf(false);
 
+  /**
+   * Set of progress values that have been announced to screen readers
+   */
+  private announcedProgress: Set<number> = new Set();
+
+  /**
+   * The uuid of the last progress message announced to screen readers
+   * @private
+   */
+  private lastProgressMessageUuid: string;
+
   @HostListener('window:dragover', ['$event'])
   onDragOver(event: any) {
 
     if (this.enableDragOverDocument && this.dragService.isAllowedDragOverPage()) {
+      // Only show drop area when dragging files or event is manually triggered
+      const hasFiles = event.dataTransfer?.types ? Array.from(event.dataTransfer.types).includes('Files') : true;
+      if (!hasFiles) {
+        return;
+      }
       // Show drop area on the page
       event.preventDefault();
       if ((event.target as any).tagName !== 'HTML') {
@@ -132,6 +142,7 @@ export class UploaderComponent implements OnInit, AfterViewInit {
     private dragService: DragService,
     private tokenExtractor: HttpXsrfTokenExtractor,
     private cookieService: CookieService,
+    private liveRegionService: LiveRegionService,
   ) {
   }
 
@@ -203,8 +214,6 @@ export class UploaderComponent implements OnInit, AfterViewInit {
       if (isNotEmpty(response)) {
         const responsePath = JSON.parse(response);
         this.onCompleteItem.emit(responsePath);
-        const fileName = item?.file?.name;
-        this.onCompleteItemWithFile.emit(hasValue(fileName) ? { response: responsePath, fileName } : { response: responsePath });
       }
     };
     this.uploader.onErrorItem = (item: any, response: any, status: any, headers: any) => {
@@ -221,7 +230,28 @@ export class UploaderComponent implements OnInit, AfterViewInit {
       this.uploader.cancelAll();
     };
     this.uploader.onProgressAll = () => this.onProgress();
-    this.uploader.onProgressItem = () => this.onProgress();
+    // Live region service setup
+    this.liveRegionService.setMessageTimeOutMs(1500);
+    this.liveRegionService.clear();
+    this.uploader.onProgressItem = (fileItem: FileItem, progress: any) => {
+      this.announceProgress(progress);
+      this.onProgress();
+    };
+  }
+
+  /**
+   * Announce the progress of the upload to screen readers
+   * @param progress
+   */
+  private announceProgress(progress: any) {
+    if (!this.announcedProgress.has(progress)) {
+      this.announcedProgress.add(progress);
+      const message = progress + '%';
+      if (this.lastProgressMessageUuid) {
+        this.liveRegionService.clearMessageByUUID(this.lastProgressMessageUuid);
+      }
+      this.lastProgressMessageUuid = this.liveRegionService.addMessage(message);
+    }
   }
 
   /**
