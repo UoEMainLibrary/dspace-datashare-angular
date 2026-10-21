@@ -100,24 +100,15 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
       elementsPerPage: this.defaultPagination.pageSize,
     };
 
-    if (this.action === ActionType.WRITE) {
+    if (this.entityType) {
       searchListService$ = this.collectionDataService
-        .getEditAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
-    } else if (this.action === ActionType.ADD) {
-      if (this.entityType) {
-        searchListService$ = this.collectionDataService
-          .getAuthorizedCollectionByEntityType(
-            query,
-            this.entityType,
-            findOptions);
-      } else {
-        searchListService$ = this.collectionDataService
-          .getSubmitAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
-      }
+        .getAuthorizedCollectionByEntityType(
+          query,
+          this.entityType,
+          findOptions);
     } else {
-      // By default, search for admin authorized collections
       searchListService$ = this.collectionDataService
-        .getAdminAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
+        .getAuthorizedCollection(query, findOptions, useCache, false, this.searchHref, followLink('parentCommunity'));
     }
     return searchListService$.pipe(
       getFirstCompletedRemoteData(),
