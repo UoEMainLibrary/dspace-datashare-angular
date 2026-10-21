@@ -60,10 +60,10 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
   @Input() entityType: string;
 
   /**
-   * Search endpoint to use for finding authorized collections.
-   * Defaults to 'findSubmitAuthorized', but can be overridden (e.g. to 'findAdminAuthorized')
+   * Optional search endpoint override for finding authorized collections.
+   * When set, it takes precedence over the endpoint selected by the action type.
    */
-  @Input() searchHref = 'findSubmitAuthorized';
+  @Input() searchHref: string;
 
   /**
    * The action type to determine which authorized collections to fetch, defaults to ADMIN
@@ -100,7 +100,10 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
       elementsPerPage: this.defaultPagination.pageSize,
     };
 
-    if (this.action === ActionType.WRITE) {
+    if (this.searchHref) {
+      searchListService$ = this.collectionDataService
+        .getAuthorizedCollection(query, findOptions, useCache, false, this.searchHref, followLink('parentCommunity'));
+    } else if (this.action === ActionType.WRITE) {
       searchListService$ = this.collectionDataService
         .getEditAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
     } else if (this.action === ActionType.ADD) {

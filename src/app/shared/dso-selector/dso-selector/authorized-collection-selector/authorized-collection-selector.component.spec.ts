@@ -34,6 +34,7 @@ describe('AuthorizedCollectionSelectorComponent', () => {
       id: 'authorized-collection',
     });
     collectionService = jasmine.createSpyObj('collectionService', {
+      getAuthorizedCollection: createSuccessfulRemoteDataObject$(createPaginatedList([collection])),
       getSubmitAuthorizedCollection: createSuccessfulRemoteDataObject$(createPaginatedList([collection])),
       getAdminAuthorizedCollection: createSuccessfulRemoteDataObject$(createPaginatedList([collection])),
       getEditAuthorizedCollection: createSuccessfulRemoteDataObject$(createPaginatedList([collection])),
