@@ -221,6 +221,8 @@ export class UploaderComponent implements OnInit, AfterViewInit {
       if (isNotEmpty(response)) {
         const responsePath = JSON.parse(response);
         this.onCompleteItem.emit(responsePath);
+        const fileName = item?.file?.name;
+        this.onCompleteItemWithFile.emit(hasValue(fileName) ? { response: responsePath, fileName } : { response: responsePath });
       }
     };
     this.uploader.onErrorItem = (item: any, response: any, status: any, headers: any) => {
