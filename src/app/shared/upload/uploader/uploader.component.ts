@@ -95,6 +95,12 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   @Output() onCompleteItem: EventEmitter<any> = new EventEmitter<any>();
 
   /**
+   * The function to call when upload is completed, carrying the parsed response together with the
+   * client-side file name. Emitted alongside {@link onCompleteItem} so existing consumers are unaffected.
+   */
+  @Output() onCompleteItemWithFile: EventEmitter<UploaderCompleteEvent> = new EventEmitter<UploaderCompleteEvent>();
+
+  /**
    * The function to call on error occurred
    */
   @Output() onUploadError: EventEmitter<any> = new EventEmitter<any>();
