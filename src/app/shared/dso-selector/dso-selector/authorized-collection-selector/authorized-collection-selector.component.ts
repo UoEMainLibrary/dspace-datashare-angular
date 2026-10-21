@@ -60,6 +60,12 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
   @Input() entityType: string;
 
   /**
+   * Search endpoint to use for finding authorized collections.
+   * Defaults to 'findSubmitAuthorized', but can be overridden (e.g. to 'findAdminAuthorized')
+   */
+  @Input() searchHref = 'findSubmitAuthorized';
+
+  /**
    * The action type to determine which authorized collections to fetch, defaults to ADMIN
    */
   @Input() action: ActionType = ActionType.ADMIN;
