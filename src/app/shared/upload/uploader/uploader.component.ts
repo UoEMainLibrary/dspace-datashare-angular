@@ -34,6 +34,7 @@ import {
   isNotEmpty,
   isUndefined,
 } from '../../empty.util';
+import { UploaderCompleteEvent } from './uploader-complete-event.model';
 import { LiveRegionService } from '../../live-region/live-region.service';
 import { UploaderOptions } from './uploader-options.model';
 import { UploaderProperties } from './uploader-properties.model';
