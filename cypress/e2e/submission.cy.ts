@@ -29,24 +29,24 @@ describe('New Submission page', () => {
 
     // Test entire page for accessibility
     testA11y('ds-submission-edit',
-      {
-        rules: {
-          // Author & Subject fields have invalid "aria-multiline" attrs.
-          // See https://github.com/DSpace/dspace-angular/issues/1272
-          'aria-allowed-attr': { enabled: false },
-          // All panels are accordians & fail "aria-required-children" and "nested-interactive".
-          // Seem to require updating ng-bootstrap and https://github.com/DSpace/dspace-angular/issues/2216
-          'aria-required-children': { enabled: false },
-          'nested-interactive': { enabled: false },
-          // All select boxes fail to have a name / aria-label.
-          // This is a bug in ng-dynamic-forms and may require https://github.com/DSpace/dspace-angular/issues/2216
-          'select-name': { enabled: false },
-          // DataShare's custom inline relation-group form renders sub-field inputs
-          // without programmatic label association (upstream uses a modal popup instead).
-          'label': { enabled: false },
-        },
+            {
+              rules: {
+                // Author & Subject fields have invalid "aria-multiline" attrs.
+                // See https://github.com/DSpace/dspace-angular/issues/1272
+                'aria-allowed-attr': { enabled: false },
+                // All panels are accordians & fail "aria-required-children" and "nested-interactive".
+                // Seem to require updating ng-bootstrap and https://github.com/DSpace/dspace-angular/issues/2216
+                'aria-required-children': { enabled: false },
+                'nested-interactive': { enabled: false },
+                // All select boxes fail to have a name / aria-label.
+                // This is a bug in ng-dynamic-forms and may require https://github.com/DSpace/dspace-angular/issues/2216
+                'select-name': { enabled: false },
+                // DataShare's custom inline relation-group form renders sub-field inputs
+                // without programmatic label association (upstream uses a modal popup instead).
+                'label': { enabled: false },
+              },
 
-      } as Options,
+            } as Options,
     );
 
     // Discard button should work
@@ -205,15 +205,15 @@ describe('New Submission page', () => {
 
     // Test entire page for accessibility
     testA11y('ds-submission-edit',
-      {
-        rules: {
-          // All panels are accordians & fail "aria-required-children" and "nested-interactive".
-          // Seem to require updating ng-bootstrap and https://github.com/DSpace/dspace-angular/issues/2216
-          'aria-required-children': { enabled: false },
-          'nested-interactive': { enabled: false },
-        },
+            {
+              rules: {
+                // All panels are accordians & fail "aria-required-children" and "nested-interactive".
+                // Seem to require updating ng-bootstrap and https://github.com/DSpace/dspace-angular/issues/2216
+                'aria-required-children': { enabled: false },
+                'nested-interactive': { enabled: false },
+              },
 
-      } as Options,
+            } as Options,
     );
 
     // DATASHARE: Open person section panel (DataShare uses one-section-at-a-time accordion)
