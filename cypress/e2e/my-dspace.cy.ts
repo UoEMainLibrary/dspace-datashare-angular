@@ -211,11 +211,13 @@ describe('My DSpace page', () => {
     cy.url().should('include', '/workspaceitems');
 
     //Fill required fields
-    cy.get('#dc_title').type('Workflow test item');
+    cy.get('#traditionalpageone-header button').click();
+    cy.get('#dc_title').should('be.visible').type('Workflow test item');
     cy.get('#dc_date_issued_year').type(currentYear.toString());
     cy.get('input[name="dc.type"]').click();
     cy.get('.dropdown-menu').should('be.visible').contains('button', 'Animation').click();
-    cy.get('#granted').check();
+    cy.get('#license-header button').click();
+    cy.get('#granted').should('be.visible').check();
 
     //Press deposit button
     cy.get('button[data-test="deposit"]').click();
