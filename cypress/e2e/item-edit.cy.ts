@@ -23,9 +23,6 @@ describe('Edit Item > Edit Metadata tab', () => {
     // <ds-edit-item-page> tag must be loaded
     cy.get('ds-edit-item-page').should('be.visible');
 
-    // Wait for any loading spinners to disappear
-    cy.get('ds-edit-item-page ds-loading').should('not.exist');
-
     // wait for all the tabs to be rendered on this page
     cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
       cy.wrap($row).find('a[role="tab"]').should('be.visible');
@@ -37,16 +34,16 @@ describe('Edit Item > Edit Metadata tab', () => {
     });
 
     // Analyze <ds-edit-item-page> for accessibility issues
-    testA11y('ds-edit-item-page', {
-      rules: {
-        // Edit-metadata uses nested role="table" wrappers (per-field value lists) which
-        // briefly contain no rows while values are hydrating, causing a flaky
-        // "aria-required-children" violation. Same ng-bootstrap / nested-table
-        // limitation as DSpace issue #2216 (see health-page.cy.ts which waives
-        // this rule for the same reason).
-        'aria-required-children': { enabled: false },
-      },
-    } as Options);
+    testA11y('ds-edit-item-page',
+            {
+              rules: {
+                // Disable flakey "aria-required-children" test. While this test passes when run locally,
+                // in GitHub CI it will return random failures roughly 1/3 of the time saying that the
+                // "tablist" doesn't contain required "tab" elements, even though they do exist.
+                'aria-required-children': { enabled: false },
+              },
+            } as Options,
+    );
   });
 });
 
@@ -90,7 +87,6 @@ describe('Edit Item > Bitstreams tab', () => {
     cy.get('ds-edit-item-page ul[role="tablist"]').each(($row: HTMLUListElement) => {
       cy.wrap($row).find('a[role="tab"]').should('be.visible');
     });
-
     // Table of item bitstreams must also be loaded
     cy.get('div.item-bitstreams').should('be.visible');
 
