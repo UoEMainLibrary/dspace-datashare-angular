@@ -211,13 +211,15 @@ describe('My DSpace page', () => {
     cy.url().should('include', '/workspaceitems');
 
     //Fill required fields
-    cy.get('#traditionalpageone-header button').click();
+    cy.get('ds-submission-section-container ngb-accordion').first()
+      .find('button').click();
     cy.get('#dc_title').should('be.visible').type('Workflow test item');
     cy.get('#dc_date_issued_year').type(currentYear.toString());
     cy.get('input[name="dc.type"]').click();
     cy.get('.dropdown-menu').should('be.visible').contains('button', 'Animation').click();
-    cy.get('#license-header button').click();
-    cy.get('#granted').should('be.visible').check();
+    cy.get('ds-submission-section-container ngb-accordion').last()
+      .find('button').click();
+    cy.get('#granted').check({ force: true });
 
     //Press deposit button
     cy.get('button[data-test="deposit"]').click();
