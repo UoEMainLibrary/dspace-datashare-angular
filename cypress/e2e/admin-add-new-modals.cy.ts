@@ -9,8 +9,10 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Community modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    cy.get('#admin-sidebar').trigger('mouseenter');
+    cy.get('#admin-sidebar').should('have.class', 'expanded');
     cy.get('#sidebar-collapse-toggle').click();
+    cy.get('#sidebar-collapse-toggle [title="Unpin sidebar"]').should('be.visible');
 
     // Click on entry of menu
     cy.get('#admin-menu-section-new-title').should('be.visible');
@@ -24,8 +26,10 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Collection modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    cy.get('#admin-sidebar').trigger('mouseenter');
+    cy.get('#admin-sidebar').should('have.class', 'expanded');
     cy.get('#sidebar-collapse-toggle').click();
+    cy.get('#sidebar-collapse-toggle [title="Unpin sidebar"]').should('be.visible');
 
     // Click on entry of menu
     cy.get('#admin-menu-section-new-title').should('be.visible');
@@ -39,8 +43,10 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Item modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    cy.get('#admin-sidebar').trigger('mouseenter');
+    cy.get('#admin-sidebar').should('have.class', 'expanded');
     cy.get('#sidebar-collapse-toggle').click();
+    cy.get('#sidebar-collapse-toggle [title="Unpin sidebar"]').should('be.visible');
 
     // Click on entry of menu
     cy.get('#admin-menu-section-new-title').should('be.visible');
