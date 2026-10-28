@@ -5,6 +5,10 @@ describe('Admin Export Modals', () => {
     // Must login as an Admin for sidebar to appear
     cy.visit('/login');
     cy.loginViaForm(Cypress.env('DSPACE_TEST_ADMIN_USER'), Cypress.env('DSPACE_TEST_ADMIN_PASSWORD'));
+
+    // Confirm the login completed before the tests interact with the admin sidebar
+    cy.location('pathname').should('not.eq', '/login');
+    cy.get('#admin-sidebar').should('be.visible');
   });
 
   it('Export metadata modal should pass accessibility tests', () => {
