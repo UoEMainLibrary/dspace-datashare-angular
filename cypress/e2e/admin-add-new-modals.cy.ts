@@ -9,7 +9,7 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Community modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
     cy.get('#sidebar-collapse-toggle').click();
 
     // Click on entry of menu
@@ -24,7 +24,7 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Collection modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
     cy.get('#sidebar-collapse-toggle').click();
 
     // Click on entry of menu
@@ -39,7 +39,7 @@ describe('Admin Add New Modals', () => {
 
   it('Add new Item modal should pass accessibility tests', () => {
     // Pin the sidebar open
-    cy.get('#sidebar-collapse-toggle').trigger('mouseover');
+    //cy.get('#sidebar-collapse-toggle').trigger('mouseover');
     cy.get('#sidebar-collapse-toggle').click();
 
     // Click on entry of menu
