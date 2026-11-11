@@ -1,9 +1,8 @@
 <div [class.form-group]="hasLabel || model.type === 'DATE' || (model.type !== 'GROUP' && asBootstrapFormGroup) || getClass('element', 'container').includes('form-group')"
      [class.d-none]="model.hidden"
      [formGroup]="group"
-     [ngClass]="[getClass('element', 'container'), getClass('grid', 'container'), 'my-2']">
-     
-     <label *ngIf="!isCheckbox && hasLabel"
+     [ngClass]="[getClass('element', 'container'), getClass('grid', 'container')]">
+  <label *ngIf="!isCheckbox && hasLabel && !isDateField"
          [id]="'label_' + model.id"
          [for]="id"
          [innerHTML]="(model.required && model.label) ? (model.label | translate) + ' *' : (model.label | translate)"
@@ -24,8 +23,14 @@
 
       <div *ngIf="!model.hideErrorMessages && showErrorMessages" [id]="id + '_errors'"
            [ngClass]="[getClass('element', 'errors'), getClass('grid', 'errors')]">
-        <small *ngFor="let message of errorMessages" class="invalid-feedback d-block">{{ message | translate: model.validators }}</small>
+        <small *ngFor="let message of errorMessages" class="invalid-feedback d-block"
+               aria-required="true"
+               aria-invalid="true"
+               [attr.aria-describedby]="'label_' + model.id"
+               aria-live="assertive"
+          >{{ message | translate: model.validators }}</small>
       </div>
+
     </div>
     <div *ngIf="model.languageCodes && model.languageCodes.length > 0" class="col-xs-2" >
       <select
