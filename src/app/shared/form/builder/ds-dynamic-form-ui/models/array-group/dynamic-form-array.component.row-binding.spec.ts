@@ -27,13 +27,17 @@ import {
   DynamicFormValidationService,
   DynamicInputModel,
 } from '@ng-dynamic-forms/core';
+import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import {
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core';
 import { NgxMaskModule } from 'ngx-mask';
-import { of } from 'rxjs';
+import {
+  Observable,
+  of,
+} from 'rxjs';
 
 import {
   APP_CONFIG,
@@ -82,6 +86,7 @@ describe('DsDynamicFormArrayComponent row/control binding', () => {
         DynamicFormLayoutService,
         DynamicFormValidationService,
         provideMockStore(),
+        provideMockActions(() => new Observable<any>()),
         { provide: APP_DATA_SERVICES_MAP, useValue: {} },
         { provide: TranslateService, useValue: translateServiceStub },
         { provide: HttpClient, useValue: {} },

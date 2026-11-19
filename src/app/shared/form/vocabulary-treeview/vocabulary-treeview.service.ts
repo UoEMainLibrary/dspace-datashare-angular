@@ -6,22 +6,19 @@ import {
   of as observableOf,
 } from 'rxjs';
 import {
-  catchError,
-  finalize,
   map,
   merge,
   mergeMap,
   scan,
-  timeout,
+  tap,
 } from 'rxjs/operators';
 
+import { PaginatedList } from '../../../core/data/paginated-list.model';
+import { RemoteData } from '../../../core/data/remote-data';
 import {
-  buildPaginatedList,
-  PaginatedList,
-} from '../../../core/data/paginated-list.model';
-import {
-  getFirstCompletedRemoteData,
+  getFirstSucceededRemoteData,
   getFirstSucceededRemoteDataPayload,
+  getFirstSucceededRemoteListPayload,
 } from '../../../core/shared/operators';
 import { PageInfo } from '../../../core/shared/page-info.model';
 import { VocabularyEntry } from '../../../core/submission/vocabularies/models/vocabulary-entry.model';
@@ -29,7 +26,6 @@ import { VocabularyEntryDetail } from '../../../core/submission/vocabularies/mod
 import { VocabularyOptions } from '../../../core/submission/vocabularies/models/vocabulary-options.model';
 import { VocabularyService } from '../../../core/submission/vocabularies/vocabulary.service';
 import {
-  hasValue,
   isEmpty,
   isNotEmpty,
 } from '../../empty.util';
@@ -96,6 +92,12 @@ export class VocabularyTreeviewService {
    * An observable to change the loading status
    */
   private hideSearchingWhenUnsubscribed$ = new Observable(() => () => this.loading.next(false));
+
+  public currentPage = 1;
+  public totalPages = 1;
+  public queryInProgress = '';
+  public showNextPageSubject = new BehaviorSubject<boolean>(false);
+  public showPreviousPageSubject = new BehaviorSubject<boolean>(false);
 
   /**
    * Initialize instance variables
@@ -204,10 +206,28 @@ export class VocabularyTreeviewService {
   }
 
   /**
-   * Perform a search operation by query
+   * Initiates a vocabulary search using the provided query term and selection, starting from the first page.
+   *
+   * @param query - The text input to search for within the vocabulary.
+   * @param selectedItems - Currently selected vocabulary item IDs to retain in the result.
    */
   searchByQuery(query: string, selectedItems: string[]) {
+    this.searchByQueryAndPage(query, selectedItems, 1);
+  }
+
+  /**
+   * Executes a paginated vocabulary search with the given query, selection, and page number.
+   * Updates pagination state, loading indicators, and triggers the vocabulary tree rebuild.
+   *
+   * @param query - The search term to filter vocabulary entries.
+   * @param selectedItems - IDs of items currently selected in the tree.
+   * @param page - The page number to fetch (1-based index).
+   */
+  searchByQueryAndPage(query: string, selectedItems: string[], page: number = 1) {
     this.loading.next(true);
+    this.queryInProgress = query;
+    this.currentPage = page;
+
     if (isEmpty(this.storedNodes)) {
       this.storedNodes = this.dataChange.value;
       this.storedNodeMap = this.nodeMap;
@@ -215,16 +235,26 @@ export class VocabularyTreeviewService {
     this.nodeMap = new Map<string, TreeviewNode>();
     this.dataChange.next([]);
 
-    this.vocabularyService.getVocabularyEntriesByValue(query, false, this.vocabularyOptions, new PageInfo()).pipe(
-      timeout({ each: 15000 }),
-      getFirstCompletedRemoteData(),
-      map((rd) => (rd.hasSucceeded && hasValue(rd.payload)) ? rd.payload.page : []),
-      mergeMap((result: VocabularyEntry[]) => (result.length > 0) ? result : observableOf(null)),
+    const pageInfo = new PageInfo({
+      elementsPerPage: 20,
+      currentPage: page,
+      totalElements: 0,
+      totalPages: 0,
+    });
+
+    this.vocabularyService.getVocabularyEntriesByValue(query, false, this.vocabularyOptions, pageInfo).pipe(
+      getFirstSucceededRemoteData(),
+      tap((rd: RemoteData<PaginatedList<VocabularyEntry>>) => {
+        this.totalPages = rd.payload.pageInfo.totalPages;
+        this.showPreviousPageSubject.next(rd.payload.pageInfo.currentPage > 1);
+        this.showNextPageSubject.next(rd.payload.pageInfo.currentPage < this.totalPages);
+      }),
+      getFirstSucceededRemoteListPayload(),
+      mergeMap((result: VocabularyEntry[]) => result.length > 0 ? result : observableOf(null)),
       mergeMap((entry: VocabularyEntry) =>
-        isNotEmpty(entry) ? this.vocabularyService.findEntryDetailById(entry.otherInformation.id, this.vocabularyName).pipe(
-          getFirstCompletedRemoteData(),
-          map((entryRd) => (entryRd.hasSucceeded && hasValue(entryRd.payload)) ? entryRd.payload : null),
-        ) : observableOf(null),
+        this.vocabularyService.findEntryDetailById(entry.otherInformation.id, this.vocabularyName).pipe(
+          getFirstSucceededRemoteDataPayload(),
+        ),
       ),
       mergeMap((entry: VocabularyEntryDetail) => this.getNodeHierarchy(entry, selectedItems)),
       scan((acc: TreeviewNode[], value: TreeviewNode) => {
@@ -234,11 +264,10 @@ export class VocabularyTreeviewService {
           return [...acc, value];
         }
       }, []),
-      catchError(() => observableOf([] as TreeviewNode[])),
-      finalize(() => this.loading.next(false)),
       merge(this.hideSearchingWhenUnsubscribed$),
     ).subscribe((nodes: TreeviewNode[]) => {
       this.dataChange.next(nodes);
+      this.loading.next(false);
     });
   }
 
@@ -296,7 +325,7 @@ export class VocabularyTreeviewService {
   private getNodeHierarchyById(id: string, selectedItems: string[]): Observable<string[]> {
     return this.getById(id).pipe(
       mergeMap((entry: VocabularyEntryDetail) => this.getNodeHierarchy(entry, selectedItems,[], false)),
-      map((node: TreeviewNode) => isNotEmpty(node) ? this.getNodeHierarchyIds(node, selectedItems) : []),
+      map((node: TreeviewNode) => this.getNodeHierarchyIds(node, selectedItems)),
     );
   }
 
@@ -329,10 +358,7 @@ export class VocabularyTreeviewService {
    */
   private getById(entryId: string): Observable<VocabularyEntryDetail> {
     return this.vocabularyService.findEntryDetailById(entryId, this.vocabularyName).pipe(
-      timeout({ each: 15000 }),
-      getFirstCompletedRemoteData(),
-      map((rd) => (rd.hasSucceeded && hasValue(rd.payload)) ? rd.payload : null),
-      catchError(() => observableOf(null)),
+      getFirstSucceededRemoteDataPayload(),
     );
   }
 
@@ -344,11 +370,7 @@ export class VocabularyTreeviewService {
    */
   private retrieveTopNodes(pageInfo: PageInfo, nodes: TreeviewNode[], selectedItems: string[]): void {
     this.vocabularyService.searchTopEntries(this.vocabularyName, pageInfo).pipe(
-      timeout({ each: 15000 }),
-      getFirstCompletedRemoteData(),
-      map((rd) => (rd.hasSucceeded && hasValue(rd.payload)) ? rd.payload : buildPaginatedList(new PageInfo(), [])),
-      catchError(() => observableOf(buildPaginatedList(new PageInfo(), []))),
-      finalize(() => this.loading.next(false)),
+      getFirstSucceededRemoteDataPayload(),
     ).subscribe((list: PaginatedList<VocabularyEntryDetail>) => {
       this.vocabularyService.clearSearchTopRequests();
       const newNodes: TreeviewNode[] = list.page.map((entry: VocabularyEntryDetail) => this._generateNode(entry, selectedItems));
@@ -363,6 +385,7 @@ export class VocabularyTreeviewService {
         loadMoreNode.updatePageInfo(newPageInfo);
         nodes.push(loadMoreNode);
       }
+      this.loading.next(false);
       // Notify the change.
       this.dataChange.next(nodes);
     });
